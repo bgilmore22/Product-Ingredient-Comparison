@@ -1,0 +1,115 @@
+{
+  "product": "Go-To Much Plumper Skin",
+  "sources": {
+    "source1": {
+      "site": "MECCA",
+      "url": "https://www.mecca.com/en-au/go-to/much-plumper-skin-I-055539/",
+      "status": "ok"
+    },
+    "source2": {
+      "site": "Go-To Skincare",
+      "url": "https://gotoskincare.com/products/much-plumper-skin?variant=39739527168134",
+      "status": "ok"
+    }
+  },
+  "ingredients": {
+    "comparison": "same",
+    "reason": "all 23 ingredients match after normalising",
+    "only_in_source1": [],
+    "only_in_source2": [],
+    "close_matches": [],
+    "raw_text_differences": []
+  },
+  "packaging": {
+    "comparison": "cannot_compare",
+    "reason": "source 1 lists no materials (packaging_source: not_found)",
+    "source1_materials": [],
+    "source2_materials": [
+      "cardboard",
+      "glass",
+      "polypropylene"
+    ],
+    "packaging_source": {
+      "source1": "not_found",
+      "source2": "text"
+    }
+  },
+  "naughty_list": {
+    "source1": {
+      "status": "scored",
+      "colour": "RED",
+      "reason": "2 categories hit: Synthetic alcohols, Microplastics/polymers",
+      "categories": {
+        "Synthetic alcohols": [
+          "propanediol",
+          "pentylene glycol",
+          "caprylyl glycol"
+        ],
+        "Microplastics/polymers": [
+          "sodium hyaluronate crosspolymer"
+        ]
+      },
+      "unmatched_ingredients": [
+        "Aloe vera leaf juice",
+        "water",
+        "panthenol",
+        "sodium lactate",
+        "gluconolactone",
+        "sodium hyaluronate",
+        "hydrolyzed sodium hyaluronate",
+        "sodium acetylated hyaluronate",
+        "acetyl hexapeptide-8",
+        "sodium pca",
+        "diutan gum",
+        "carrageenan",
+        "sodium benzoate",
+        "pantolactone",
+        "ethylhexylglycerin",
+        "glucose",
+        "calcium gluconate",
+        "sodium hydroxide",
+        "lactic acid"
+      ]
+    },
+    "source2": {
+      "status": "scored",
+      "colour": "RED",
+      "reason": "2 categories hit: Synthetic alcohols, Microplastics/polymers",
+      "categories": {
+        "Synthetic alcohols": [
+          "propanediol",
+          "pentylene glycol",
+          "caprylyl glycol"
+        ],
+        "Microplastics/polymers": [
+          "sodium hyaluronate crosspolymer"
+        ]
+      },
+      "unmatched_ingredients": [
+        "Aloe vera leaf juice",
+        "water",
+        "panthenol",
+        "sodium lactate",
+        "gluconolactone",
+        "sodium hyaluronate",
+        "hydrolyzed sodium hyaluronate",
+        "sodium acetylated hyaluronate",
+        "acetyl hexapeptide-8",
+        "sodium pca",
+        "diutan gum",
+        "carrageenan",
+        "sodium benzoate",
+        "pantolactone",
+        "ethylhexylglycerin",
+        "glucose",
+        "calcium gluconate",
+        "sodium hydroxide",
+        "lactic acid"
+      ]
+    },
+    "colours_match": true,
+    "categories_only_in_source1": [],
+    "categories_only_in_source2": [],
+    "reason": "source 1 RED, source 2 RED"
+  }
+}

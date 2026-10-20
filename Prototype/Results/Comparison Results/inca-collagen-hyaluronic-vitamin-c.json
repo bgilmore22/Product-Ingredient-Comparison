@@ -1,0 +1,69 @@
+{
+  "product": "Inca Organics Bioactive Collagen Peptides + Hyaluronic Acid + Vitamin C",
+  "sources": {
+    "source1": {
+      "site": "The Iconic",
+      "url": "https://www.theiconic.com.au/bioactive-collagen-peptides-hyaluronic-acid-vitamin-c-wellness-powder-unflavoured-1350938.html",
+      "status": "ok"
+    },
+    "source2": {
+      "site": "Inca Organics",
+      "url": "https://incaorganics.com.au/products/bioactive-pure-collagen-peptides-hyaluronic-acid-vitamin-c-unflavoured-230g",
+      "status": "ok"
+    }
+  },
+  "ingredients": {
+    "comparison": "same",
+    "reason": "all 3 ingredients match after normalising (1 with different raw text, see raw_text_differences)",
+    "only_in_source1": [],
+    "only_in_source2": [],
+    "close_matches": [],
+    "raw_text_differences": [
+      {
+        "normalised": "hyaluronic acid",
+        "source1": "Hyaluronic Acid (0.8%)",
+        "source2": "Hyaluronic Acid (Sodium Hyaluronate) (0.8%)"
+      }
+    ]
+  },
+  "packaging": {
+    "comparison": "cannot_compare",
+    "reason": "source 2 lists no materials (packaging_source: not_found)",
+    "source1_materials": [
+      "sugar cane"
+    ],
+    "source2_materials": [],
+    "packaging_source": {
+      "source1": "image",
+      "source2": "not_found"
+    }
+  },
+  "naughty_list": {
+    "source1": {
+      "status": "scored",
+      "colour": "GREEN",
+      "reason": "no categories hit",
+      "categories": {},
+      "unmatched_ingredients": [
+        "Hydrolysed Bioactive Collagen Peptides (bovine) (98.7%) (Origin Germany)",
+        "Hyaluronic Acid (0.8%)",
+        "Vitamin C (Ascorbic Acid) (0.5%)"
+      ]
+    },
+    "source2": {
+      "status": "scored",
+      "colour": "GREEN",
+      "reason": "no categories hit",
+      "categories": {},
+      "unmatched_ingredients": [
+        "Hydrolysed Bioactive Collagen Peptides (bovine) (98.7%) (Origin Germany)",
+        "Hyaluronic Acid (Sodium Hyaluronate) (0.8%)",
+        "Vitamin C (Ascorbic Acid) (0.5%)"
+      ]
+    },
+    "colours_match": true,
+    "categories_only_in_source1": [],
+    "categories_only_in_source2": [],
+    "reason": "source 1 GREEN, source 2 GREEN"
+  }
+}

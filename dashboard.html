@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ingredient Comparison Dashboard</title>
+<style>
+  :root {
+    --red: #c0392b; --red-bg: #fdecea;
+    --yellow: #9a7d0a; --yellow-bg: #fdf6e3;
+    --green: #1e7d3a; --green-bg: #e9f7ee;
+    --grey: #6b7280; --grey-bg: #f1f2f4;
+    --bg: #ffffff; --panel: #f8f9fb; --border: #e3e5e9;
+    --text: #1a1d23; --text-dim: #5b6270;
+    --accent: #2f5fd8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --red-bg: #3a1f1d; --yellow-bg: #3a3319; --green-bg: #16321f; --grey-bg: #2a2d33;
+      --bg: #16181d; --panel: #1d2026; --border: #2c2f37;
+      --text: #eef0f3; --text-dim: #9aa1ad;
+      --accent: #6d93ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px;
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .meta { color: var(--text-dim); font-size: 12.5px; margin-bottom: 20px; }
+
+  .stats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+  .stat {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px 14px; min-width: 90px;
+  }
+  .stat .n { font-size: 20px; font-weight: 700; }
+  .stat .l { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .04em; }
+  .stat.RED .n { color: var(--red); }
+  .stat.YELLOW .n { color: var(--yellow); }
+  .stat.GREEN .n { color: var(--green); }
+  .stat.OTHER .n { color: var(--grey); }
+
+  .controls {
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+    margin-bottom: 14px; padding: 12px; background: var(--panel);
+    border: 1px solid var(--border); border-radius: 8px;
+  }
+  input[type="search"] {
+    flex: 1; min-width: 180px; padding: 7px 10px; border-radius: 6px;
+    border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 13.5px;
+  }
+  .chip-group { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip {
+    padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+    background: var(--bg); color: var(--text-dim); font-size: 12.5px; cursor: pointer;
+    user-select: none; white-space: nowrap;
+  }
+  .chip.active { color: #fff; border-color: transparent; }
+  .chip.active.RED { background: var(--red); }
+  .chip.active.YELLOW { background: var(--yellow); }
+  .chip.active.GREEN { background: var(--green); }
+  .chip.active.ALL, .chip.active.NOT_FOUND, .chip.active.NOT_COMPARABLE { background: var(--accent); }
+  select {
+    padding: 7px 10px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--bg); color: var(--text); font-size: 13px;
+  }
+  label.toggle { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-dim); cursor: pointer; }
+
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--text-dim); padding: 8px 10px; border-bottom: 2px solid var(--border);
+    cursor: pointer; user-select: none; white-space: nowrap;
+  }
+  thead th:hover { color: var(--text); }
+  thead th .arrow { font-size: 10px; margin-left: 3px; opacity: .6; }
+  tbody tr.row { cursor: pointer; border-bottom: 1px solid var(--border); }
+  tbody tr.row:hover { background: var(--panel); }
+  tbody td { padding: 9px 10px; vertical-align: top; }
+  .prod-name { font-weight: 600; }
+  .method-tag { font-size: 10.5px; color: var(--text-dim); margin-left: 6px; font-weight: 400; }
+  .note { color: var(--text-dim); font-size: 12px; }
+
+  .badge {
+    display: inline-block; padding: 3px 10px; border-radius: 999px;
+    font-size: 11.5px; font-weight: 700; letter-spacing: .02em;
+  }
+  .badge.RED { background: var(--red-bg); color: var(--red); }
+  .badge.YELLOW { background: var(--yellow-bg); color: var(--yellow); }
+  .badge.GREEN { background: var(--green-bg); color: var(--green); }
+  .badge.NOTFOUND, .badge.NOTCOMPARABLE { background: var(--grey-bg); color: var(--grey); }
+
+  tr.detail-row td { padding: 0; }
+  .detail {
+    padding: 16px 18px; background: var(--panel); border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .detail h4 { margin: 0 0 8px; font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-dim); }
+  .detail .block { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
+  .detail .block + .block { margin-top: 12px; }
+  .detail .full { grid-column: 1 / -1; }
+  .kv { display: flex; gap: 6px; font-size: 12.5px; margin: 3px 0; }
+  .kv .k { color: var(--text-dim); min-width: 90px; }
+  .diff-list { margin: 6px 0 0; padding-left: 18px; font-size: 12.5px; }
+  .diff-list li { margin: 2px 0; }
+  .cat-chip {
+    display: inline-block; background: var(--grey-bg); color: var(--text);
+    border-radius: 6px; padding: 2px 8px; font-size: 11.5px; margin: 2px 4px 2px 0;
+  }
+  a.src-link { color: var(--accent); text-decoration: none; font-size: 12.5px; }
+  a.src-link:hover { text-decoration: underline; }
+  .empty-msg { color: var(--text-dim); text-align: center; padding: 30px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Ingredient Comparison Dashboard</h1>
+  <div class="meta" id="meta">Loading…</div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="controls">
+    <input type="search" id="search" placeholder="Search product name…">
+    <div class="chip-group" id="colourChips"></div>
+    <label class="toggle"><input type="checkbox" id="hideNotComparable" checked> Hide not comparable</label>
+    <select id="sortBy">
+      <option value="colour">Sort: worst colour first</option>
+      <option value="product">Sort: product name (A–Z)</option>
+    </select>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th data-sort="product">Product <span class="arrow"></span></th>
+        <th data-sort="colour">Colour <span class="arrow"></span></th>
+        <th>Note</th>
+        <th>Sources</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  <div class="empty-msg" id="emptyMsg" style="display:none;">No products match the current filters.</div>
+</div>
+
+<script src="dashboard_data.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  const data = (window.PIPELINE_DATA && window.PIPELINE_DATA.products) || [];
+  const generatedAt = window.PIPELINE_DATA ? window.PIPELINE_DATA.generated_at : null;
+
+  const COLOUR_ORDER = { RED: 0, YELLOW: 1, GREEN: 2, "NOT FOUND": 3, "NOT COMPARABLE": 4 };
+const state = { search: "", colours: new Set(), hideNC: true, sortBy: "colour", expanded: new Set() };
+  function badgeClass(colour) {
+    return colour.replace(/\s+/g, "");
+  }
+
+  function fmtMeta() {
+    const el = document.getElementById("meta");
+    if (!data.length) {
+      el.textContent = "No data found — run run_pipeline.py to generate dashboard_data.js.";
+      return;
+    }
+    const when = generatedAt ? new Date(generatedAt).toLocaleString() : "unknown";
+    el.textContent = `${data.length} products · last run: ${when} · refresh this page after re-running the pipeline to see new results`;
+  }
+
+  function buildStats() {
+    const counts = { RED: 0, YELLOW: 0, GREEN: 0, OTHER: 0 };
+    data.forEach(r => {
+      if (counts.hasOwnProperty(r.colour)) counts[r.colour]++;
+      else counts.OTHER++;
+    });
+    const el = document.getElementById("stats");
+    el.innerHTML = "";
+    const defs = [
+      ["RED", "Red", counts.RED], ["YELLOW", "Yellow", counts.YELLOW],
+      ["GREEN", "Green", counts.GREEN], ["OTHER", "Not found / comparable", counts.OTHER],
+    ];
+    defs.forEach(([cls, label, n]) => {
+      const d = document.createElement("div");
+      d.className = "stat " + cls;
+      d.innerHTML = `<div class="n">${n}</div><div class="l">${label}</div>`;
+      el.appendChild(d);
+    });
+  }
+
+  function buildChips() {
+    const el = document.getElementById("colourChips");
+    const options = [["ALL", "All"], ["RED", "Red"], ["YELLOW", "Yellow"], ["GREEN", "Green"],
+                      ["NOT_FOUND", "Not found"], ["NOT_COMPARABLE", "Not comparable"]];
+    el.innerHTML = "";
+    options.forEach(([key, label]) => {
+      const c = document.createElement("div");
+      c.className = "chip " + key + (key === "ALL" ? " active" : "");
+      c.textContent = label;
+      c.dataset.key = key;
+      c.addEventListener("click", () => toggleChip(key, c));
+      el.appendChild(c);
+    });
+  }
+
+  function toggleChip(key, el) {
+    const all = document.getElementById("colourChips");
+    if (key === "ALL") {
+      state.colours.clear();
+      [...all.children].forEach(c => c.classList.toggle("active", c.dataset.key === "ALL"));
+    } else {
+      const realKey = key === "NOT_FOUND" ? "NOT FOUND" : key === "NOT_COMPARABLE" ? "NOT COMPARABLE" : key;
+      if (state.colours.has(realKey)) state.colours.delete(realKey);
+      else state.colours.add(realKey);
+      el.classList.toggle("active");
+      [...all.children].find(c => c.dataset.key === "ALL").classList.toggle("active", state.colours.size === 0);
+    }
+    render();
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+
+  function catList(cats) {
+    if (!cats || typeof cats !== "object" || !Object.keys(cats).length) return '<span class="note">none</span>';
+    return Object.entries(cats).map(([cat, hits]) =>
+      `<span class="cat-chip" title="${escapeHtml(hits.join(", "))}">${escapeHtml(cat)}</span>`
+    ).join("");
+  }
+
+  function listOrNotFound(v) {
+    if (!v || v === "not found") return '<span class="note">not found</span>';
+    return escapeHtml(v);
+  }
+
+  function detailHtml(r) {
+    return `
+      <div class="detail">
+        <div class="block">
+          <h4>Ingredients</h4>
+          <div class="kv"><span class="k">Result</span><span>${escapeHtml(r.ingredients_comparison)}</span></div>
+          <div class="kv"><span class="k">Reason</span><span>${escapeHtml(r.ingredients_reason)}</span></div>
+          <div class="kv"><span class="k">Only in Source 1</span><span>${listOrNotFound(r.only_in_source1)}</span></div>
+          <div class="kv"><span class="k">Only in Source 2</span><span>${listOrNotFound(r.only_in_source2)}</span></div>
+          ${(r.close_matches && r.close_matches.length) ? `
+            <div class="kv"><span class="k">Close matches</span></div>
+            <ul class="diff-list">${r.close_matches.map(c => `<li>${escapeHtml(c.source1)} ↔ ${escapeHtml(c.source2)} (${c.score}%)</li>`).join("")}</ul>
+          ` : ""}
+        </div>
+        <div class="block">
+          <h4>Packaging</h4>
+          <div class="kv"><span class="k">Result</span><span>${escapeHtml(r.packaging_comparison)}</span></div>
+          <div class="kv"><span class="k">Reason</span><span>${escapeHtml(r.packaging_reason)}</span></div>
+          <div class="kv"><span class="k">Source 1 materials</span><span>${listOrNotFound(r.source1_materials)}</span></div>
+          <div class="kv"><span class="k">Source 2 materials</span><span>${listOrNotFound(r.source2_materials)}</span></div>
+          <div class="kv"><span class="k">Found via</span><span>${escapeHtml(r.source1_packaging_source)} / ${escapeHtml(r.source2_packaging_source)}</span></div>
+        </div>
+        <div class="block full">
+          <h4>Naughty list — categories hit</h4>
+          <div class="kv"><span class="k">Source 1 (${escapeHtml(r.source1_colour)})</span></div>
+          <div>${catList(r.source1_categories)}</div>
+          <div class="kv" style="margin-top:8px;"><span class="k">Source 2 (${escapeHtml(r.source2_colour)})</span></div>
+          <div>${catList(r.source2_categories)}</div>
+          <div class="kv" style="margin-top:8px;"><span class="k">Unmatched (S1)</span><span>${listOrNotFound(r.source1_unmatched_ingredients)}</span></div>
+          <div class="kv"><span class="k">Unmatched (S2)</span><span>${listOrNotFound(r.source2_unmatched_ingredients)}</span></div>
+        </div>
+        <div class="block full">
+          <h4>Sources</h4>
+          <div class="kv"><span class="k">Source 1</span><span>${escapeHtml(r.source1_site)} — ${r.source1_url ? `<a class="src-link" href="${escapeHtml(r.source1_url)}" target="_blank" rel="noopener">${escapeHtml(r.source1_url)}</a>` : '<span class="note">not found</span>'}</span></div>
+          <div class="kv"><span class="k">Source 2</span><span>${escapeHtml(r.source2_site)} — ${r.source2_url ? `<a class="src-link" href="${escapeHtml(r.source2_url)}" target="_blank" rel="noopener">${escapeHtml(r.source2_url)}</a>` : '<span class="note">not found</span>'}</span></div>
+          <div class="kv"><span class="k">Matched via</span><span>${escapeHtml(r.match_method)}</span></div>
+        </div>
+      </div>`;
+  }
+
+  function applyFilters() {
+    const q = state.search.trim().toLowerCase();
+    let rows = data.filter(r => {
+      if (r.note && r.note.includes("no ingredients list found")) return false;
+      if (q && !r.product.toLowerCase().includes(q)) return false;
+      if (state.colours.size && !state.colours.has(r.colour)) return false;
+      if (state.hideNC && r.colour === "NOT COMPARABLE") return false;
+      return true;
+    });
+    rows.sort((a, b) => {
+      if (state.sortBy === "product") return a.product.localeCompare(b.product);
+      const oa = COLOUR_ORDER.hasOwnProperty(a.colour) ? COLOUR_ORDER[a.colour] : 5;
+      const ob = COLOUR_ORDER.hasOwnProperty(b.colour) ? COLOUR_ORDER[b.colour] : 5;
+      return oa - ob || a.product.localeCompare(b.product);
+    });
+    return rows;
+  }
+
+  function render() {
+    const rows = applyFilters();
+    const tbody = document.getElementById("tbody");
+    const emptyMsg = document.getElementById("emptyMsg");
+    tbody.innerHTML = "";
+
+    if (!rows.length) {
+      emptyMsg.style.display = "block";
+      return;
+    }
+    emptyMsg.style.display = "none";
+
+    rows.forEach((r, i) => {
+      const id = r.product + "::" + i;
+      const tr = document.createElement("tr");
+      tr.className = "row";
+      tr.innerHTML = `
+        <td><span class="prod-name">${escapeHtml(r.product)}</span></td>
+        <td><span class="badge ${badgeClass(r.colour)}">${escapeHtml(r.colour)}</span></td>
+        <td class="note">${r.note ? escapeHtml(r.note) : ""}</td>
+        <td class="note">${escapeHtml(r.source1_site || "not found")} / ${escapeHtml(r.source2_site || "not found")}</td>
+      `;
+      tr.addEventListener("click", () => {
+        if (state.expanded.has(id)) state.expanded.delete(id);
+        else state.expanded.add(id);
+        render();
+      });
+      tbody.appendChild(tr);
+
+      if (state.expanded.has(id)) {
+        const dtr = document.createElement("tr");
+        dtr.className = "detail-row";
+        const td = document.createElement("td");
+        td.colSpan = 4;
+        td.innerHTML = detailHtml(r);
+        dtr.appendChild(td);
+        tbody.appendChild(dtr);
+      }
+    });
+  }
+
+  document.getElementById("search").addEventListener("input", e => { state.search = e.target.value; render(); });
+  document.getElementById("hideNotComparable").addEventListener("change", e => { state.hideNC = e.target.checked; render(); });
+  document.getElementById("sortBy").addEventListener("change", e => { state.sortBy = e.target.value; render(); });
+  document.querySelectorAll("th[data-sort]").forEach(th => {
+    th.addEventListener("click", () => {
+      document.getElementById("sortBy").value = th.dataset.sort;
+      state.sortBy = th.dataset.sort;
+      render();
+    });
+  });
+
+  fmtMeta();
+  buildStats();
+  buildChips();
+  render();
+})();
+</script>
+</body>
+</html>
