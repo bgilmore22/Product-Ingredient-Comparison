@@ -22,17 +22,13 @@ from difflib import SequenceMatcher
 from pathlib import Path
 
 from Scrapers import common
-from Scrapers import mecca as MECCA
 from analyse import SOURCE1, LLMMaterialExtractor, analyse_pair, flatten_variants, kit_title_reason, pooled_list_warning
-from crawl_sitemaps import crawl_mecca_products, crawl_shopify_products
-from match_products import fetch_title, goto_slug, has_review_flag, llm_verify, mecca_slug, normalise
+from match_products import fetch_title, has_review_flag, llm_verify, normalise
+from sources import DEFAULT_BRAND, DEFAULT_RETAILER, SOURCES, Source
 
 ROOT = Path(__file__).resolve().parent
 SUMMARY_FILE = ROOT / "summary.csv"
 DASHBOARD_DATA_FILE = ROOT / "dashboard_data.js"
-DELAY_SECONDS = 1.0                      # pause after every product-page fetch
-GOTO_SITEMAP = "https://gotoskincare.com/sitemap.xml"
-MECCA_BRAND_PATH = "/go-to/"             # which brand's Mecca listings to keep
 FUZZY_THRESHOLD = 0.4                    # SequenceMatcher ratio on normalised slugs
 MAX_LLM_CANDIDATES = 3                   # per Go-To product, best-scored first
 
@@ -40,42 +36,37 @@ NOT_FOUND = "not found"
 COLOUR_RANK = {"RED": 3, "YELLOW": 2, "GREEN": 1}
 
 
-def _load_goto_scraper():
-    """go-to_skincare.py has a hyphen, which a normal "import" statement can't
-    use as an identifier - importlib.util works regardless of filename.
-    The folder is "Scrapers" with a capital S: macOS ignores case, Linux
-    doesn't, so the path must match exactly."""
-    path = ROOT / "Scrapers" / "go-to_skincare.py"
-    spec = importlib.util.spec_from_file_location("Scrapers.go_to_skincare", path)
-    mod = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = mod
-    spec.loader.exec_module(mod)
-    return mod
+# The two sites of this run. Set by main() from --brand/--retailer; the
+# defaults are Go-To Skincare vs MECCA. Everything site-specific (crawl, slug,
+# scraper, structured data) is on the Source objects in sources.py.
+BRAND: Source = SOURCES[DEFAULT_BRAND]
+RETAILER: Source = SOURCES[DEFAULT_RETAILER]
 
 
-GOTO = _load_goto_scraper()
+def set_sources(brand_key, retailer_key):
+    global BRAND, RETAILER
+    BRAND, RETAILER = SOURCES[brand_key], SOURCES[retailer_key]
+    if BRAND is RETAILER:
+        raise SystemExit("--brand and --retailer must be two different sources")
 
 
 # ---------------------------------------------------------------------------
 # STAGE 3 + 4: crawl and match, in memory
 # ---------------------------------------------------------------------------
-def _prefer_single_item(existing, new):
-    """Mecca can list the same slug as -I-<id> (single item) and -V-<id>
-    (variant group). Keep the -I- page: it is one SKU with one formula."""
-    return new if ("-I-" in new and "-V-" in existing) else existing
-
-
 def find_pairs():
-    goto_urls = crawl_shopify_products(GOTO_SITEMAP)
-    mecca_urls = [u for u in crawl_mecca_products() if MECCA_BRAND_PATH in u]
-    print(f"crawled {len(goto_urls)} Go-To URLs, {len(mecca_urls)} Mecca {MECCA_BRAND_PATH.strip('/')} URLs")
+    """(brand_url, retailer_url, method) for every brand product found on the
+    retailer. The brand's product list drives; the retailer is the pool."""
+    goto_urls = BRAND.crawl()
+    mecca_urls = RETAILER.crawl()
+    print(f"crawled {len(goto_urls)} {BRAND.name} URLs, {len(mecca_urls)} {RETAILER.name} URLs")
+    goto_slug, mecca_slug = BRAND.slug, RETAILER.slug
 
     mecca_by_slug = {}
     for u in mecca_urls:
         s = mecca_slug(u)
         if s in mecca_by_slug:
-            keep = _prefer_single_item(mecca_by_slug[s], u)
-            print(f"WARNING duplicate Mecca slug '{s}': keeping {keep}")
+            keep = RETAILER.prefer_url(mecca_by_slug[s], u) if RETAILER.prefer_url else mecca_by_slug[s]
+            print(f"WARNING duplicate {RETAILER.name} slug '{s}': keeping {keep}")
             mecca_by_slug[s] = keep
         else:
             mecca_by_slug[s] = u
@@ -132,7 +123,7 @@ def find_pairs():
             if not t2:
                 continue
             llm_checked += 1
-            verdict = llm_verify(t1, t2)
+            verdict = llm_verify(t1, t2, BRAND.name, BRAND.describe, RETAILER.name, RETAILER.describe)
             print(f"  llm {verdict:<9} {-neg_score:.2f}  {goto_slug(gu)}  <->  {mecca_slug(mu)}")
             if verdict == "same":
                 pairs.append((gu, mu, "llm"))
@@ -142,26 +133,27 @@ def find_pairs():
 
     exact_n = sum(1 for p in pairs if p[2] == "exact")
     print(f"matched {len(pairs)} pairs ({exact_n} exact, {llm_confirmed} LLM-confirmed of {llm_checked} checked); "
-          f"{len(remaining_goto) - llm_confirmed} Go-To products unmatched")
+          f"{len(remaining_goto) - llm_confirmed} {BRAND.name} products unmatched")
     return pairs
 
 
 # ---------------------------------------------------------------------------
 # STAGE 5: scrape both pages live and analyse
 # ---------------------------------------------------------------------------
-def fetch(url):
+def fetch(url, delay_seconds=1.0):
     resp = common.fetch(url, timeout=20)
     if not isinstance(resp, common.CachedResponse):
-        time.sleep(DELAY_SECONDS)          # be polite to the live site; no need to wait for a cached page
+        time.sleep(delay_seconds)          # be polite to the live site; no need to wait for a cached page
     return resp.text
 
 
-def scrape_record(scraper, url):
-    """A product record for `url`, or a scrape_failed record if the page
-    can't be fetched or parsed - never raises, so one bad page costs one
-    side of one pair, not the whole pair."""
+def scrape_record(source, url):
+    """A product record for `url` on `source`, or a scrape_failed record if
+    the page can't be fetched or parsed - never raises, so one bad page costs
+    one side of one pair, not the whole pair."""
+    scraper = source.scraper
     try:
-        html_text = fetch(url)
+        html_text = fetch(url, source.delay_seconds)
     except Exception as exc:
         print(f"    fetch failed {url}: {type(exc).__name__}: {exc}", file=sys.stderr)
         return common.failed_product_record(scraper.WEBSITE_NAME, url, f"{type(exc).__name__}: {exc}")
@@ -187,13 +179,13 @@ def scrape_record(scraper, url):
         return common.failed_product_record(scraper.WEBSITE_NAME, url, f"{type(exc).__name__}: {exc}")
 
 
-def slug_for(goto_url):
-    return goto_slug(goto_url)
+def slug_for(brand_url):
+    return BRAND.slug(brand_url)
 
 
-def _ordered(mecca_value, goto_value):
+def _ordered(retailer_value, brand_value):
     """(source1, source2) in the order analyse.SOURCE1 says."""
-    return (mecca_value, goto_value) if SOURCE1 == "retailer" else (goto_value, mecca_value)
+    return (retailer_value, brand_value) if SOURCE1 == "retailer" else (brand_value, retailer_value)
 
 
 def not_comparable_result(gu, mu, method, reason, product_name=None):
@@ -203,7 +195,7 @@ def not_comparable_result(gu, mu, method, reason, product_name=None):
     when a scraped ingredient list turns out to cover several products."""
     empty_naughty = {"status": "not_scored", "colour": None, "reason": reason,
                      "categories": {}, "unmatched_ingredients": [], "skipped_claims": []}
-    site1, site2 = _ordered(MECCA.WEBSITE_NAME, GOTO.WEBSITE_NAME)
+    site1, site2 = _ordered(RETAILER.name, BRAND.name)
     url1, url2 = _ordered(mu, gu)
     return {
         "product": product_name or slug_for(gu).replace("-", " ").title(),
@@ -262,21 +254,25 @@ def llm_kit_verdict(titles, heads):
 
 
 def run_one(gu, mu, method, extractor):
-    mecca_rec = scrape_record(MECCA, mu)
-    goto_rec = scrape_record(GOTO, gu)
-    shopify = GOTO.fetch_product_json(gu)          # structured facts; None if unavailable
-    goto_rec.update(GOTO.structured_facts(shopify))
-    if shopify and shopify.get("title") and goto_rec.get("product_name") in (None, "unknown-product"):
-        goto_rec["product_name"] = str(shopify["title"]).strip()
+    mecca_rec = scrape_record(RETAILER, mu)
+    goto_rec = scrape_record(BRAND, gu)
+    # structured product data (Shopify JSON etc.) from whichever sides have it
+    kit_from_data = None
+    for source, rec, url in ((BRAND, goto_rec, gu), (RETAILER, mecca_rec, mu)):
+        raw, facts, kit = source.facts(url)
+        rec.update(facts)
+        if raw and raw.get("title") and rec.get("product_name") in (None, "unknown-product"):
+            rec["product_name"] = str(raw["title"]).strip()
+        kit_from_data = kit_from_data or kit
     name = goto_rec.get("product_name") or mecca_rec.get("product_name") or slug_for(gu).replace("-", " ").title()
 
     # Kit check, layered (the slug words were already checked in main()):
-    #  1. Shopify's own product_type/tags  2. a title that names a kit
+    #  1. the store's own product data (Shopify product_type/tags)  2. a title that names a kit
     #  3. an AI yes/no on titles + start of the list.
     # Each skips with a stated reason; anything unsure is SCORED, never skipped.
     titles = [(r["website"], r.get("product_name")) for r in (mecca_rec, goto_rec)
               if r.get("product_name") and r.get("product_name") != "unknown-product"]
-    why = GOTO.kit_signals(shopify) or kit_title_reason(titles)
+    why = kit_from_data or kit_title_reason(titles)
     if not why:
         heads = [(r["website"], (r.get("ingredients_raw") or "")[:250]) for r in (mecca_rec, goto_rec)]
         if llm_kit_verdict(titles, heads) == "kit":
@@ -477,7 +473,11 @@ def write_dashboard_data(rows, audit=None):
 
 def parse_args(argv=None):
     import argparse
-    ap = argparse.ArgumentParser(description="Scrape, match, compare and score Go-To products on Mecca vs gotoskincare.com")
+    ap = argparse.ArgumentParser(description="Scrape, match, compare and score one brand's products on its own store vs a retailer")
+    ap.add_argument("--brand", default=DEFAULT_BRAND, choices=sorted(SOURCES),
+                    help=f"the store whose product list drives the run (default {DEFAULT_BRAND})")
+    ap.add_argument("--retailer", default=DEFAULT_RETAILER, choices=sorted(SOURCES),
+                    help=f"the store it is matched against (default {DEFAULT_RETAILER})")
     mode = ap.add_mutually_exclusive_group()
     mode.add_argument("--refresh", action="store_true",
                       help="ignore the cache: fetch every page and ask Gemini again (default: reuse anything "
@@ -489,6 +489,7 @@ def parse_args(argv=None):
 
 def main(argv=None):
     args = parse_args(argv)
+    set_sources(args.brand, args.retailer)
     common.set_cache_mode("refresh" if args.refresh else "offline" if args.offline else "use")
     extractor = LLMMaterialExtractor()
     pairs = find_pairs()
@@ -496,7 +497,7 @@ def main(argv=None):
     rows, results, failures, skipped = [], [], 0, 0
     for i, (gu, mu, method) in enumerate(pairs, 1):
         slug = slug_for(gu)
-        if has_review_flag(goto_slug(gu)) or has_review_flag(mecca_slug(mu)):
+        if has_review_flag(BRAND.slug(gu)) or has_review_flag(RETAILER.slug(mu)):
             rows.append(to_row(not_comparable_result(
                 gu, mu, method, "not comparable - bundle/kit/set listing, not a single product")))
             skipped += 1

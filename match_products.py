@@ -36,10 +36,10 @@ _OG_TITLE_RES = [
 # " | MECCA", " – Go-To Skincare" etc. on the end of <title>
 _TITLE_SUFFIX_RE = re.compile(r"\s*[|–—-]\s*(mecca|go-to skincare|go-to)\s*$", re.IGNORECASE)
 
-_VERIFY_PROMPT = """Two product listings, possibly the same product on two different retailers.
+_VERIFY_PROMPT = """Two product listings, possibly the same product on two different websites.
 
-Go-To Skincare (the brand's own store) title: {t1}
-Mecca (a multi-brand retailer) title: {t2}
+{site1} ({describe1}) title: {t1}
+{site2} ({describe2}) title: {t2}
 
 Are these the same physical product (same formula)?
 - A bundle, kit, set, duo or trio that CONTAINS the product is NOT the same as
@@ -54,10 +54,12 @@ _title_cache = {}
 
 
 def goto_slug(url):
+    """Kept for callers/tests; the pipeline now uses Source.slug (sources.py)."""
     return url.rstrip("/").split("/products/")[-1]
 
 
 def mecca_slug(url):
+    """Kept for callers/tests; the pipeline now uses Source.slug (sources.py)."""
     raw = url.rstrip("/").split("/")[-1]
     return MECCA_ID_RE.sub("", raw)
 
@@ -99,14 +101,16 @@ def fetch_title(url):
     return title
 
 
-def llm_verify(t1, t2):
+def llm_verify(t1, t2, site1="Go-To Skincare", describe1="the brand's own store",
+               site2="Mecca", describe2="a multi-brand retailer"):
     """same / different / uncertain. Falls back to "uncertain" (never auto-accepted)
     if the client isn't configured or the call fails - a missing API key must
     never silently turn into a false "same"."""
     if common.GEMINI_CLIENT is None or common.types is None:
         return "uncertain"
     config = common.types.GenerateContentConfig(response_mime_type="application/json", temperature=0)
-    prompt = _VERIFY_PROMPT.format(t1=t1, t2=t2)
+    prompt = _VERIFY_PROMPT.format(t1=t1, t2=t2, site1=site1, describe1=describe1,
+                                   site2=site2, describe2=describe2)
 
     def ask():
         result = common.GEMINI_CLIENT.models.generate_content(
