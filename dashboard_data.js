@@ -1,5 +1,5 @@
 window.PIPELINE_DATA = {
-  "generated_at": "2026-10-22T10:36:34.671899+00:00",
+  "generated_at": "2026-10-22T12:11:36.266230+00:00",
   "products": [
     {
       "product": "Clarifying Exfoliator",
@@ -33,9 +33,9 @@ window.PIPELINE_DATA = {
         }
       ],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; high-density polyethylene; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -68,9 +68,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; glass; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -103,9 +103,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
-      "source1_materials": "not found",
-      "source2_materials": "not found",
+      "packaging_reason": "source 1 only says plastic - too generic to compare with cardboard, eva, low-density polyethylene, polyethylene, polypropylene, pom, stainless steel",
+      "source1_materials": "plastic",
+      "source2_materials": "cardboard; eva; low-density polyethylene; polyethylene; polypropylene; pom; stainless steel",
       "source1_packaging_source": "text",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -169,9 +169,9 @@ window.PIPELINE_DATA = {
       ],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; methyl nethacrylate-styrene copolymer; polyethylene; polyethylene terephthalate; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -210,9 +210,9 @@ window.PIPELINE_DATA = {
       ],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; polyethylene terephthalate; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "RED",
@@ -259,9 +259,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; glass; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -294,9 +294,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "glass; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -329,9 +329,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "acrylonitrile butadiene styrene; cardboard; glass; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -380,9 +380,9 @@ window.PIPELINE_DATA = {
         }
       ],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; high-density polyethylene; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -476,9 +476,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "acrylonitrile butadiene styrene; glass; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "RED",
@@ -533,9 +533,9 @@ window.PIPELINE_DATA = {
       ],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "YELLOW",
@@ -703,9 +703,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
-      "source1_materials": "not found",
-      "source2_materials": "not found",
+      "packaging_reason": "source 1 only says plastic - too generic to compare with cardboard, ethylene-vinyl acetate, low-density polyethylene, polyethylene, polyoxymethylene, polypropylene, stainless steel",
+      "source1_materials": "plastic",
+      "source2_materials": "cardboard; ethylene-vinyl acetate; low-density polyethylene; polyethylene; polyoxymethylene; polypropylene; stainless steel",
       "source1_packaging_source": "text",
       "source2_packaging_source": "text",
       "source1_colour": "YELLOW",
@@ -781,9 +781,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; glass; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -816,9 +816,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: text)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; evoh; high-density polyethylene; lldpe; low-density polyethylene; polyethylene; polypropylene; stainless steel",
       "source1_packaging_source": "text",
       "source2_packaging_source": "text",
       "source1_colour": "YELLOW",
@@ -866,9 +866,9 @@ window.PIPELINE_DATA = {
         }
       ],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; polyethylene; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "RED",
@@ -915,9 +915,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "acrylonitrile butadiene styrene; glass; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -950,9 +950,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "glass; high-density polyethylene; low-density polyethylene; metal; plastic; polyethylene; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -985,9 +985,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
-      "source1_materials": "not found",
-      "source2_materials": "not found",
+      "packaging_reason": "source 1 only says plastic - too generic to compare with polyethylene, polyethylene terephthalate glycol, polypropylene",
+      "source1_materials": "plastic",
+      "source2_materials": "polyethylene; polyethylene terephthalate glycol; polypropylene",
       "source1_packaging_source": "text",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -1114,9 +1114,9 @@ window.PIPELINE_DATA = {
         }
       ],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -1184,9 +1184,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "YELLOW",
@@ -1209,7 +1209,7 @@ window.PIPELINE_DATA = {
     },
     {
       "product": "Things Will Calm Down Now",
-      "colour": "YELLOW",
+      "colour": "GREEN",
       "note": "",
       "match_method": "exact",
       "product_type": "Sleep",
@@ -1243,23 +1243,19 @@ window.PIPELINE_DATA = {
         }
       ],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "acrylonitrile butadiene styrene; cardboard; glass; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
-      "source1_colour": "YELLOW",
+      "source1_colour": "GREEN",
       "source2_colour": "GREEN",
-      "source1_categories": {
-        "Synthetic fragrance/parfum": [
-          "Benzyl Salicylate"
-        ]
-      },
+      "source1_categories": {},
       "source2_categories": {},
-      "source1_unmatched_ingredients": "Aqua; Caprylyl/Capryl Glucoside; Lavandula Angustifolia Oil; Pentylene Glycol; Boswellia Serrata Oil; Sodium Benzoate; Cananga Odorata Flower Oil; Potassium Sorbate; Juniperus Virginiana Wood Oil; Citric Acid; Boswellia Carterii Oil; Anthemis Nobilis Flower Oil; Santalum Spicatum Wood Oil; Benzyl Benzoate; Beta-Caryophyllene; Camphor; Eugenol; Geraniol; Geranyl Acetate; Isoeugenol; Limonene; Linalool; Linalyl Acetate; Pinene; Santalol; Terpineol",
+      "source1_unmatched_ingredients": "Aqua; Caprylyl/Capryl Glucoside; Lavandula Angustifolia Oil; Pentylene Glycol; Boswellia Serrata Oil; Sodium Benzoate; Cananga Odorata Flower Oil; Potassium Sorbate; Juniperus Virginiana Wood Oil; Citric Acid; Boswellia Carterii Oil; Anthemis Nobilis Flower Oil; Santalum Spicatum Wood Oil; Benzyl Benzoate; Benzyl Salicylate; Beta-Caryophyllene; Camphor; Eugenol; Geraniol; Geranyl Acetate; Isoeugenol; Limonene; Linalool; Linalyl Acetate; Pinene; Santalol; Terpineol",
       "source2_unmatched_ingredients": "Aqua/water/eau; caprylyl/capryl glucoside; lavandula angustifolia (lavender) oil; boswellia serrata oil; anthemis nobilis (chamomile) flower oil; boswellia carterii oil; cananga odorata flower oil; juniperus virginiana wood oil; santalum spicatum wood oil; sodium benzoate; citric acid; potassium sorbate",
-      "naughty_reason": "source 1 YELLOW, source 2 GREEN",
-      "source1_hit_ingredients": "Synthetic fragrance/parfum: Benzyl Salicylate",
+      "naughty_reason": "source 1 GREEN, source 2 GREEN",
+      "source1_hit_ingredients": "",
       "source2_hit_ingredients": ""
     },
     {
@@ -1331,9 +1327,9 @@ window.PIPELINE_DATA = {
       ],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
-      "source1_materials": "not found",
-      "source2_materials": "not found",
+      "packaging_reason": "source 1 only says plastic - too generic to compare with cardboard, polyethylene, polypropylene, silicon",
+      "source1_materials": "plastic",
+      "source2_materials": "cardboard; polyethylene; polypropylene; silicon",
       "source1_packaging_source": "text",
       "source2_packaging_source": "text",
       "source1_colour": "GREEN",
@@ -1415,9 +1411,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; foil; polymethyl methacrylate; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "YELLOW",
@@ -1458,9 +1454,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "acrylonitrile butadiene styrene; cardboard; glass; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "YELLOW",
@@ -1501,9 +1497,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "aluminum barrier laminate; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "RED",
@@ -1593,9 +1589,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "acrylonitrile butadiene styrene; cardboard; glass; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "YELLOW",
@@ -1636,9 +1632,9 @@ window.PIPELINE_DATA = {
       "close_matches": [],
       "raw_text_differences": [],
       "packaging_comparison": "cannot_compare",
-      "packaging_reason": "neither source lists materials",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
       "source1_materials": "not found",
-      "source2_materials": "not found",
+      "source2_materials": "cardboard; polypropylene",
       "source1_packaging_source": "not_found",
       "source2_packaging_source": "text",
       "source1_colour": "YELLOW",
@@ -1765,6 +1761,391 @@ window.PIPELINE_DATA = {
       "naughty_reason": "source 1 GREEN, source 2 YELLOW",
       "source1_hit_ingredients": "",
       "source2_hit_ingredients": "Synthetic fragrance/parfum: parfum/fragrance"
+    },
+    {
+      "product": "Pinky Lip Glaze",
+      "colour": "GREEN",
+      "note": "",
+      "match_method": "llm",
+      "product_type": "Lips",
+      "variants": "not found",
+      "source1_site": "MECCA",
+      "source1_url": "https://www.mecca.com/en-au/go-to/lip-glaze-pinky-I-084382/",
+      "source1_status": "ok",
+      "source2_site": "Go-To Skincare",
+      "source2_url": "https://gotoskincare.com/products/pinky-lip-glaze",
+      "source2_status": "ok",
+      "ingredients_comparison": "same",
+      "ingredients_reason": "all 18 ingredients match after normalising",
+      "only_in_source1": "not found",
+      "only_in_source2": "not found",
+      "close_matches": [],
+      "raw_text_differences": [],
+      "packaging_comparison": "cannot_compare",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
+      "source1_materials": "not found",
+      "source2_materials": "acrylonitrile butadiene styrene; cardboard; flocked fibre; low-density polyethylene; polyethylene terephthalate glycol-modified; polyoxymethylene",
+      "source1_packaging_source": "not_found",
+      "source2_packaging_source": "text",
+      "source1_colour": "GREEN",
+      "source2_colour": "GREEN",
+      "source1_categories": {},
+      "source2_categories": {},
+      "source1_unmatched_ingredients": "Ricinus Communis (Castor) Seed Oil; Zinc Oxide; Coco-Caprylate/Caprate; Polyisobutene; Cocos Nucifera (Coconut) Oil; Euphorbia Cerifera (Candelilla) Wax; Silica; Hydrogenated Castor Oil; Polyglyceryl-3 Polyricinoleate; Tocopheryl Acetate; Flavour; Isostearic Acid; Tetrahexyldecyl Ascorbate; Simmondsia Chinensis (Jojoba) Seed Oil; Terminalia Ferdinandiana Fruit Extract; Ci 14720; Iron Oxide Yellow (Ci 77492); Ci 16255",
+      "source2_unmatched_ingredients": "Ricinus communis (castor) seed oil; zinc oxide; coco-caprylate/caprate; polyisobutene; cocos nucifera (coconut) oil; euphorbia cerifera (candelilla) wax; silica; hydrogenated castor oil; polyglyceryl-3 polyricinoleate; tocopheryl acetate; flavour; isostearic acid; tetrahexyldecyl ascorbate; simmondsia chinensis (jojoba) seed oil; terminalia ferdinandiana fruit extract; CI 14720; iron oxide yellow (CI 77492); CI 16255",
+      "naughty_reason": "source 1 GREEN, source 2 GREEN",
+      "source1_hit_ingredients": "",
+      "source2_hit_ingredients": ""
+    },
+    {
+      "product": "Properly Clean Refill",
+      "colour": "GREEN",
+      "note": "",
+      "match_method": "llm",
+      "product_type": "Cleanser",
+      "variants": "not found",
+      "source1_site": "MECCA",
+      "source1_url": "https://www.mecca.com/en-au/go-to/properly-clean-150ml-refill-I-062851/",
+      "source1_status": "ok",
+      "source2_site": "Go-To Skincare",
+      "source2_url": "https://gotoskincare.com/products/properly-clean-refill",
+      "source2_status": "ok",
+      "ingredients_comparison": "same",
+      "ingredients_reason": "all 12 ingredients match after normalising",
+      "only_in_source1": "not found",
+      "only_in_source2": "not found",
+      "close_matches": [],
+      "raw_text_differences": [],
+      "packaging_comparison": "cannot_compare",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
+      "source1_materials": "not found",
+      "source2_materials": "evoh; glass; high-density polyethylene; low-density polyethylene; metal; plastic; polyethylene; polypropylene",
+      "source1_packaging_source": "not_found",
+      "source2_packaging_source": "text",
+      "source1_colour": "GREEN",
+      "source2_colour": "GREEN",
+      "source1_categories": {},
+      "source2_categories": {},
+      "source1_unmatched_ingredients": "Water; sodium cocoamphoacetate; glycerin; lauryl glucoside; sodium chloride; sodium cocoyl glutamate; sodium lauryl glucose carboxylate; dehydroacetic acid; benzyl alcohol; citric acid; white willow bark extract; natural fragrance (contains mandarin, lime and patchouli oils)",
+      "source2_unmatched_ingredients": "Water; sodium cocoamphoacetate; glycerin; lauryl glucoside; sodium chloride; sodium cocoyl glutamate; sodium lauryl glucose carboxylate; dehydroacetic acid; benzyl alcohol; citric acid; white willow bark extract; natural fragrance (contains mandarin, lime and patchouli oils)",
+      "naughty_reason": "source 1 GREEN, source 2 GREEN",
+      "source1_hit_ingredients": "",
+      "source2_hit_ingredients": ""
+    },
+    {
+      "product": "The Skintroduction Oily",
+      "colour": "NOT COMPARABLE",
+      "note": "Shopify product_type 'Gifts & Sets'",
+      "match_method": "llm",
+      "product_type": "not found",
+      "variants": "not found",
+      "source1_site": "MECCA",
+      "source1_url": "https://www.mecca.com/en-au/go-to/skintroduction-oily-I-061905/",
+      "source1_status": "not_comparable",
+      "source2_site": "Go-To Skincare",
+      "source2_url": "https://gotoskincare.com/products/the-skintroduction-oily",
+      "source2_status": "not_comparable",
+      "ingredients_comparison": "not_comparable",
+      "ingredients_reason": "not comparable - Shopify product_type 'Gifts & Sets'",
+      "only_in_source1": "not found",
+      "only_in_source2": "not found",
+      "close_matches": [],
+      "raw_text_differences": [],
+      "packaging_comparison": "not_comparable",
+      "packaging_reason": "not comparable - Shopify product_type 'Gifts & Sets'",
+      "source1_materials": "not found",
+      "source2_materials": "not found",
+      "source1_packaging_source": "not found",
+      "source2_packaging_source": "not found",
+      "source1_colour": "not found",
+      "source2_colour": "not found",
+      "source1_categories": {},
+      "source2_categories": {},
+      "source1_unmatched_ingredients": "not found",
+      "source2_unmatched_ingredients": "not found",
+      "naughty_reason": "not comparable - Shopify product_type 'Gifts & Sets'",
+      "source1_hit_ingredients": "",
+      "source2_hit_ingredients": ""
+    },
+    {
+      "product": "Very Lightweight Moisturiser Refill",
+      "colour": "YELLOW",
+      "note": "",
+      "match_method": "llm",
+      "product_type": "Moisturiser",
+      "variants": "not found",
+      "source1_site": "MECCA",
+      "source1_url": "https://www.mecca.com/en-au/go-to/very-lightweight-moisturiser-50ml-refill-I-055544/",
+      "source1_status": "ok",
+      "source2_site": "Go-To Skincare",
+      "source2_url": "https://gotoskincare.com/products/very-lightweight-moisturiser-refill",
+      "source2_status": "ok",
+      "ingredients_comparison": "same",
+      "ingredients_reason": "all 43 ingredients match after normalising",
+      "only_in_source1": "not found",
+      "only_in_source2": "not found",
+      "close_matches": [],
+      "raw_text_differences": [],
+      "packaging_comparison": "cannot_compare",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
+      "source1_materials": "not found",
+      "source2_materials": "cardboard; foil; polymethyl methacrylate; polypropylene",
+      "source1_packaging_source": "not_found",
+      "source2_packaging_source": "text",
+      "source1_colour": "YELLOW",
+      "source2_colour": "YELLOW",
+      "source1_categories": {
+        "Synthetic alcohols": [
+          "ethanol"
+        ]
+      },
+      "source2_categories": {
+        "Synthetic alcohols": [
+          "ethanol"
+        ]
+      },
+      "source1_unmatched_ingredients": "Water; aloe vera leaf juice; dicaprylyl carbonate; glycerin; potato pulp extract; propanediol; panthenol; c12-16 alcohols; coconut fruit extract; ceramide ns; sodium hyaluronate; red algae extract; vitamin e; jojoba esters; sodium pca; hydrogenated lecithin; furcellaria lumbricalis extract; gelidiella acerosa extract; diutan gum; trehalose; glyceryl caprylate; palmitic acid; cetyl alcohol; erythritol; sodium phytate; caprylhydroxamic acid; octyldodecanol; hydrolyzed jojoba esters; hydrolyzed red algae extract; phytosterols; clover flower extract; hibiscus fruit extract; isopentyldiol; sodium benzoate; potassium sorbate; myristyl alcohol; pantolactone; stearyl alcohol; sodium chloride; trihydroxystearin; iron oxide; natural fragrance (contains rose and geranium oils)",
+      "source2_unmatched_ingredients": "Water; aloe vera leaf juice; dicaprylyl carbonate; glycerin; potato pulp extract; propanediol; panthenol; c12-16 alcohols; coconut fruit extract; ceramide ns; sodium hyaluronate; red algae extract; vitamin e; jojoba esters; sodium pca; hydrogenated lecithin; furcellaria lumbricalis extract; gelidiella acerosa extract; diutan gum; trehalose; glyceryl caprylate; palmitic acid; cetyl alcohol; erythritol; sodium phytate; caprylhydroxamic acid; octyldodecanol; hydrolyzed jojoba esters; hydrolyzed red algae extract; phytosterols; clover flower extract; hibiscus fruit extract; isopentyldiol; sodium benzoate; potassium sorbate; myristyl alcohol; pantolactone; stearyl alcohol; sodium chloride; trihydroxystearin; iron oxide; natural fragrance (contains rose and geranium oils)",
+      "naughty_reason": "source 1 YELLOW, source 2 YELLOW",
+      "source1_hit_ingredients": "Synthetic alcohols: ethanol",
+      "source2_hit_ingredients": "Synthetic alcohols: ethanol"
+    },
+    {
+      "product": "The Skintroduction",
+      "colour": "NOT COMPARABLE",
+      "note": "bundle/kit/set listing, not a single product",
+      "match_method": "llm",
+      "product_type": "not found",
+      "variants": "not found",
+      "source1_site": "MECCA",
+      "source1_url": "https://www.mecca.com/en-au/go-to/skintroduction-discovery-set-I-073940/",
+      "source1_status": "not_comparable",
+      "source2_site": "Go-To Skincare",
+      "source2_url": "https://gotoskincare.com/products/the-skintroduction",
+      "source2_status": "not_comparable",
+      "ingredients_comparison": "not_comparable",
+      "ingredients_reason": "not comparable - bundle/kit/set listing, not a single product",
+      "only_in_source1": "not found",
+      "only_in_source2": "not found",
+      "close_matches": [],
+      "raw_text_differences": [],
+      "packaging_comparison": "not_comparable",
+      "packaging_reason": "not comparable - bundle/kit/set listing, not a single product",
+      "source1_materials": "not found",
+      "source2_materials": "not found",
+      "source1_packaging_source": "not found",
+      "source2_packaging_source": "not found",
+      "source1_colour": "not found",
+      "source2_colour": "not found",
+      "source1_categories": {},
+      "source2_categories": {},
+      "source1_unmatched_ingredients": "not found",
+      "source2_unmatched_ingredients": "not found",
+      "naughty_reason": "not comparable - bundle/kit/set listing, not a single product",
+      "source1_hit_ingredients": "",
+      "source2_hit_ingredients": ""
+    },
+    {
+      "product": "Lip Glaze",
+      "colour": "YELLOW",
+      "note": "",
+      "match_method": "llm",
+      "product_type": "Lips",
+      "variants": "not found",
+      "source1_site": "MECCA",
+      "source1_url": "https://www.mecca.com/en-au/go-to/lip-glaze-clear-I-084381/",
+      "source1_status": "ok",
+      "source2_site": "Go-To Skincare",
+      "source2_url": "https://gotoskincare.com/products/lip-glaze",
+      "source2_status": "ok",
+      "ingredients_comparison": "same",
+      "ingredients_reason": "all 15 ingredients match after normalising",
+      "only_in_source1": "not found",
+      "only_in_source2": "not found",
+      "close_matches": [],
+      "raw_text_differences": [],
+      "packaging_comparison": "cannot_compare",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
+      "source1_materials": "not found",
+      "source2_materials": "acrylonitrile butadiene styrene; cardboard; flocked fibre; low-density polyethylene; polyethylene terephthalate glycol-modified; polyoxymethylene",
+      "source1_packaging_source": "not_found",
+      "source2_packaging_source": "text",
+      "source1_colour": "YELLOW",
+      "source2_colour": "YELLOW",
+      "source1_categories": {
+        "Silicones": [
+          "Silica Silylate"
+        ]
+      },
+      "source2_categories": {
+        "Silicones": [
+          "Silica Silylate"
+        ]
+      },
+      "source1_unmatched_ingredients": "Polybutene; Octyldodecanol; Ethylhexyl salicylate; Butyl methoxydibenzoylmethane; Butyloctyl salicylate; Ethylhexyl Methoxycrylene; Ethylhexyl triazone; Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine; Flavour; Poly C10-30 Alkyl Acrylate; Tetrahexyldecyl ascorbate; Simmondsia Chinensis (Jojoba) Seed Oil; Sucralose; Terminalia Ferdinandiana Fruit Extract",
+      "source2_unmatched_ingredients": "Polybutene; Octyldodecanol; Ethylhexyl salicylate; Butyl methoxydibenzoylmethane; Butyloctyl salicylate; Ethylhexyl Methoxycrylene; Ethylhexyl triazone; Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine; Flavour; Poly C10-30 Alkyl Acrylate; Tetrahexyldecyl ascorbate; Simmondsia Chinensis (Jojoba) Seed Oil; Sucralose; Terminalia Ferdinandiana Fruit Extract",
+      "naughty_reason": "source 1 YELLOW, source 2 YELLOW",
+      "source1_hit_ingredients": "Silicones: Silica Silylate",
+      "source2_hit_ingredients": "Silicones: Silica Silylate"
+    },
+    {
+      "product": "Twelve Days Of Go-To",
+      "colour": "NOT COMPARABLE",
+      "note": "Shopify product_type 'Gifts & Sets'",
+      "match_method": "llm",
+      "product_type": "not found",
+      "variants": "not found",
+      "source1_site": "MECCA",
+      "source1_url": "https://www.mecca.com/en-au/go-to/12-days-of-go-to-I-087767/",
+      "source1_status": "not_comparable",
+      "source2_site": "Go-To Skincare",
+      "source2_url": "https://gotoskincare.com/products/twelve-days-of-go-to",
+      "source2_status": "not_comparable",
+      "ingredients_comparison": "not_comparable",
+      "ingredients_reason": "not comparable - Shopify product_type 'Gifts & Sets'",
+      "only_in_source1": "not found",
+      "only_in_source2": "not found",
+      "close_matches": [],
+      "raw_text_differences": [],
+      "packaging_comparison": "not_comparable",
+      "packaging_reason": "not comparable - Shopify product_type 'Gifts & Sets'",
+      "source1_materials": "not found",
+      "source2_materials": "not found",
+      "source1_packaging_source": "not found",
+      "source2_packaging_source": "not found",
+      "source1_colour": "not found",
+      "source2_colour": "not found",
+      "source1_categories": {},
+      "source2_categories": {},
+      "source1_unmatched_ingredients": "not found",
+      "source2_unmatched_ingredients": "not found",
+      "naughty_reason": "not comparable - Shopify product_type 'Gifts & Sets'",
+      "source1_hit_ingredients": "",
+      "source2_hit_ingredients": ""
+    },
+    {
+      "product": "Early Bird",
+      "colour": "GREEN",
+      "note": "",
+      "match_method": "llm",
+      "product_type": "Pimple Patch",
+      "variants": "not found",
+      "source1_site": "MECCA",
+      "source1_url": "https://www.mecca.com/en-au/go-to/early-bird-pimple-patches-I-088560/",
+      "source1_status": "ok",
+      "source2_site": "Go-To Skincare",
+      "source2_url": "https://gotoskincare.com/products/early-bird",
+      "source2_status": "ok",
+      "ingredients_comparison": "same",
+      "ingredients_reason": "all 14 ingredients match after normalising",
+      "only_in_source1": "not found",
+      "only_in_source2": "not found",
+      "close_matches": [],
+      "raw_text_differences": [],
+      "packaging_comparison": "cannot_compare",
+      "packaging_reason": "neither source lists materials",
+      "source1_materials": "not found",
+      "source2_materials": "not found",
+      "source1_packaging_source": "not_found",
+      "source2_packaging_source": "not_found",
+      "source1_colour": "GREEN",
+      "source2_colour": "GREEN",
+      "source1_categories": {},
+      "source2_categories": {},
+      "source1_unmatched_ingredients": "Sodium hyaluronate; trehalose; aqua/water/eau; glycerin; ectoin; 1,2-hexanediol; butylene glycol; artemisia princeps extract; salicylic acid; centella asiatica extract; ethylhexylglycerin; houttuynia cordata extract; melaleuca alternifolia (tea tree) leaf oil; oenanthe javanica extract",
+      "source2_unmatched_ingredients": "Sodium hyaluronate; trehalose; aqua/water/eau; glycerin; ectoin; 1,2-hexanediol; butylene glycol; artemisia princeps extract; salicylic acid; centella asiatica extract; ethylhexylglycerin; houttuynia cordata extract; melaleuca alternifolia (tea tree) leaf oil; oenanthe javanica extract",
+      "naughty_reason": "source 1 GREEN, source 2 GREEN",
+      "source1_hit_ingredients": "",
+      "source2_hit_ingredients": ""
+    },
+    {
+      "product": "Soft and Creamy",
+      "colour": "YELLOW",
+      "note": "",
+      "match_method": "llm",
+      "product_type": "Cleanser",
+      "variants": "not found",
+      "source1_site": "MECCA",
+      "source1_url": "https://www.mecca.com/en-au/go-to/soft-and-creamy-hydrating-cream-cleanser-I-086732/",
+      "source1_status": "ok",
+      "source2_site": "Go-To Skincare",
+      "source2_url": "https://gotoskincare.com/products/soft-and-creamy",
+      "source2_status": "ok",
+      "ingredients_comparison": "different",
+      "ingredients_reason": "2 only in source 1, 1 only in source 2; 2 flagged as close match, not merged",
+      "only_in_source1": "Citric Acid; Fragrance",
+      "only_in_source2": "citric acid and fragrance",
+      "close_matches": [
+        {
+          "source1": "Citric Acid",
+          "source2": "citric acid and fragrance",
+          "score": 100.0
+        },
+        {
+          "source1": "Fragrance",
+          "source2": "citric acid and fragrance",
+          "score": 100.0
+        }
+      ],
+      "raw_text_differences": [],
+      "packaging_comparison": "cannot_compare",
+      "packaging_reason": "source 1 lists no materials (packaging_source: not_found)",
+      "source1_materials": "not found",
+      "source2_materials": "cardboard; plastic; polypropylene",
+      "source1_packaging_source": "not_found",
+      "source2_packaging_source": "text",
+      "source1_colour": "YELLOW",
+      "source2_colour": "YELLOW",
+      "source1_categories": {
+        "Synthetic fragrance/parfum": [
+          "Fragrance"
+        ]
+      },
+      "source2_categories": {
+        "Synthetic fragrance/parfum": [
+          "citric acid and fragrance"
+        ]
+      },
+      "source1_unmatched_ingredients": "Aqua/Water; Glycerin; Polyglyceryl-3 Methylglucose Distearate; Cetyl Alcohol; Butyrospermum Parkii (Shea) Butter; Sodium Cocoyl Isethionate; Glyceryl Stearate; Squalane; Glycol Stearate; Panthenol; Saccharide Isomerate; Hydrolyzed Jojoba Esters; Glyceryl Caprylate; Cocamidopropyl Hydroxysultaine; Glyceryl Oleate; Coco-Glucoside; Xanthan Gum; Brassicamidopropyl Dimethylamine; Cellulose Gum; Cellulose; Sodium Lauroyl Glutamate; Sodium Isethionate; Benzoic Acid; Pantolactone; Glutamic Acid; Sodium Citrate; Tocopherol; Hydrogenated Vegetable Glycerides Citrate; Sodium Benzoate; Sodium Chloride; Caprylhydroxamic Acid; Citric Acid",
+      "source2_unmatched_ingredients": "Aqua/water; glycerin; polyglyceryl-3 methylglucose distearate; cetyl alcohol; butyrospermum parkii (shea) butter; sodium cocoyl isethionate; glyceryl stearate; squalane; glycol stearate; panthenol; saccharide isomerate; hydrolyzed jojoba esters; glyceryl caprylate; cocamidopropyl hydroxysultaine; glyceryl oleate; coco-glucoside; xanthan gum; brassicamidopropyl dimethylamine; cellulose gum; cellulose; sodium lauroyl glutamate; sodium isethionate; benzoic acid; pantolactone; glutamic acid; sodium citrate; tocopherol; hydrogenated vegetable glycerides citrate; sodium benzoate; sodium chloride; caprylhydroxamic acid",
+      "naughty_reason": "source 1 YELLOW, source 2 YELLOW",
+      "source1_hit_ingredients": "Synthetic fragrance/parfum: Fragrance",
+      "source2_hit_ingredients": "Synthetic fragrance/parfum: citric acid and fragrance"
+    },
+    {
+      "product": "Much Brighter Plumper Skin",
+      "colour": "NOT COMPARABLE",
+      "note": "bundle/kit/set listing, not a single product",
+      "match_method": "llm",
+      "product_type": "not found",
+      "variants": "not found",
+      "source1_site": "MECCA",
+      "source1_url": "https://www.mecca.com/en-au/go-to/much-brighter-plumper-skin-bundle-I-062444/",
+      "source1_status": "not_comparable",
+      "source2_site": "Go-To Skincare",
+      "source2_url": "https://gotoskincare.com/products/much-brighter-plumper-skin",
+      "source2_status": "not_comparable",
+      "ingredients_comparison": "not_comparable",
+      "ingredients_reason": "not comparable - bundle/kit/set listing, not a single product",
+      "only_in_source1": "not found",
+      "only_in_source2": "not found",
+      "close_matches": [],
+      "raw_text_differences": [],
+      "packaging_comparison": "not_comparable",
+      "packaging_reason": "not comparable - bundle/kit/set listing, not a single product",
+      "source1_materials": "not found",
+      "source2_materials": "not found",
+      "source1_packaging_source": "not found",
+      "source2_packaging_source": "not found",
+      "source1_colour": "not found",
+      "source2_colour": "not found",
+      "source1_categories": {},
+      "source2_categories": {},
+      "source1_unmatched_ingredients": "not found",
+      "source2_unmatched_ingredients": "not found",
+      "naughty_reason": "not comparable - bundle/kit/set listing, not a single product",
+      "source1_hit_ingredients": "",
+      "source2_hit_ingredients": ""
     }
   ],
   "audit": [
@@ -1923,6 +2304,20 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
+      "ingredient": "Silica Silylate",
+      "category": "Silicones",
+      "site": "MECCA",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Silica Silylate",
+      "category": "Silicones",
+      "site": "Go-To Skincare",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
       "ingredient": "stearyl dimethicone",
       "category": "Silicones",
       "site": "MECCA",
@@ -1954,15 +2349,15 @@ window.PIPELINE_DATA = {
       "ingredient": "ethanol",
       "category": "Synthetic alcohols",
       "site": "Go-To Skincare",
-      "products": "Exfoliating Swipeys; Much Brighter Skin; Transformazing; Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 5
+      "products": "Exfoliating Swipeys; Much Brighter Skin; Transformazing; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 6
     },
     {
       "ingredient": "ethanol",
       "category": "Synthetic alcohols",
       "site": "MECCA",
-      "products": "Exfoliating Swipeys; Much Brighter Skin; Transformazing; Very Lightweight Moisturiser",
-      "product_count": 4
+      "products": "Exfoliating Swipeys; Much Brighter Skin; Transformazing; Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 5
     },
     {
       "ingredient": "Alcohol",
@@ -2003,14 +2398,14 @@ window.PIPELINE_DATA = {
       "ingredient": "fragrance",
       "category": "Synthetic fragrance/parfum",
       "site": "MECCA",
-      "products": "Lip Hero; Nifty Fifty",
-      "product_count": 2
+      "products": "Lip Hero; Nifty Fifty; Soft and Creamy",
+      "product_count": 3
     },
     {
-      "ingredient": "Benzyl Salicylate",
+      "ingredient": "citric acid and fragrance",
       "category": "Synthetic fragrance/parfum",
-      "site": "MECCA",
-      "products": "Things Will Calm Down Now",
+      "site": "Go-To Skincare",
+      "products": "Soft and Creamy",
       "product_count": 1
     },
     {
@@ -2045,98 +2440,119 @@ window.PIPELINE_DATA = {
       "ingredient": "glycerin",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Clarifying Exfoliator; De-Crease; Glow Exfoliator; Glowy Blush; Juicy Gel; Mellow Milk; Much Brighter Skin; Much Calmer Skin; Night Shift; Properly Clean; Rapid Scalp Exfoliant; Soothe Operator Mask; Super Handy; Supremely Soothing Moisturiser; The Removalist; Very Amazing Retinal; Very Glowy Primer; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Luxe Lips; Very Luxe Repair Mask; Very Mattifying Primer; Very Useful Face Cream",
-      "product_count": 25
+      "products": "Clarifying Exfoliator; De-Crease; Glow Exfoliator; Glowy Blush; Juicy Gel; Mellow Milk; Much Brighter Skin; Much Calmer Skin; Night Shift; Properly Clean; Rapid Scalp Exfoliant; Soothe Operator Mask; Super Handy; Supremely Soothing Moisturiser; The Removalist; Very Amazing Retinal; Very Glowy Primer; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Luxe Lips; Very Luxe Repair Mask; Very Mattifying Primer; Very Useful Face Cream; Properly Clean Refill; Very Lightweight Moisturiser Refill; Early Bird; Soft and Creamy",
+      "product_count": 29
     },
     {
       "ingredient": "glycerin",
       "category": "",
       "site": "MECCA",
-      "products": "Clarifying Exfoliator; De-Crease; Glow Exfoliator; Glowy Blush; Juicy Gel; Mellow Milk; Much Brighter Skin; Much Calmer Skin; Night Shift; Properly Clean; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Very Amazing Retinal; Very Glowy Primer; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Luxe Lips; Very Luxe Repair Mask; Very Mattifying Primer",
-      "product_count": 23
+      "products": "Clarifying Exfoliator; De-Crease; Glow Exfoliator; Glowy Blush; Juicy Gel; Mellow Milk; Much Brighter Skin; Much Calmer Skin; Night Shift; Properly Clean; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Very Amazing Retinal; Very Glowy Primer; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Luxe Lips; Very Luxe Repair Mask; Very Mattifying Primer; Properly Clean Refill; Very Lightweight Moisturiser Refill; Early Bird; Soft and Creamy",
+      "product_count": 27
     },
     {
       "ingredient": "Aqua/water/eau",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Clarifying Exfoliator; De-Crease; Glow Exfoliator; Glowy Blush; Juicy Gel; Mellow Milk; Much Calmer Skin; Night Shift; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Things Will Calm Down Now; Very Amazing Retinal; Very Glowy Primer; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Luxe Lips; Very Mattifying Primer; Very Useful Face Cream",
-      "product_count": 20
+      "products": "Clarifying Exfoliator; De-Crease; Glow Exfoliator; Glowy Blush; Juicy Gel; Mellow Milk; Much Calmer Skin; Night Shift; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Things Will Calm Down Now; Very Amazing Retinal; Very Glowy Primer; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Luxe Lips; Very Mattifying Primer; Very Useful Face Cream; Early Bird",
+      "product_count": 21
     },
     {
       "ingredient": "propanediol",
       "category": "",
       "site": "MECCA",
-      "products": "Clarifying Exfoliator; De-Crease; Exfoliating Swipeys; Glow Exfoliator; Glowy Blush; Mellow Milk; Much Calmer Skin; Much Plumper Skin; Nifty Fifty; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Transformazing; Very Amazing Retinal; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Lifting Mask",
-      "product_count": 18
+      "products": "Clarifying Exfoliator; De-Crease; Exfoliating Swipeys; Glow Exfoliator; Glowy Blush; Mellow Milk; Much Calmer Skin; Much Plumper Skin; Nifty Fifty; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Transformazing; Very Amazing Retinal; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Lifting Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 19
     },
     {
       "ingredient": "propanediol",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Clarifying Exfoliator; De-Crease; Exfoliating Swipeys; Glow Exfoliator; Glowy Blush; Mellow Milk; Much Calmer Skin; Much Plumper Skin; Nifty Fifty; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Transformazing; Very Amazing Retinal; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Lifting Mask",
-      "product_count": 18
-    },
-    {
-      "ingredient": "Aqua/water/eau",
-      "category": "",
-      "site": "MECCA",
-      "products": "De-Crease; Glowy Blush; Juicy Gel; Mellow Milk; Much Calmer Skin; Night Shift; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Very Amazing Retinal; Very Glowy Primer; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Luxe Lips; Very Mattifying Primer",
-      "product_count": 16
+      "products": "Clarifying Exfoliator; De-Crease; Exfoliating Swipeys; Glow Exfoliator; Glowy Blush; Mellow Milk; Much Calmer Skin; Much Plumper Skin; Nifty Fifty; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Transformazing; Very Amazing Retinal; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Lifting Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 19
     },
     {
       "ingredient": "Citric Acid",
       "category": "",
       "site": "MECCA",
-      "products": "Easy Breezy Magneezy; Glowy Blush; Juicy Gel; Mellow Milk; Much Brighter Skin; Much Calmer Skin; Properly Clean; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Things Will Calm Down Now; Transformazing; Very Luxe Face Cream; Very Luxe Lifting Mask; Very Luxe Repair Mask",
-      "product_count": 16
+      "products": "Easy Breezy Magneezy; Glowy Blush; Juicy Gel; Mellow Milk; Much Brighter Skin; Much Calmer Skin; Properly Clean; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Things Will Calm Down Now; Transformazing; Very Luxe Face Cream; Very Luxe Lifting Mask; Very Luxe Repair Mask; Properly Clean Refill; Soft and Creamy",
+      "product_count": 18
+    },
+    {
+      "ingredient": "Aqua/water/eau",
+      "category": "",
+      "site": "MECCA",
+      "products": "De-Crease; Glowy Blush; Juicy Gel; Mellow Milk; Much Calmer Skin; Night Shift; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Very Amazing Retinal; Very Glowy Primer; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Luxe Lips; Very Mattifying Primer; Early Bird",
+      "product_count": 17
     },
     {
       "ingredient": "citric acid",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Glowy Blush; Juicy Gel; Mellow Milk; Much Brighter Skin; Much Calmer Skin; Properly Clean; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Things Will Calm Down Now; Transformazing; Very Amazing Retinal; Very Luxe Face Cream; Very Luxe Lifting Mask; Very Luxe Repair Mask",
-      "product_count": 16
+      "products": "Glowy Blush; Juicy Gel; Mellow Milk; Much Brighter Skin; Much Calmer Skin; Properly Clean; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; The Removalist; Things Will Calm Down Now; Transformazing; Very Amazing Retinal; Very Luxe Face Cream; Very Luxe Lifting Mask; Very Luxe Repair Mask; Properly Clean Refill",
+      "product_count": 17
     },
     {
       "ingredient": "sodium benzoate",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "De-Crease; Glowy Blush; Juicy Gel; Mellow Milk; Much Calmer Skin; Much Plumper Skin; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; Things Will Calm Down Now; Very Amazing Retinal; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask",
-      "product_count": 15
+      "products": "De-Crease; Glowy Blush; Juicy Gel; Mellow Milk; Much Calmer Skin; Much Plumper Skin; Rapid Scalp Exfoliant; Soothe Operator Mask; Supremely Soothing Moisturiser; Things Will Calm Down Now; Very Amazing Retinal; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Lightweight Moisturiser Refill; Soft and Creamy",
+      "product_count": 17
     },
     {
       "ingredient": "sodium benzoate",
       "category": "",
       "site": "MECCA",
-      "products": "De-Crease; Glowy Blush; Juicy Gel; Mellow Milk; Much Calmer Skin; Much Plumper Skin; Rapid Scalp Exfoliant; Supremely Soothing Moisturiser; Things Will Calm Down Now; Very Amazing Retinal; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask",
-      "product_count": 14
+      "products": "De-Crease; Glowy Blush; Juicy Gel; Mellow Milk; Much Calmer Skin; Much Plumper Skin; Rapid Scalp Exfoliant; Supremely Soothing Moisturiser; Things Will Calm Down Now; Very Amazing Retinal; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Lightweight Moisturiser Refill; Soft and Creamy",
+      "product_count": 16
     },
     {
       "ingredient": "Tocopherol",
       "category": "",
       "site": "MECCA",
-      "products": "Glowy Blush; Hair Hero; Much Calmer Skin; Nifty Fifty; Night Shift; Oil Over; Soothe Operator Mask; Super Handy; The Removalist; Very Amazing Retinal; Very Glowy Primer; Very Luxe Lips; Very Luxe Repair Mask; Very Mattifying Primer",
-      "product_count": 14
+      "products": "Glowy Blush; Hair Hero; Much Calmer Skin; Nifty Fifty; Night Shift; Oil Over; Soothe Operator Mask; Super Handy; The Removalist; Very Amazing Retinal; Very Glowy Primer; Very Luxe Lips; Very Luxe Repair Mask; Very Mattifying Primer; Soft and Creamy",
+      "product_count": 15
     },
     {
       "ingredient": "xanthan gum",
       "category": "",
       "site": "MECCA",
-      "products": "Mellow Milk; Much Brighter Skin; Much Calmer Skin; Nifty Fifty; Rapid Scalp Exfoliant; Soothe Operator Mask; Super Handy; Supremely Soothing Moisturiser; The Removalist; Transformazing; Very Luxe Face Cream; Very Luxe Lifting Mask; Very Luxe Repair Mask; Very Useful Face Cream",
-      "product_count": 14
+      "products": "Mellow Milk; Much Brighter Skin; Much Calmer Skin; Nifty Fifty; Rapid Scalp Exfoliant; Soothe Operator Mask; Super Handy; Supremely Soothing Moisturiser; The Removalist; Transformazing; Very Luxe Face Cream; Very Luxe Lifting Mask; Very Luxe Repair Mask; Very Useful Face Cream; Soft and Creamy",
+      "product_count": 15
     },
     {
       "ingredient": "xanthan gum",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Mellow Milk; Much Brighter Skin; Much Calmer Skin; Nifty Fifty; Rapid Scalp Exfoliant; Soothe Operator Mask; Super Handy; Supremely Soothing Moisturiser; The Removalist; Transformazing; Very Luxe Face Cream; Very Luxe Lifting Mask; Very Luxe Repair Mask; Very Useful Face Cream",
+      "products": "Mellow Milk; Much Brighter Skin; Much Calmer Skin; Nifty Fifty; Rapid Scalp Exfoliant; Soothe Operator Mask; Super Handy; Supremely Soothing Moisturiser; The Removalist; Transformazing; Very Luxe Face Cream; Very Luxe Lifting Mask; Very Luxe Repair Mask; Very Useful Face Cream; Soft and Creamy",
+      "product_count": 15
+    },
+    {
+      "ingredient": "glyceryl caprylate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Clarifying Exfoliator; De-Crease; Glow Exfoliator; Matte Pop Blush; Mellow Milk; Much Brighter Skin; Much Calmer Skin; Nifty Fifty; Supremely Soothing Moisturiser; The Removalist; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Lightweight Moisturiser Refill; Soft and Creamy",
+      "product_count": 14
+    },
+    {
+      "ingredient": "glyceryl caprylate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Clarifying Exfoliator; De-Crease; Glow Exfoliator; Matte Pop Blush; Mellow Milk; Much Brighter Skin; Much Calmer Skin; Nifty Fifty; Supremely Soothing Moisturiser; The Removalist; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Lightweight Moisturiser Refill; Soft and Creamy",
       "product_count": 14
     },
     {
       "ingredient": "tocopherol",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Glowy Blush; Hair Hero; Much Calmer Skin; Nifty Fifty; Oil Over; Soothe Operator Mask; The Removalist; Very Amazing Retinal; Very Glowy Primer; Very Luxe Lips; Very Luxe Repair Mask; Very Mattifying Primer; Very Useful Face Cream",
+      "products": "Glowy Blush; Hair Hero; Much Calmer Skin; Nifty Fifty; Oil Over; Soothe Operator Mask; The Removalist; Very Amazing Retinal; Very Glowy Primer; Very Luxe Lips; Very Luxe Repair Mask; Very Mattifying Primer; Very Useful Face Cream; Soft and Creamy",
+      "product_count": 14
+    },
+    {
+      "ingredient": "Water",
+      "category": "",
+      "site": "MECCA",
+      "products": "Exfoliating Swipeys; Matte Pop Blush; Much Brighter Skin; Much Plumper Skin; Nifty Fifty; Properly Clean; Super Handy; Transformazing; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Useful Face Cream; Properly Clean Refill; Very Lightweight Moisturiser Refill",
       "product_count": 13
     },
     {
@@ -2154,74 +2570,116 @@ window.PIPELINE_DATA = {
       "product_count": 12
     },
     {
-      "ingredient": "glyceryl caprylate",
-      "category": "",
-      "site": "MECCA",
-      "products": "Clarifying Exfoliator; De-Crease; Glow Exfoliator; Matte Pop Blush; Mellow Milk; Much Brighter Skin; Much Calmer Skin; Nifty Fifty; Supremely Soothing Moisturiser; The Removalist; Very Lightweight Moisturiser; Very Luxe Face Cream",
-      "product_count": 12
-    },
-    {
-      "ingredient": "glyceryl caprylate",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Clarifying Exfoliator; De-Crease; Glow Exfoliator; Matte Pop Blush; Mellow Milk; Much Brighter Skin; Much Calmer Skin; Nifty Fifty; Supremely Soothing Moisturiser; The Removalist; Very Lightweight Moisturiser; Very Luxe Face Cream",
-      "product_count": 12
-    },
-    {
       "ingredient": "Water",
       "category": "",
+      "site": "Go-To Skincare",
+      "products": "Exfoliating Swipeys; Matte Pop Blush; Much Brighter Skin; Much Plumper Skin; Nifty Fifty; Properly Clean; Super Handy; Transformazing; Very Lightweight Moisturiser; Very Luxe Repair Mask; Properly Clean Refill; Very Lightweight Moisturiser Refill",
+      "product_count": 12
+    },
+    {
+      "ingredient": "sodium citrate",
+      "category": "",
       "site": "MECCA",
-      "products": "Exfoliating Swipeys; Matte Pop Blush; Much Brighter Skin; Much Plumper Skin; Nifty Fifty; Properly Clean; Super Handy; Transformazing; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Useful Face Cream",
+      "products": "Exfoliating Swipeys; Mellow Milk; Much Brighter Skin; Rapid Scalp Exfoliant; Soothe Operator Mask; Super Handy; The Removalist; Transformazing; Very Luxe Repair Mask; Very Useful Face Cream; Soft and Creamy",
       "product_count": 11
     },
     {
       "ingredient": "sodium citrate",
       "category": "",
-      "site": "MECCA",
-      "products": "Exfoliating Swipeys; Mellow Milk; Much Brighter Skin; Rapid Scalp Exfoliant; Soothe Operator Mask; Super Handy; The Removalist; Transformazing; Very Luxe Repair Mask; Very Useful Face Cream",
-      "product_count": 10
-    },
-    {
-      "ingredient": "sodium citrate",
-      "category": "",
       "site": "Go-To Skincare",
-      "products": "Exfoliating Swipeys; Mellow Milk; Much Brighter Skin; Rapid Scalp Exfoliant; Soothe Operator Mask; Super Handy; The Removalist; Transformazing; Very Amazing Retinal; Very Luxe Repair Mask",
-      "product_count": 10
-    },
-    {
-      "ingredient": "Water",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Exfoliating Swipeys; Matte Pop Blush; Much Brighter Skin; Much Plumper Skin; Nifty Fifty; Properly Clean; Super Handy; Transformazing; Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 10
+      "products": "Exfoliating Swipeys; Mellow Milk; Much Brighter Skin; Rapid Scalp Exfoliant; Soothe Operator Mask; Super Handy; The Removalist; Transformazing; Very Amazing Retinal; Very Luxe Repair Mask; Soft and Creamy",
+      "product_count": 11
     },
     {
       "ingredient": "potassium sorbate",
       "category": "",
       "site": "MECCA",
-      "products": "Exfoliating Swipeys; Glowy Blush; Juicy Gel; Rapid Scalp Exfoliant; Things Will Calm Down Now; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask",
-      "product_count": 9
+      "products": "Exfoliating Swipeys; Glowy Blush; Juicy Gel; Rapid Scalp Exfoliant; Things Will Calm Down Now; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 10
     },
     {
       "ingredient": "potassium sorbate",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Exfoliating Swipeys; Glowy Blush; Juicy Gel; Rapid Scalp Exfoliant; Things Will Calm Down Now; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask",
-      "product_count": 9
+      "products": "Exfoliating Swipeys; Glowy Blush; Juicy Gel; Rapid Scalp Exfoliant; Things Will Calm Down Now; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 10
     },
     {
       "ingredient": "benzyl alcohol",
       "category": "",
       "site": "MECCA",
-      "products": "Exfoliating Swipeys; Nifty Fifty; Properly Clean; Rapid Scalp Exfoliant; Super Handy; Transformazing; Very Luxe Repair Mask; Very Useful Face Cream",
-      "product_count": 8
+      "products": "Exfoliating Swipeys; Nifty Fifty; Properly Clean; Rapid Scalp Exfoliant; Super Handy; Transformazing; Very Luxe Repair Mask; Very Useful Face Cream; Properly Clean Refill",
+      "product_count": 9
     },
     {
       "ingredient": "benzyl alcohol",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Exfoliating Swipeys; Nifty Fifty; Properly Clean; Rapid Scalp Exfoliant; Super Handy; Transformazing; Very Luxe Repair Mask; Very Useful Face Cream",
-      "product_count": 8
+      "products": "Exfoliating Swipeys; Nifty Fifty; Properly Clean; Rapid Scalp Exfoliant; Super Handy; Transformazing; Very Luxe Repair Mask; Very Useful Face Cream; Properly Clean Refill",
+      "product_count": 9
+    },
+    {
+      "ingredient": "Caprylhydroxamic Acid",
+      "category": "",
+      "site": "MECCA",
+      "products": "Glowy Blush; Mellow Milk; Much Brighter Skin; Very Glowy Primer; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Mattifying Primer; Very Lightweight Moisturiser Refill; Soft and Creamy",
+      "product_count": 9
+    },
+    {
+      "ingredient": "caprylhydroxamic acid",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Glowy Blush; Mellow Milk; Much Brighter Skin; Very Glowy Primer; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Mattifying Primer; Very Lightweight Moisturiser Refill; Soft and Creamy",
+      "product_count": 9
+    },
+    {
+      "ingredient": "cetyl alcohol",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Mellow Milk; Supremely Soothing Moisturiser; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Lips; Very Luxe Repair Mask; Very Useful Face Cream; Very Lightweight Moisturiser Refill; Soft and Creamy",
+      "product_count": 9
+    },
+    {
+      "ingredient": "jojoba esters",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Much Brighter Skin; Nifty Fifty; Super Handy; Supremely Soothing Moisturiser; The Removalist; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Useful Face Cream; Very Lightweight Moisturiser Refill",
+      "product_count": 9
+    },
+    {
+      "ingredient": "panthenol",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Much Plumper Skin; Supremely Soothing Moisturiser; Very Glowy Primer; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Mattifying Primer; Very Useful Face Cream; Very Lightweight Moisturiser Refill; Soft and Creamy",
+      "product_count": 9
+    },
+    {
+      "ingredient": "saccharide isomerate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Mellow Milk; Much Brighter Skin; Rapid Scalp Exfoliant; Soothe Operator Mask; The Removalist; Transformazing; Very Amazing Retinal; Very Luxe Repair Mask; Soft and Creamy",
+      "product_count": 9
+    },
+    {
+      "ingredient": "saccharide isomerate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Mellow Milk; Much Brighter Skin; Rapid Scalp Exfoliant; Soothe Operator Mask; The Removalist; Transformazing; Very Amazing Retinal; Very Luxe Repair Mask; Soft and Creamy",
+      "product_count": 9
+    },
+    {
+      "ingredient": "sodium hyaluronate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Much Brighter Skin; Much Plumper Skin; Supremely Soothing Moisturiser; Very Lightweight Moisturiser; Very Luxe Lifting Mask; Very Luxe Lips; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill; Early Bird",
+      "product_count": 9
+    },
+    {
+      "ingredient": "sodium hyaluronate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Much Brighter Skin; Much Plumper Skin; Supremely Soothing Moisturiser; Very Lightweight Moisturiser; Very Luxe Lifting Mask; Very Luxe Lips; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill; Early Bird",
+      "product_count": 9
     },
     {
       "ingredient": "caprylyl glycol",
@@ -2235,6 +2693,13 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "De-Crease; Glowy Blush; Matte Pop Blush; Much Plumper Skin; Night Shift; Supremely Soothing Moisturiser; Very Glowy Primer; Very Mattifying Primer",
+      "product_count": 8
+    },
+    {
+      "ingredient": "cetyl alcohol",
+      "category": "",
+      "site": "MECCA",
+      "products": "Mellow Milk; Supremely Soothing Moisturiser; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Lips; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill; Soft and Creamy",
       "product_count": 8
     },
     {
@@ -2247,8 +2712,8 @@ window.PIPELINE_DATA = {
     {
       "ingredient": "jojoba esters",
       "category": "",
-      "site": "Go-To Skincare",
-      "products": "Much Brighter Skin; Nifty Fifty; Super Handy; Supremely Soothing Moisturiser; The Removalist; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Useful Face Cream",
+      "site": "MECCA",
+      "products": "Much Brighter Skin; Nifty Fifty; Super Handy; Supremely Soothing Moisturiser; The Removalist; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Lightweight Moisturiser Refill",
       "product_count": 8
     },
     {
@@ -2266,17 +2731,10 @@ window.PIPELINE_DATA = {
       "product_count": 8
     },
     {
-      "ingredient": "saccharide isomerate",
+      "ingredient": "panthenol",
       "category": "",
       "site": "MECCA",
-      "products": "Mellow Milk; Much Brighter Skin; Rapid Scalp Exfoliant; Soothe Operator Mask; The Removalist; Transformazing; Very Amazing Retinal; Very Luxe Repair Mask",
-      "product_count": 8
-    },
-    {
-      "ingredient": "saccharide isomerate",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Mellow Milk; Much Brighter Skin; Rapid Scalp Exfoliant; Soothe Operator Mask; The Removalist; Transformazing; Very Amazing Retinal; Very Luxe Repair Mask",
+      "products": "Much Plumper Skin; Supremely Soothing Moisturiser; Very Glowy Primer; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Mattifying Primer; Very Lightweight Moisturiser Refill; Soft and Creamy",
       "product_count": 8
     },
     {
@@ -2294,24 +2752,17 @@ window.PIPELINE_DATA = {
       "product_count": 7
     },
     {
-      "ingredient": "Caprylhydroxamic Acid",
+      "ingredient": "dehydroacetic acid",
       "category": "",
       "site": "MECCA",
-      "products": "Glowy Blush; Mellow Milk; Much Brighter Skin; Very Glowy Primer; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Mattifying Primer",
+      "products": "Exfoliating Swipeys; Properly Clean; Super Handy; Transformazing; Very Luxe Repair Mask; Very Useful Face Cream; Properly Clean Refill",
       "product_count": 7
     },
     {
-      "ingredient": "caprylhydroxamic acid",
+      "ingredient": "dehydroacetic acid",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Glowy Blush; Mellow Milk; Much Brighter Skin; Very Glowy Primer; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Mattifying Primer",
-      "product_count": 7
-    },
-    {
-      "ingredient": "cetyl alcohol",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Mellow Milk; Supremely Soothing Moisturiser; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Lips; Very Luxe Repair Mask; Very Useful Face Cream",
+      "products": "Exfoliating Swipeys; Properly Clean; Super Handy; Transformazing; Very Luxe Repair Mask; Very Useful Face Cream; Properly Clean Refill",
       "product_count": 7
     },
     {
@@ -2329,17 +2780,24 @@ window.PIPELINE_DATA = {
       "product_count": 7
     },
     {
-      "ingredient": "jojoba esters",
+      "ingredient": "Octyldodecanol",
       "category": "",
       "site": "MECCA",
-      "products": "Much Brighter Skin; Nifty Fifty; Super Handy; Supremely Soothing Moisturiser; The Removalist; Very Lightweight Moisturiser; Very Luxe Face Cream",
+      "products": "Lip Hero; Nifty Fifty; The Removalist; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill; Lip Glaze",
       "product_count": 7
     },
     {
-      "ingredient": "panthenol",
+      "ingredient": "Octyldodecanol",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Much Plumper Skin; Supremely Soothing Moisturiser; Very Glowy Primer; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Mattifying Primer; Very Useful Face Cream",
+      "products": "Lip Hero; Nifty Fifty; The Removalist; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill; Lip Glaze",
+      "product_count": 7
+    },
+    {
+      "ingredient": "pantolactone",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Much Plumper Skin; Supremely Soothing Moisturiser; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Useful Face Cream; Very Lightweight Moisturiser Refill; Soft and Creamy",
       "product_count": 7
     },
     {
@@ -2357,17 +2815,17 @@ window.PIPELINE_DATA = {
       "product_count": 7
     },
     {
-      "ingredient": "sodium hyaluronate",
+      "ingredient": "vitamin e",
       "category": "",
       "site": "MECCA",
-      "products": "Much Brighter Skin; Much Plumper Skin; Supremely Soothing Moisturiser; Very Lightweight Moisturiser; Very Luxe Lifting Mask; Very Luxe Lips; Very Luxe Repair Mask",
+      "products": "Face Hero; Face Hero Extra; Fancy Face; Much Brighter Skin; Very Lightweight Moisturiser; Very Useful Face Cream; Very Lightweight Moisturiser Refill",
       "product_count": 7
     },
     {
-      "ingredient": "sodium hyaluronate",
+      "ingredient": "vitamin e",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Much Brighter Skin; Much Plumper Skin; Supremely Soothing Moisturiser; Very Lightweight Moisturiser; Very Luxe Lifting Mask; Very Luxe Lips; Very Luxe Repair Mask",
+      "products": "Face Hero; Face Hero Extra; Fancy Face; Much Brighter Skin; Super Handy; Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
       "product_count": 7
     },
     {
@@ -2378,24 +2836,31 @@ window.PIPELINE_DATA = {
       "product_count": 6
     },
     {
-      "ingredient": "cetyl alcohol",
-      "category": "",
-      "site": "MECCA",
-      "products": "Mellow Milk; Supremely Soothing Moisturiser; Very Lightweight Moisturiser; Very Luxe Face Cream; Very Luxe Lips; Very Luxe Repair Mask",
-      "product_count": 6
-    },
-    {
-      "ingredient": "dehydroacetic acid",
-      "category": "",
-      "site": "MECCA",
-      "products": "Exfoliating Swipeys; Properly Clean; Super Handy; Transformazing; Very Luxe Repair Mask; Very Useful Face Cream",
-      "product_count": 6
-    },
-    {
-      "ingredient": "dehydroacetic acid",
+      "ingredient": "diutan gum",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Exfoliating Swipeys; Properly Clean; Super Handy; Transformazing; Very Luxe Repair Mask; Very Useful Face Cream",
+      "products": "Much Plumper Skin; Night Shift; Very Amazing Retinal; Very Lightweight Moisturiser; Very Luxe Lifting Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 6
+    },
+    {
+      "ingredient": "glyceryl stearate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Supremely Soothing Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Useful Face Cream; Soft and Creamy",
+      "product_count": 6
+    },
+    {
+      "ingredient": "hydrolyzed jojoba esters",
+      "category": "",
+      "site": "MECCA",
+      "products": "Juicy Gel; Mellow Milk; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill; Soft and Creamy",
+      "product_count": 6
+    },
+    {
+      "ingredient": "hydrolyzed jojoba esters",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Juicy Gel; Mellow Milk; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill; Soft and Creamy",
       "product_count": 6
     },
     {
@@ -2406,10 +2871,38 @@ window.PIPELINE_DATA = {
       "product_count": 6
     },
     {
-      "ingredient": "panthenol",
+      "ingredient": "pantolactone",
       "category": "",
       "site": "MECCA",
-      "products": "Much Plumper Skin; Supremely Soothing Moisturiser; Very Glowy Primer; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Mattifying Primer",
+      "products": "Much Plumper Skin; Supremely Soothing Moisturiser; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill; Soft and Creamy",
+      "product_count": 6
+    },
+    {
+      "ingredient": "Silica",
+      "category": "",
+      "site": "MECCA",
+      "products": "Matte Pop Blush; Much Brighter Skin; Very Glowy Primer; Very Luxe Repair Mask; Very Mattifying Primer; Pinky Lip Glaze",
+      "product_count": 6
+    },
+    {
+      "ingredient": "silica",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Matte Pop Blush; Much Brighter Skin; Very Glowy Primer; Very Luxe Repair Mask; Very Mattifying Primer; Pinky Lip Glaze",
+      "product_count": 6
+    },
+    {
+      "ingredient": "sodium chloride",
+      "category": "",
+      "site": "MECCA",
+      "products": "Juicy Gel; Properly Clean; Very Lightweight Moisturiser; Properly Clean Refill; Very Lightweight Moisturiser Refill; Soft and Creamy",
+      "product_count": 6
+    },
+    {
+      "ingredient": "sodium chloride",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Juicy Gel; Properly Clean; Very Lightweight Moisturiser; Properly Clean Refill; Very Lightweight Moisturiser Refill; Soft and Creamy",
       "product_count": 6
     },
     {
@@ -2434,6 +2927,34 @@ window.PIPELINE_DATA = {
       "product_count": 6
     },
     {
+      "ingredient": "sodium pca",
+      "category": "",
+      "site": "MECCA",
+      "products": "Much Calmer Skin; Much Plumper Skin; Supremely Soothing Moisturiser; Very Amazing Retinal; Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 6
+    },
+    {
+      "ingredient": "sodium pca",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Much Calmer Skin; Much Plumper Skin; Supremely Soothing Moisturiser; Very Amazing Retinal; Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 6
+    },
+    {
+      "ingredient": "Squalane",
+      "category": "",
+      "site": "MECCA",
+      "products": "Glowy Blush; Matte Pop Blush; Oil Over; Very Amazing Retinal; Very Luxe Lips; Soft and Creamy",
+      "product_count": 6
+    },
+    {
+      "ingredient": "squalane",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Glowy Blush; Matte Pop Blush; Oil Over; Very Amazing Retinal; Very Luxe Lips; Soft and Creamy",
+      "product_count": 6
+    },
+    {
       "ingredient": "sunflower seed oil",
       "category": "",
       "site": "Go-To Skincare",
@@ -2441,18 +2962,25 @@ window.PIPELINE_DATA = {
       "product_count": 6
     },
     {
-      "ingredient": "vitamin e",
+      "ingredient": "Butylene Glycol",
       "category": "",
       "site": "MECCA",
-      "products": "Face Hero; Face Hero Extra; Fancy Face; Much Brighter Skin; Very Lightweight Moisturiser; Very Useful Face Cream",
-      "product_count": 6
+      "products": "Glowy Blush; Nifty Fifty; Very Glowy Primer; Very Mattifying Primer; Early Bird",
+      "product_count": 5
     },
     {
-      "ingredient": "vitamin e",
+      "ingredient": "butylene glycol",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Face Hero; Face Hero Extra; Fancy Face; Much Brighter Skin; Super Handy; Very Lightweight Moisturiser",
-      "product_count": 6
+      "products": "Glowy Blush; Nifty Fifty; Very Glowy Primer; Very Mattifying Primer; Early Bird",
+      "product_count": 5
+    },
+    {
+      "ingredient": "butyrospermum parkii (shea) butter",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Night Shift; Soothe Operator Mask; Very Luxe Hair Mask; Very Useful Face Cream; Soft and Creamy",
+      "product_count": 5
     },
     {
       "ingredient": "Cetearyl Alcohol",
@@ -2462,38 +2990,45 @@ window.PIPELINE_DATA = {
       "product_count": 5
     },
     {
-      "ingredient": "diutan gum",
+      "ingredient": "dicaprylyl carbonate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Mellow Milk; Nifty Fifty; Soothe Operator Mask; Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 5
+    },
+    {
+      "ingredient": "dicaprylyl carbonate",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Much Plumper Skin; Night Shift; Very Amazing Retinal; Very Lightweight Moisturiser; Very Luxe Lifting Mask",
+      "products": "Mellow Milk; Nifty Fifty; Soothe Operator Mask; Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 5
+    },
+    {
+      "ingredient": "diutan gum",
+      "category": "",
+      "site": "MECCA",
+      "products": "Much Plumper Skin; Night Shift; Very Lightweight Moisturiser; Very Luxe Lifting Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 5
+    },
+    {
+      "ingredient": "Ethylhexylglycerin",
+      "category": "",
+      "site": "MECCA",
+      "products": "Glowy Blush; Much Plumper Skin; Very Glowy Primer; Very Luxe Lifting Mask; Early Bird",
+      "product_count": 5
+    },
+    {
+      "ingredient": "ethylhexylglycerin",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Glowy Blush; Much Plumper Skin; Very Glowy Primer; Very Luxe Lifting Mask; Early Bird",
       "product_count": 5
     },
     {
       "ingredient": "glyceryl stearate",
       "category": "",
-      "site": "Go-To Skincare",
-      "products": "Supremely Soothing Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask; Very Useful Face Cream",
-      "product_count": 5
-    },
-    {
-      "ingredient": "Octyldodecanol",
-      "category": "",
       "site": "MECCA",
-      "products": "Lip Hero; Nifty Fifty; The Removalist; Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 5
-    },
-    {
-      "ingredient": "Octyldodecanol",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Lip Hero; Nifty Fifty; The Removalist; Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 5
-    },
-    {
-      "ingredient": "pantolactone",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Much Plumper Skin; Supremely Soothing Moisturiser; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Useful Face Cream",
+      "products": "Supremely Soothing Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask; Soft and Creamy",
       "product_count": 5
     },
     {
@@ -2518,6 +3053,20 @@ window.PIPELINE_DATA = {
       "product_count": 5
     },
     {
+      "ingredient": "salicylic acid",
+      "category": "",
+      "site": "MECCA",
+      "products": "Clarifying Exfoliator; Nifty Fifty; Rapid Scalp Exfoliant; Spot Stoppas; Early Bird",
+      "product_count": 5
+    },
+    {
+      "ingredient": "salicylic acid",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Clarifying Exfoliator; Nifty Fifty; Rapid Scalp Exfoliant; Spot Stoppas; Early Bird",
+      "product_count": 5
+    },
+    {
       "ingredient": "sclerotium gum",
       "category": "",
       "site": "MECCA",
@@ -2525,17 +3074,17 @@ window.PIPELINE_DATA = {
       "product_count": 5
     },
     {
-      "ingredient": "Silica",
+      "ingredient": "Simmondsia Chinensis (Jojoba) Seed Oil",
       "category": "",
       "site": "MECCA",
-      "products": "Matte Pop Blush; Much Brighter Skin; Very Glowy Primer; Very Luxe Repair Mask; Very Mattifying Primer",
+      "products": "Night Shift; Very Luxe Face Cream; Very Luxe Lips; Pinky Lip Glaze; Lip Glaze",
       "product_count": 5
     },
     {
-      "ingredient": "silica",
+      "ingredient": "simmondsia chinensis (jojoba) seed oil",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Matte Pop Blush; Much Brighter Skin; Very Glowy Primer; Very Luxe Repair Mask; Very Mattifying Primer",
+      "products": "Night Shift; Very Luxe Face Cream; Very Luxe Lips; Pinky Lip Glaze; Lip Glaze",
       "product_count": 5
     },
     {
@@ -2546,17 +3095,17 @@ window.PIPELINE_DATA = {
       "product_count": 5
     },
     {
-      "ingredient": "sodium pca",
+      "ingredient": "sodium phytate",
       "category": "",
       "site": "MECCA",
-      "products": "Much Calmer Skin; Much Plumper Skin; Supremely Soothing Moisturiser; Very Amazing Retinal; Very Lightweight Moisturiser",
+      "products": "Juicy Gel; Much Brighter Skin; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
       "product_count": 5
     },
     {
-      "ingredient": "sodium pca",
+      "ingredient": "sodium phytate",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Much Calmer Skin; Much Plumper Skin; Supremely Soothing Moisturiser; Very Amazing Retinal; Very Lightweight Moisturiser",
+      "products": "Juicy Gel; Much Brighter Skin; Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
       "product_count": 5
     },
     {
@@ -2564,20 +3113,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Supremely Soothing Moisturiser; The Removalist; Very Amazing Retinal; Very Luxe Face Cream; Very Useful Face Cream",
-      "product_count": 5
-    },
-    {
-      "ingredient": "Squalane",
-      "category": "",
-      "site": "MECCA",
-      "products": "Glowy Blush; Matte Pop Blush; Oil Over; Very Amazing Retinal; Very Luxe Lips",
-      "product_count": 5
-    },
-    {
-      "ingredient": "squalane",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Glowy Blush; Matte Pop Blush; Oil Over; Very Amazing Retinal; Very Luxe Lips",
       "product_count": 5
     },
     {
@@ -2595,10 +3130,59 @@ window.PIPELINE_DATA = {
       "product_count": 5
     },
     {
+      "ingredient": "Trihydroxystearin",
+      "category": "",
+      "site": "MECCA",
+      "products": "Glowy Blush; Nifty Fifty; The Removalist; Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 5
+    },
+    {
+      "ingredient": "trihydroxystearin",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Glowy Blush; Nifty Fifty; The Removalist; Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 5
+    },
+    {
+      "ingredient": "1,2-Hexanediol",
+      "category": "",
+      "site": "MECCA",
+      "products": "Glowy Blush; Matte Pop Blush; Very Glowy Primer; Early Bird",
+      "product_count": 4
+    },
+    {
+      "ingredient": "1,2-hexanediol",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Glowy Blush; Matte Pop Blush; Very Glowy Primer; Early Bird",
+      "product_count": 4
+    },
+    {
       "ingredient": "aloe barbadensis leaf juice",
       "category": "",
       "site": "Go-To Skincare",
       "products": "Clarifying Exfoliator; Glow Exfoliator; Glowy Blush; Juicy Gel",
+      "product_count": 4
+    },
+    {
+      "ingredient": "Aloe vera leaf juice",
+      "category": "",
+      "site": "MECCA",
+      "products": "Much Plumper Skin; Nifty Fifty; Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 4
+    },
+    {
+      "ingredient": "Aloe vera leaf juice",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Much Plumper Skin; Nifty Fifty; Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 4
+    },
+    {
+      "ingredient": "Aqua/water",
+      "category": "",
+      "site": "MECCA",
+      "products": "Clarifying Exfoliator; Glow Exfoliator; Very Luxe Face Cream; Soft and Creamy",
       "product_count": 4
     },
     {
@@ -2609,24 +3193,10 @@ window.PIPELINE_DATA = {
       "product_count": 4
     },
     {
-      "ingredient": "Butylene Glycol",
+      "ingredient": "Butyrospermum Parkii (Shea) Butter",
       "category": "",
       "site": "MECCA",
-      "products": "Glowy Blush; Nifty Fifty; Very Glowy Primer; Very Mattifying Primer",
-      "product_count": 4
-    },
-    {
-      "ingredient": "butylene glycol",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Glowy Blush; Nifty Fifty; Very Glowy Primer; Very Mattifying Primer",
-      "product_count": 4
-    },
-    {
-      "ingredient": "butyrospermum parkii (shea) butter",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Night Shift; Soothe Operator Mask; Very Luxe Hair Mask; Very Useful Face Cream",
+      "products": "Night Shift; Soothe Operator Mask; Very Luxe Hair Mask; Soft and Creamy",
       "product_count": 4
     },
     {
@@ -2641,20 +3211,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Much Brighter Skin; Night Shift; The Removalist; Very Amazing Retinal",
-      "product_count": 4
-    },
-    {
-      "ingredient": "dicaprylyl carbonate",
-      "category": "",
-      "site": "MECCA",
-      "products": "Mellow Milk; Nifty Fifty; Soothe Operator Mask; Very Lightweight Moisturiser",
-      "product_count": 4
-    },
-    {
-      "ingredient": "dicaprylyl carbonate",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Mellow Milk; Nifty Fifty; Soothe Operator Mask; Very Lightweight Moisturiser",
       "product_count": 4
     },
     {
@@ -2669,27 +3225,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Glowy Blush; Matte Pop Blush; Very Glowy Primer; Very Mattifying Primer",
-      "product_count": 4
-    },
-    {
-      "ingredient": "diutan gum",
-      "category": "",
-      "site": "MECCA",
-      "products": "Much Plumper Skin; Night Shift; Very Lightweight Moisturiser; Very Luxe Lifting Mask",
-      "product_count": 4
-    },
-    {
-      "ingredient": "Ethylhexylglycerin",
-      "category": "",
-      "site": "MECCA",
-      "products": "Glowy Blush; Much Plumper Skin; Very Glowy Primer; Very Luxe Lifting Mask",
-      "product_count": 4
-    },
-    {
-      "ingredient": "ethylhexylglycerin",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Glowy Blush; Much Plumper Skin; Very Glowy Primer; Very Luxe Lifting Mask",
       "product_count": 4
     },
     {
@@ -2721,27 +3256,6 @@ window.PIPELINE_DATA = {
       "product_count": 4
     },
     {
-      "ingredient": "glyceryl stearate",
-      "category": "",
-      "site": "MECCA",
-      "products": "Supremely Soothing Moisturiser; Very Luxe Face Cream; Very Luxe Hair Mask; Very Luxe Lifting Mask",
-      "product_count": 4
-    },
-    {
-      "ingredient": "hydrolyzed jojoba esters",
-      "category": "",
-      "site": "MECCA",
-      "products": "Juicy Gel; Mellow Milk; Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 4
-    },
-    {
-      "ingredient": "hydrolyzed jojoba esters",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Juicy Gel; Mellow Milk; Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 4
-    },
-    {
       "ingredient": "lactic acid",
       "category": "",
       "site": "MECCA",
@@ -2753,13 +3267,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Exfoliating Swipeys; Much Plumper Skin; Rapid Scalp Exfoliant; Very Luxe Hair Mask",
-      "product_count": 4
-    },
-    {
-      "ingredient": "pantolactone",
-      "category": "",
-      "site": "MECCA",
-      "products": "Much Plumper Skin; Supremely Soothing Moisturiser; Very Lightweight Moisturiser; Very Luxe Repair Mask",
       "product_count": 4
     },
     {
@@ -2777,38 +3284,10 @@ window.PIPELINE_DATA = {
       "product_count": 4
     },
     {
-      "ingredient": "salicylic acid",
-      "category": "",
-      "site": "MECCA",
-      "products": "Clarifying Exfoliator; Nifty Fifty; Rapid Scalp Exfoliant; Spot Stoppas",
-      "product_count": 4
-    },
-    {
-      "ingredient": "salicylic acid",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Clarifying Exfoliator; Nifty Fifty; Rapid Scalp Exfoliant; Spot Stoppas",
-      "product_count": 4
-    },
-    {
       "ingredient": "sclerotium gum",
       "category": "",
       "site": "Go-To Skincare",
       "products": "Much Brighter Skin; Supremely Soothing Moisturiser; Very Luxe Face Cream; Very Luxe Repair Mask",
-      "product_count": 4
-    },
-    {
-      "ingredient": "sodium phytate",
-      "category": "",
-      "site": "MECCA",
-      "products": "Juicy Gel; Much Brighter Skin; Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 4
-    },
-    {
-      "ingredient": "sodium phytate",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Juicy Gel; Much Brighter Skin; Very Lightweight Moisturiser; Very Luxe Repair Mask",
       "product_count": 4
     },
     {
@@ -2840,32 +3319,32 @@ window.PIPELINE_DATA = {
       "product_count": 4
     },
     {
-      "ingredient": "Trihydroxystearin",
+      "ingredient": "terminalia ferdinandiana fruit extract",
       "category": "",
       "site": "MECCA",
-      "products": "Glowy Blush; Nifty Fifty; The Removalist; Very Lightweight Moisturiser",
+      "products": "Much Brighter Skin; Nifty Fifty; Pinky Lip Glaze; Lip Glaze",
       "product_count": 4
     },
     {
-      "ingredient": "trihydroxystearin",
+      "ingredient": "terminalia ferdinandiana fruit extract",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Glowy Blush; Nifty Fifty; The Removalist; Very Lightweight Moisturiser",
+      "products": "Much Brighter Skin; Nifty Fifty; Pinky Lip Glaze; Lip Glaze",
       "product_count": 4
     },
     {
-      "ingredient": "1,2-Hexanediol",
+      "ingredient": "trehalose",
       "category": "",
       "site": "MECCA",
-      "products": "Glowy Blush; Matte Pop Blush; Very Glowy Primer",
-      "product_count": 3
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill; Early Bird",
+      "product_count": 4
     },
     {
-      "ingredient": "1,2-hexanediol",
+      "ingredient": "trehalose",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Glowy Blush; Matte Pop Blush; Very Glowy Primer",
-      "product_count": 3
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill; Early Bird",
+      "product_count": 4
     },
     {
       "ingredient": "aloe barbadensis leaf juice",
@@ -2875,31 +3354,10 @@ window.PIPELINE_DATA = {
       "product_count": 3
     },
     {
-      "ingredient": "Aloe vera leaf juice",
-      "category": "",
-      "site": "MECCA",
-      "products": "Much Plumper Skin; Nifty Fifty; Very Lightweight Moisturiser",
-      "product_count": 3
-    },
-    {
-      "ingredient": "Aloe vera leaf juice",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Much Plumper Skin; Nifty Fifty; Very Lightweight Moisturiser",
-      "product_count": 3
-    },
-    {
       "ingredient": "apricot kernel oil",
       "category": "",
       "site": "MECCA",
       "products": "Face Hero; Face Hero Extra; Very Useful Face Cream",
-      "product_count": 3
-    },
-    {
-      "ingredient": "Aqua/water",
-      "category": "",
-      "site": "MECCA",
-      "products": "Clarifying Exfoliator; Glow Exfoliator; Very Luxe Face Cream",
       "product_count": 3
     },
     {
@@ -2959,13 +3417,6 @@ window.PIPELINE_DATA = {
       "product_count": 3
     },
     {
-      "ingredient": "Butyrospermum Parkii (Shea) Butter",
-      "category": "",
-      "site": "MECCA",
-      "products": "Night Shift; Soothe Operator Mask; Very Luxe Hair Mask",
-      "product_count": 3
-    },
-    {
       "ingredient": "c13-16 isoalkane",
       "category": "",
       "site": "MECCA",
@@ -2994,6 +3445,34 @@ window.PIPELINE_DATA = {
       "product_count": 3
     },
     {
+      "ingredient": "cellulose gum",
+      "category": "",
+      "site": "MECCA",
+      "products": "De-Crease; Spot Stoppas; Soft and Creamy",
+      "product_count": 3
+    },
+    {
+      "ingredient": "cellulose gum",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "De-Crease; Spot Stoppas; Soft and Creamy",
+      "product_count": 3
+    },
+    {
+      "ingredient": "centella asiatica extract",
+      "category": "",
+      "site": "MECCA",
+      "products": "Clarifying Face Hero; Spot Stoppas; Early Bird",
+      "product_count": 3
+    },
+    {
+      "ingredient": "centella asiatica extract",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Clarifying Face Hero; Spot Stoppas; Early Bird",
+      "product_count": 3
+    },
+    {
       "ingredient": "ceramide np",
       "category": "",
       "site": "MECCA",
@@ -3005,6 +3484,34 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Supremely Soothing Moisturiser; Very Luxe Face Cream; Very Luxe Lifting Mask",
+      "product_count": 3
+    },
+    {
+      "ingredient": "ceramide ns",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 3
+    },
+    {
+      "ingredient": "ceramide ns",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 3
+    },
+    {
+      "ingredient": "erythritol",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 3
+    },
+    {
+      "ingredient": "erythritol",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
       "product_count": 3
     },
     {
@@ -3036,6 +3543,20 @@ window.PIPELINE_DATA = {
       "product_count": 3
     },
     {
+      "ingredient": "hibiscus fruit extract",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 3
+    },
+    {
+      "ingredient": "hibiscus fruit extract",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 3
+    },
+    {
       "ingredient": "Hyaluronic Acid",
       "category": "",
       "site": "MECCA",
@@ -3047,6 +3568,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Glowy Blush; Matte Pop Blush; Very Glowy Primer",
+      "product_count": 3
+    },
+    {
+      "ingredient": "hydrogenated lecithin",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 3
+    },
+    {
+      "ingredient": "hydrogenated lecithin",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
       "product_count": 3
     },
     {
@@ -3120,6 +3655,13 @@ window.PIPELINE_DATA = {
       "product_count": 3
     },
     {
+      "ingredient": "melaleuca alternifolia (tea tree) leaf oil",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Clarifying Face Hero; Spot Stoppas; Early Bird",
+      "product_count": 3
+    },
+    {
       "ingredient": "Mica",
       "category": "",
       "site": "MECCA",
@@ -3134,6 +3676,20 @@ window.PIPELINE_DATA = {
       "product_count": 3
     },
     {
+      "ingredient": "myristyl alcohol",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 3
+    },
+    {
+      "ingredient": "myristyl alcohol",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 3
+    },
+    {
       "ingredient": "phospholipids",
       "category": "",
       "site": "MECCA",
@@ -3159,6 +3715,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Clarifying Face Hero; Very Luxe Face Cream; Very Luxe Lifting Mask",
+      "product_count": 3
+    },
+    {
+      "ingredient": "phytosterols",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 3
+    },
+    {
+      "ingredient": "phytosterols",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
       "product_count": 3
     },
     {
@@ -3211,34 +3781,6 @@ window.PIPELINE_DATA = {
       "product_count": 3
     },
     {
-      "ingredient": "Simmondsia Chinensis (Jojoba) Seed Oil",
-      "category": "",
-      "site": "MECCA",
-      "products": "Night Shift; Very Luxe Face Cream; Very Luxe Lips",
-      "product_count": 3
-    },
-    {
-      "ingredient": "simmondsia chinensis (jojoba) seed oil",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Night Shift; Very Luxe Face Cream; Very Luxe Lips",
-      "product_count": 3
-    },
-    {
-      "ingredient": "sodium chloride",
-      "category": "",
-      "site": "MECCA",
-      "products": "Juicy Gel; Properly Clean; Very Lightweight Moisturiser",
-      "product_count": 3
-    },
-    {
-      "ingredient": "sodium chloride",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Juicy Gel; Properly Clean; Very Lightweight Moisturiser",
-      "product_count": 3
-    },
-    {
       "ingredient": "sodium dehydroacetate",
       "category": "",
       "site": "MECCA",
@@ -3274,6 +3816,20 @@ window.PIPELINE_DATA = {
       "product_count": 3
     },
     {
+      "ingredient": "stearyl alcohol",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 3
+    },
+    {
+      "ingredient": "stearyl alcohol",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask; Very Lightweight Moisturiser Refill",
+      "product_count": 3
+    },
+    {
       "ingredient": "tasmannia lanceolata fruit/leaf extract",
       "category": "",
       "site": "Go-To Skincare",
@@ -3292,6 +3848,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Glowy Blush; Matte Pop Blush; Very Glowy Primer",
+      "product_count": 3
+    },
+    {
+      "ingredient": "Tocopheryl Acetate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Glowy Blush; Very Glowy Primer; Pinky Lip Glaze",
+      "product_count": 3
+    },
+    {
+      "ingredient": "tocopheryl acetate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Glowy Blush; Very Glowy Primer; Pinky Lip Glaze",
       "product_count": 3
     },
     {
@@ -3355,6 +3925,13 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Face Hero; Face Hero Extra",
+      "product_count": 2
+    },
+    {
+      "ingredient": "Aqua/water",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Luxe Face Cream; Soft and Creamy",
       "product_count": 2
     },
     {
@@ -3540,6 +4117,20 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
+      "ingredient": "c12-16 alcohols",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "c12-16 alcohols",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
       "ingredient": "calendula flower extract",
       "category": "",
       "site": "MECCA",
@@ -3596,34 +4187,6 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
-      "ingredient": "cellulose gum",
-      "category": "",
-      "site": "MECCA",
-      "products": "De-Crease; Spot Stoppas",
-      "product_count": 2
-    },
-    {
-      "ingredient": "cellulose gum",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "De-Crease; Spot Stoppas",
-      "product_count": 2
-    },
-    {
-      "ingredient": "centella asiatica extract",
-      "category": "",
-      "site": "MECCA",
-      "products": "Clarifying Face Hero; Spot Stoppas",
-      "product_count": 2
-    },
-    {
-      "ingredient": "centella asiatica extract",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Clarifying Face Hero; Spot Stoppas",
-      "product_count": 2
-    },
-    {
       "ingredient": "ceramide AP",
       "category": "",
       "site": "MECCA",
@@ -3652,20 +4215,6 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
-      "ingredient": "ceramide ns",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 2
-    },
-    {
-      "ingredient": "ceramide ns",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 2
-    },
-    {
       "ingredient": "cholesterol",
       "category": "",
       "site": "MECCA",
@@ -3677,6 +4226,62 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Very Luxe Face Cream; Very Luxe Lifting Mask",
+      "product_count": 2
+    },
+    {
+      "ingredient": "clover flower extract",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "clover flower extract",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "cocamidopropyl hydroxysultaine",
+      "category": "",
+      "site": "MECCA",
+      "products": "Juicy Gel; Soft and Creamy",
+      "product_count": 2
+    },
+    {
+      "ingredient": "cocamidopropyl hydroxysultaine",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Juicy Gel; Soft and Creamy",
+      "product_count": 2
+    },
+    {
+      "ingredient": "Coco-Caprylate/Caprate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Night Shift; Pinky Lip Glaze",
+      "product_count": 2
+    },
+    {
+      "ingredient": "coco-caprylate/caprate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Night Shift; Pinky Lip Glaze",
+      "product_count": 2
+    },
+    {
+      "ingredient": "coconut fruit extract",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "coconut fruit extract",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
       "product_count": 2
     },
     {
@@ -3698,20 +4303,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Matte Pop Blush; Very Luxe Lips",
-      "product_count": 2
-    },
-    {
-      "ingredient": "erythritol",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 2
-    },
-    {
-      "ingredient": "erythritol",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
       "product_count": 2
     },
     {
@@ -3743,6 +4334,62 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
+      "ingredient": "Ethylhexyl Triazone",
+      "category": "",
+      "site": "MECCA",
+      "products": "Nifty Fifty; Lip Glaze",
+      "product_count": 2
+    },
+    {
+      "ingredient": "Ethylhexyl Triazone",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Nifty Fifty; Lip Glaze",
+      "product_count": 2
+    },
+    {
+      "ingredient": "Flavour",
+      "category": "",
+      "site": "MECCA",
+      "products": "Pinky Lip Glaze; Lip Glaze",
+      "product_count": 2
+    },
+    {
+      "ingredient": "flavour",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Pinky Lip Glaze; Lip Glaze",
+      "product_count": 2
+    },
+    {
+      "ingredient": "furcellaria lumbricalis extract",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "furcellaria lumbricalis extract",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "gelidiella acerosa extract",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "gelidiella acerosa extract",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
       "ingredient": "ginger root extract",
       "category": "",
       "site": "MECCA",
@@ -3768,6 +4415,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "De-Crease; Transformazing",
+      "product_count": 2
+    },
+    {
+      "ingredient": "glutamic acid",
+      "category": "",
+      "site": "MECCA",
+      "products": "Much Calmer Skin; Soft and Creamy",
+      "product_count": 2
+    },
+    {
+      "ingredient": "glutamic acid",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Much Calmer Skin; Soft and Creamy",
       "product_count": 2
     },
     {
@@ -3782,6 +4443,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "MECCA",
       "products": "Super Handy; Very Useful Face Cream",
+      "product_count": 2
+    },
+    {
+      "ingredient": "glycol stearate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Mellow Milk; Soft and Creamy",
+      "product_count": 2
+    },
+    {
+      "ingredient": "glycol stearate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Mellow Milk; Soft and Creamy",
       "product_count": 2
     },
     {
@@ -3820,31 +4495,17 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
-      "ingredient": "hibiscus fruit extract",
+      "ingredient": "Hydrogenated Castor Oil",
       "category": "",
       "site": "MECCA",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
+      "products": "Very Luxe Lips; Pinky Lip Glaze",
       "product_count": 2
     },
     {
-      "ingredient": "hibiscus fruit extract",
+      "ingredient": "hydrogenated castor oil",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 2
-    },
-    {
-      "ingredient": "hydrogenated lecithin",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 2
-    },
-    {
-      "ingredient": "hydrogenated lecithin",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
+      "products": "Very Luxe Lips; Pinky Lip Glaze",
       "product_count": 2
     },
     {
@@ -3862,6 +4523,20 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
+      "ingredient": "hydrolyzed red algae extract",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "hydrolyzed red algae extract",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
       "ingredient": "hydrolyzed sodium hyaluronate",
       "category": "",
       "site": "MECCA",
@@ -3873,6 +4548,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Much Plumper Skin; Very Luxe Lifting Mask",
+      "product_count": 2
+    },
+    {
+      "ingredient": "iron oxide",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "iron oxide",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
       "product_count": 2
     },
     {
@@ -3918,6 +4607,20 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
+      "ingredient": "isopentyldiol",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "isopentyldiol",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
       "ingredient": "Isopropyl Myristate",
       "category": "",
       "site": "MECCA",
@@ -3932,6 +4635,20 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
+      "ingredient": "Isostearic Acid",
+      "category": "",
+      "site": "MECCA",
+      "products": "Matte Pop Blush; Pinky Lip Glaze",
+      "product_count": 2
+    },
+    {
+      "ingredient": "isostearic acid",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Matte Pop Blush; Pinky Lip Glaze",
+      "product_count": 2
+    },
+    {
       "ingredient": "kiwi fruit seed oil",
       "category": "",
       "site": "MECCA",
@@ -3943,6 +4660,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Face Hero; Face Hero Extra",
+      "product_count": 2
+    },
+    {
+      "ingredient": "lauryl glucoside",
+      "category": "",
+      "site": "MECCA",
+      "products": "Properly Clean; Properly Clean Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "lauryl glucoside",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Properly Clean; Properly Clean Refill",
       "product_count": 2
     },
     {
@@ -4011,22 +4742,8 @@ window.PIPELINE_DATA = {
     {
       "ingredient": "melaleuca alternifolia (tea tree) leaf oil",
       "category": "",
-      "site": "Go-To Skincare",
-      "products": "Clarifying Face Hero; Spot Stoppas",
-      "product_count": 2
-    },
-    {
-      "ingredient": "myristyl alcohol",
-      "category": "",
       "site": "MECCA",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 2
-    },
-    {
-      "ingredient": "myristyl alcohol",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
+      "products": "Clarifying Face Hero; Early Bird",
       "product_count": 2
     },
     {
@@ -4044,6 +4761,20 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
+      "ingredient": "natural fragrance (contains mandarin, lime and patchouli oils)",
+      "category": "",
+      "site": "MECCA",
+      "products": "Properly Clean; Properly Clean Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "natural fragrance (contains mandarin, lime and patchouli oils)",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Properly Clean; Properly Clean Refill",
+      "product_count": 2
+    },
+    {
       "ingredient": "natural fragrance (contains orange, petitgrain and indian geranium oils)",
       "category": "",
       "site": "MECCA",
@@ -4058,17 +4789,31 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
-      "ingredient": "phytosterols",
+      "ingredient": "natural fragrance (contains rose and geranium oils)",
       "category": "",
       "site": "MECCA",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
       "product_count": 2
     },
     {
-      "ingredient": "phytosterols",
+      "ingredient": "natural fragrance (contains rose and geranium oils)",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "palmitic acid",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "palmitic acid",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
       "product_count": 2
     },
     {
@@ -4100,6 +4845,34 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
+      "ingredient": "Polyglyceryl-3 Methylglucose Distearate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Luxe Repair Mask; Soft and Creamy",
+      "product_count": 2
+    },
+    {
+      "ingredient": "polyglyceryl-3 methylglucose distearate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Luxe Repair Mask; Soft and Creamy",
+      "product_count": 2
+    },
+    {
+      "ingredient": "Polyglyceryl-3 Polyricinoleate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Matte Pop Blush; Pinky Lip Glaze",
+      "product_count": 2
+    },
+    {
+      "ingredient": "polyglyceryl-3 polyricinoleate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Matte Pop Blush; Pinky Lip Glaze",
+      "product_count": 2
+    },
+    {
       "ingredient": "polyglyceryl-6 behenate",
       "category": "",
       "site": "MECCA",
@@ -4111,6 +4884,34 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Very Luxe Face Cream; Very Luxe Lifting Mask",
+      "product_count": 2
+    },
+    {
+      "ingredient": "polyisobutene",
+      "category": "",
+      "site": "MECCA",
+      "products": "Spot Stoppas; Pinky Lip Glaze",
+      "product_count": 2
+    },
+    {
+      "ingredient": "polyisobutene",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Spot Stoppas; Pinky Lip Glaze",
+      "product_count": 2
+    },
+    {
+      "ingredient": "potato pulp extract",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "potato pulp extract",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
       "product_count": 2
     },
     {
@@ -4149,6 +4950,20 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
+      "ingredient": "red algae extract",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "red algae extract",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Lightweight Moisturiser; Very Lightweight Moisturiser Refill",
+      "product_count": 2
+    },
+    {
       "ingredient": "retinal",
       "category": "",
       "site": "MECCA",
@@ -4160,6 +4975,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "De-Crease; Very Amazing Retinal",
+      "product_count": 2
+    },
+    {
+      "ingredient": "Ricinus Communis (Castor) Seed Oil",
+      "category": "",
+      "site": "MECCA",
+      "products": "Very Luxe Lips; Pinky Lip Glaze",
+      "product_count": 2
+    },
+    {
+      "ingredient": "Ricinus communis (castor) seed oil",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Very Luxe Lips; Pinky Lip Glaze",
       "product_count": 2
     },
     {
@@ -4240,6 +5069,34 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
+      "ingredient": "sodium cocoamphoacetate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Properly Clean; Properly Clean Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "sodium cocoamphoacetate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Properly Clean; Properly Clean Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "sodium cocoyl glutamate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Properly Clean; Properly Clean Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "sodium cocoyl glutamate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Properly Clean; Properly Clean Refill",
+      "product_count": 2
+    },
+    {
       "ingredient": "sodium hyaluronate crosspolymer",
       "category": "",
       "site": "MECCA",
@@ -4265,6 +5122,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Much Calmer Skin; Much Plumper Skin",
+      "product_count": 2
+    },
+    {
+      "ingredient": "sodium lauryl glucose carboxylate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Properly Clean; Properly Clean Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "sodium lauryl glucose carboxylate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Properly Clean; Properly Clean Refill",
       "product_count": 2
     },
     {
@@ -4289,20 +5160,6 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
-      "ingredient": "stearyl alcohol",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 2
-    },
-    {
-      "ingredient": "stearyl alcohol",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 2
-    },
-    {
       "ingredient": "Sunflower oil",
       "category": "",
       "site": "MECCA",
@@ -4317,31 +5174,17 @@ window.PIPELINE_DATA = {
       "product_count": 2
     },
     {
-      "ingredient": "terminalia ferdinandiana fruit extract",
+      "ingredient": "Tetrahexyldecyl Ascorbate",
       "category": "",
       "site": "MECCA",
-      "products": "Much Brighter Skin; Nifty Fifty",
+      "products": "Pinky Lip Glaze; Lip Glaze",
       "product_count": 2
     },
     {
-      "ingredient": "terminalia ferdinandiana fruit extract",
+      "ingredient": "tetrahexyldecyl ascorbate",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Much Brighter Skin; Nifty Fifty",
-      "product_count": 2
-    },
-    {
-      "ingredient": "Tocopheryl Acetate",
-      "category": "",
-      "site": "MECCA",
-      "products": "Glowy Blush; Very Glowy Primer",
-      "product_count": 2
-    },
-    {
-      "ingredient": "tocopheryl acetate",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Glowy Blush; Very Glowy Primer",
+      "products": "Pinky Lip Glaze; Lip Glaze",
       "product_count": 2
     },
     {
@@ -4356,20 +5199,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Face Hero; Face Hero Extra",
-      "product_count": 2
-    },
-    {
-      "ingredient": "trehalose",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
-      "product_count": 2
-    },
-    {
-      "ingredient": "trehalose",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser; Very Luxe Repair Mask",
       "product_count": 2
     },
     {
@@ -4384,6 +5213,34 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Matte Pop Blush; Very Luxe Lips",
+      "product_count": 2
+    },
+    {
+      "ingredient": "white willow bark extract",
+      "category": "",
+      "site": "MECCA",
+      "products": "Properly Clean; Properly Clean Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "white willow bark extract",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Properly Clean; Properly Clean Refill",
+      "product_count": 2
+    },
+    {
+      "ingredient": "Zinc Oxide",
+      "category": "",
+      "site": "MECCA",
+      "products": "The Removalist; Pinky Lip Glaze",
+      "product_count": 2
+    },
+    {
+      "ingredient": "zinc oxide",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "The Removalist; Pinky Lip Glaze",
       "product_count": 2
     },
     {
@@ -4576,13 +5433,6 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "Aqua/water",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Luxe Face Cream",
-      "product_count": 1
-    },
-    {
       "ingredient": "argan oil",
       "category": "",
       "site": "MECCA",
@@ -4622,6 +5472,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Soothe Operator Mask",
+      "product_count": 1
+    },
+    {
+      "ingredient": "artemisia princeps extract",
+      "category": "",
+      "site": "MECCA",
+      "products": "Early Bird",
+      "product_count": 1
+    },
+    {
+      "ingredient": "artemisia princeps extract",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Early Bird",
       "product_count": 1
     },
     {
@@ -4744,7 +5608,28 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
+      "ingredient": "Benzoic Acid",
+      "category": "",
+      "site": "MECCA",
+      "products": "Soft and Creamy",
+      "product_count": 1
+    },
+    {
+      "ingredient": "benzoic acid",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Soft and Creamy",
+      "product_count": 1
+    },
+    {
       "ingredient": "Benzyl Benzoate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Things Will Calm Down Now",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Benzyl Salicylate",
       "category": "",
       "site": "MECCA",
       "products": "Things Will Calm Down Now",
@@ -4790,6 +5675,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Very Luxe Hair Mask",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine",
+      "category": "",
+      "site": "MECCA",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Lip Glaze",
       "product_count": 1
     },
     {
@@ -4849,6 +5748,48 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
+      "ingredient": "Brassicamidopropyl Dimethylamine",
+      "category": "",
+      "site": "MECCA",
+      "products": "Soft and Creamy",
+      "product_count": 1
+    },
+    {
+      "ingredient": "brassicamidopropyl dimethylamine",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Soft and Creamy",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Butyl methoxydibenzoylmethane",
+      "category": "",
+      "site": "MECCA",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Butyl methoxydibenzoylmethane",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Butyloctyl salicylate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Butyloctyl salicylate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
       "ingredient": "C12-15 Alkyl Benzoate",
       "category": "",
       "site": "MECCA",
@@ -4860,20 +5801,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Glowy Blush",
-      "product_count": 1
-    },
-    {
-      "ingredient": "c12-16 alcohols",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
-      "ingredient": "c12-16 alcohols",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser",
       "product_count": 1
     },
     {
@@ -5038,6 +5965,20 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
+      "ingredient": "Cellulose",
+      "category": "",
+      "site": "MECCA",
+      "products": "Soft and Creamy",
+      "product_count": 1
+    },
+    {
+      "ingredient": "cellulose",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Soft and Creamy",
+      "product_count": 1
+    },
+    {
       "ingredient": "Cetostearyl Alcohol",
       "category": "",
       "site": "MECCA",
@@ -5094,6 +6035,34 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
+      "ingredient": "Ci 14720",
+      "category": "",
+      "site": "MECCA",
+      "products": "Pinky Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "CI 14720",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Pinky Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Ci 16255",
+      "category": "",
+      "site": "MECCA",
+      "products": "Pinky Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "CI 16255",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Pinky Lip Glaze",
+      "product_count": 1
+    },
+    {
       "ingredient": "citric acid and sodium citrate",
       "category": "",
       "site": "MECCA",
@@ -5101,34 +6070,6 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "clover flower extract",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
-      "ingredient": "clover flower extract",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
-      "ingredient": "cocamidopropyl hydroxysultaine",
-      "category": "",
-      "site": "MECCA",
-      "products": "Juicy Gel",
-      "product_count": 1
-    },
-    {
-      "ingredient": "cocamidopropyl hydroxysultaine",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Juicy Gel",
-      "product_count": 1
-    },
-    {
       "ingredient": "coco-caprylate",
       "category": "",
       "site": "MECCA",
@@ -5143,17 +6084,17 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "Coco-Caprylate/Caprate",
+      "ingredient": "Coco-Glucoside",
       "category": "",
       "site": "MECCA",
-      "products": "Night Shift",
+      "products": "Soft and Creamy",
       "product_count": 1
     },
     {
-      "ingredient": "coco-caprylate/caprate",
+      "ingredient": "coco-glucoside",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Night Shift",
+      "products": "Soft and Creamy",
       "product_count": 1
     },
     {
@@ -5185,17 +6126,17 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "coconut fruit extract",
+      "ingredient": "Cocos Nucifera (Coconut) Oil",
       "category": "",
       "site": "MECCA",
-      "products": "Very Lightweight Moisturiser",
+      "products": "Pinky Lip Glaze",
       "product_count": 1
     },
     {
-      "ingredient": "coconut fruit extract",
+      "ingredient": "cocos nucifera (coconut) oil",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser",
+      "products": "Pinky Lip Glaze",
       "product_count": 1
     },
     {
@@ -5437,6 +6378,20 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
+      "ingredient": "ectoin",
+      "category": "",
+      "site": "MECCA",
+      "products": "Early Bird",
+      "product_count": 1
+    },
+    {
+      "ingredient": "ectoin",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Early Bird",
+      "product_count": 1
+    },
+    {
       "ingredient": "Electric Daisy Extract",
       "category": "",
       "site": "MECCA",
@@ -5528,17 +6483,31 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "Ethylhexyl Triazone",
+      "ingredient": "Ethylhexyl Methoxycrylene",
       "category": "",
       "site": "MECCA",
-      "products": "Nifty Fifty",
+      "products": "Lip Glaze",
       "product_count": 1
     },
     {
-      "ingredient": "Ethylhexyl Triazone",
+      "ingredient": "Ethylhexyl Methoxycrylene",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Nifty Fifty",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Ethylhexyl salicylate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Ethylhexyl salicylate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Lip Glaze",
       "product_count": 1
     },
     {
@@ -5546,6 +6515,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "MECCA",
       "products": "Things Will Calm Down Now",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Euphorbia Cerifera (Candelilla) Wax",
+      "category": "",
+      "site": "MECCA",
+      "products": "Pinky Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "euphorbia cerifera (candelilla) wax",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Pinky Lip Glaze",
       "product_count": 1
     },
     {
@@ -5605,20 +6588,6 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "furcellaria lumbricalis extract",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
-      "ingredient": "furcellaria lumbricalis extract",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
       "ingredient": "ganoderma lucidum (mushroom) extract",
       "category": "",
       "site": "MECCA",
@@ -5630,20 +6599,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Supremely Soothing Moisturiser",
-      "product_count": 1
-    },
-    {
-      "ingredient": "gelidiella acerosa extract",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
-      "ingredient": "gelidiella acerosa extract",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser",
       "product_count": 1
     },
     {
@@ -5689,20 +6644,6 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "glutamic acid",
-      "category": "",
-      "site": "MECCA",
-      "products": "Much Calmer Skin",
-      "product_count": 1
-    },
-    {
-      "ingredient": "glutamic acid",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Much Calmer Skin",
-      "product_count": 1
-    },
-    {
       "ingredient": "Glycerol",
       "category": "",
       "site": "MECCA",
@@ -5735,6 +6676,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Nifty Fifty",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Glyceryl Oleate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Soft and Creamy",
+      "product_count": 1
+    },
+    {
+      "ingredient": "glyceryl oleate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Soft and Creamy",
       "product_count": 1
     },
     {
@@ -5829,20 +6784,6 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "glycol stearate",
-      "category": "",
-      "site": "MECCA",
-      "products": "Mellow Milk",
-      "product_count": 1
-    },
-    {
-      "ingredient": "glycol stearate",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Mellow Milk",
-      "product_count": 1
-    },
-    {
       "ingredient": "glycolipids",
       "category": "",
       "site": "MECCA",
@@ -5913,6 +6854,20 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
+      "ingredient": "houttuynia cordata extract",
+      "category": "",
+      "site": "MECCA",
+      "products": "Early Bird",
+      "product_count": 1
+    },
+    {
+      "ingredient": "houttuynia cordata extract",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Early Bird",
+      "product_count": 1
+    },
+    {
       "ingredient": "Hydrated Silica",
       "category": "",
       "site": "MECCA",
@@ -5927,20 +6882,6 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "Hydrogenated Castor Oil",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Luxe Lips",
-      "product_count": 1
-    },
-    {
-      "ingredient": "hydrogenated castor oil",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Luxe Lips",
-      "product_count": 1
-    },
-    {
       "ingredient": "Hydrogenated Castor Oil/Sebacic Acid Copolymer",
       "category": "",
       "site": "MECCA",
@@ -5952,6 +6893,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Very Luxe Lips",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Hydrogenated Vegetable Glycerides Citrate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Soft and Creamy",
+      "product_count": 1
+    },
+    {
+      "ingredient": "hydrogenated vegetable glycerides citrate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Soft and Creamy",
       "product_count": 1
     },
     {
@@ -5983,20 +6938,6 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "hydrolyzed red algae extract",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
-      "ingredient": "hydrolyzed red algae extract",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
       "ingredient": "hydroxypropyl starch",
       "category": "",
       "site": "MECCA",
@@ -6025,17 +6966,17 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "iron oxide",
+      "ingredient": "Iron Oxide Yellow (Ci 77492)",
       "category": "",
       "site": "MECCA",
-      "products": "Very Lightweight Moisturiser",
+      "products": "Pinky Lip Glaze",
       "product_count": 1
     },
     {
-      "ingredient": "iron oxide",
+      "ingredient": "iron oxide yellow (CI 77492)",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser",
+      "products": "Pinky Lip Glaze",
       "product_count": 1
     },
     {
@@ -6067,20 +7008,6 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "isopentyldiol",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
-      "ingredient": "isopentyldiol",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
       "ingredient": "isosorbide dicaprylate",
       "category": "",
       "site": "MECCA",
@@ -6092,20 +7019,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Clarifying Face Hero",
-      "product_count": 1
-    },
-    {
-      "ingredient": "Isostearic Acid",
-      "category": "",
-      "site": "MECCA",
-      "products": "Matte Pop Blush",
-      "product_count": 1
-    },
-    {
-      "ingredient": "isostearic acid",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Matte Pop Blush",
       "product_count": 1
     },
     {
@@ -6190,20 +7103,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Supremely Soothing Moisturiser",
-      "product_count": 1
-    },
-    {
-      "ingredient": "lauryl glucoside",
-      "category": "",
-      "site": "MECCA",
-      "products": "Properly Clean",
-      "product_count": 1
-    },
-    {
-      "ingredient": "lauryl glucoside",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Properly Clean",
       "product_count": 1
     },
     {
@@ -6424,13 +7323,6 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "melaleuca alternifolia (tea tree) leaf oil",
-      "category": "",
-      "site": "MECCA",
-      "products": "Clarifying Face Hero",
-      "product_count": 1
-    },
-    {
       "ingredient": "melaleuca alternifolia (tee tree) leaf oil",
       "category": "",
       "site": "MECCA",
@@ -6477,34 +7369,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Super Handy",
-      "product_count": 1
-    },
-    {
-      "ingredient": "natural fragrance (contains mandarin, lime and patchouli oils)",
-      "category": "",
-      "site": "MECCA",
-      "products": "Properly Clean",
-      "product_count": 1
-    },
-    {
-      "ingredient": "natural fragrance (contains mandarin, lime and patchouli oils)",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Properly Clean",
-      "product_count": 1
-    },
-    {
-      "ingredient": "natural fragrance (contains rose and geranium oils)",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
-      "ingredient": "natural fragrance (contains rose and geranium oils)",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser",
       "product_count": 1
     },
     {
@@ -6606,6 +7470,20 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
+      "ingredient": "oenanthe javanica extract",
+      "category": "",
+      "site": "MECCA",
+      "products": "Early Bird",
+      "product_count": 1
+    },
+    {
+      "ingredient": "oenanthe javanica extract",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Early Bird",
+      "product_count": 1
+    },
+    {
       "ingredient": "oenothera biennis (evening primrose) seed oil",
       "category": "",
       "site": "MECCA",
@@ -6673,20 +7551,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Very Amazing Retinal",
-      "product_count": 1
-    },
-    {
-      "ingredient": "palmitic acid",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
-      "ingredient": "palmitic acid",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser",
       "product_count": 1
     },
     {
@@ -6809,6 +7673,34 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
+      "ingredient": "Poly C10-30 Alkyl Acrylate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Poly C10-30 Alkyl Acrylate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Polybutene",
+      "category": "",
+      "site": "MECCA",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Polybutene",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
       "ingredient": "polycyclopentadiene",
       "category": "",
       "site": "Go-To Skincare",
@@ -6907,34 +7799,6 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "Polyglyceryl-3 Methylglucose Distearate",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Luxe Repair Mask",
-      "product_count": 1
-    },
-    {
-      "ingredient": "polyglyceryl-3 methylglucose distearate",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Luxe Repair Mask",
-      "product_count": 1
-    },
-    {
-      "ingredient": "Polyglyceryl-3 Polyricinoleate",
-      "category": "",
-      "site": "MECCA",
-      "products": "Matte Pop Blush",
-      "product_count": 1
-    },
-    {
-      "ingredient": "polyglyceryl-3 polyricinoleate",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Matte Pop Blush",
-      "product_count": 1
-    },
-    {
       "ingredient": "Polyglyceryl-6 Polyhydroxystearate",
       "category": "",
       "site": "MECCA",
@@ -6977,20 +7841,6 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "polyisobutene",
-      "category": "",
-      "site": "MECCA",
-      "products": "Spot Stoppas",
-      "product_count": 1
-    },
-    {
-      "ingredient": "polyisobutene",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Spot Stoppas",
-      "product_count": 1
-    },
-    {
       "ingredient": "Potassium Cetyl Phosphate",
       "category": "",
       "site": "MECCA",
@@ -7030,20 +7880,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Very Luxe Hair Mask",
-      "product_count": 1
-    },
-    {
-      "ingredient": "potato pulp extract",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
-      "ingredient": "potato pulp extract",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser",
       "product_count": 1
     },
     {
@@ -7201,20 +8037,6 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "red algae extract",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
-      "ingredient": "red algae extract",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Lightweight Moisturiser",
-      "product_count": 1
-    },
-    {
       "ingredient": "Rhus Verniciflua Peel Wax",
       "category": "",
       "site": "MECCA",
@@ -7240,20 +8062,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Oil Over",
-      "product_count": 1
-    },
-    {
-      "ingredient": "Ricinus Communis (Castor) Seed Oil",
-      "category": "",
-      "site": "MECCA",
-      "products": "Very Luxe Lips",
-      "product_count": 1
-    },
-    {
-      "ingredient": "Ricinus communis (castor) seed oil",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Very Luxe Lips",
       "product_count": 1
     },
     {
@@ -7362,31 +8170,17 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "sodium cocoamphoacetate",
+      "ingredient": "Sodium Cocoyl Isethionate",
       "category": "",
       "site": "MECCA",
-      "products": "Properly Clean",
+      "products": "Soft and Creamy",
       "product_count": 1
     },
     {
-      "ingredient": "sodium cocoamphoacetate",
+      "ingredient": "sodium cocoyl isethionate",
       "category": "",
       "site": "Go-To Skincare",
-      "products": "Properly Clean",
-      "product_count": 1
-    },
-    {
-      "ingredient": "sodium cocoyl glutamate",
-      "category": "",
-      "site": "MECCA",
-      "products": "Properly Clean",
-      "product_count": 1
-    },
-    {
-      "ingredient": "sodium cocoyl glutamate",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Properly Clean",
+      "products": "Soft and Creamy",
       "product_count": 1
     },
     {
@@ -7404,6 +8198,34 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
+      "ingredient": "Sodium Isethionate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Soft and Creamy",
+      "product_count": 1
+    },
+    {
+      "ingredient": "sodium isethionate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Soft and Creamy",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Sodium Lauroyl Glutamate",
+      "category": "",
+      "site": "MECCA",
+      "products": "Soft and Creamy",
+      "product_count": 1
+    },
+    {
+      "ingredient": "sodium lauroyl glutamate",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Soft and Creamy",
+      "product_count": 1
+    },
+    {
       "ingredient": "sodium lauroyl oat amino acids",
       "category": "",
       "site": "MECCA",
@@ -7415,20 +8237,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Mellow Milk",
-      "product_count": 1
-    },
-    {
-      "ingredient": "sodium lauryl glucose carboxylate",
-      "category": "",
-      "site": "MECCA",
-      "products": "Properly Clean",
-      "product_count": 1
-    },
-    {
-      "ingredient": "sodium lauryl glucose carboxylate",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Properly Clean",
       "product_count": 1
     },
     {
@@ -7562,6 +8370,20 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "MECCA",
       "products": "Easy Breezy Magneezy",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Sucralose",
+      "category": "",
+      "site": "MECCA",
+      "products": "Lip Glaze",
+      "product_count": 1
+    },
+    {
+      "ingredient": "Sucralose",
+      "category": "",
+      "site": "Go-To Skincare",
+      "products": "Lip Glaze",
       "product_count": 1
     },
     {
@@ -7915,20 +8737,6 @@ window.PIPELINE_DATA = {
       "product_count": 1
     },
     {
-      "ingredient": "white willow bark extract",
-      "category": "",
-      "site": "MECCA",
-      "products": "Properly Clean",
-      "product_count": 1
-    },
-    {
-      "ingredient": "white willow bark extract",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "Properly Clean",
-      "product_count": 1
-    },
-    {
       "ingredient": "Yellow 5 Lake (CI 19140)",
       "category": "",
       "site": "MECCA",
@@ -7940,20 +8748,6 @@ window.PIPELINE_DATA = {
       "category": "",
       "site": "Go-To Skincare",
       "products": "Matte Pop Blush",
-      "product_count": 1
-    },
-    {
-      "ingredient": "Zinc Oxide",
-      "category": "",
-      "site": "MECCA",
-      "products": "The Removalist",
-      "product_count": 1
-    },
-    {
-      "ingredient": "zinc oxide",
-      "category": "",
-      "site": "Go-To Skincare",
-      "products": "The Removalist",
       "product_count": 1
     },
     {
@@ -7972,98 +8766,126 @@ window.PIPELINE_DATA = {
     }
   ],
   "stats": {
-    "total": 40,
-    "scored": 40,
-    "not_comparable": 0,
+    "total": 50,
+    "scored": 46,
+    "not_comparable": 4,
     "failed_pages": 0
   },
-  "llm_usage": {},
+  "llm_usage": {
+    "verify": {
+      "called": 28,
+      "cached": 0,
+      "failed": 0
+    },
+    "vision": {
+      "called": 381,
+      "cached": 0,
+      "failed": 0
+    },
+    "kit": {
+      "called": 16,
+      "cached": 30,
+      "failed": 0
+    },
+    "materials": {
+      "called": 10,
+      "cached": 20,
+      "failed": 0
+    }
+  },
   "cache_stats": {
-    "http_hit": 0,
-    "http_miss": 206,
-    "llm_hit": 0,
-    "llm_miss": 0
+    "http_hit": 185,
+    "http_miss": 389,
+    "llm_hit": 50,
+    "llm_miss": 435
   },
   "previous_run": {
-    "generated_at": "2026-10-22T10:16:30.965176+00:00",
-    "stamp": "20261022T101346Z",
+    "generated_at": "2026-10-22T10:36:34.679955+00:00",
+    "stamp": "20261022T103337Z",
     "stats": {
-      "total": 50,
-      "scored": 46,
-      "not_comparable": 4,
+      "total": 40,
+      "scored": 40,
+      "not_comparable": 0,
       "failed_pages": 0
     }
   },
   "changes": [
     {
       "product": "Early Bird",
-      "kind": "removed",
-      "before": "GREEN",
-      "after": null,
-      "detail": "not in this run"
+      "kind": "new",
+      "before": null,
+      "after": "GREEN",
+      "detail": "not in previous run"
     },
     {
       "product": "Lip Glaze",
-      "kind": "removed",
-      "before": "YELLOW",
-      "after": null,
-      "detail": "not in this run"
+      "kind": "new",
+      "before": null,
+      "after": "YELLOW",
+      "detail": "not in previous run"
     },
     {
       "product": "Much Brighter Plumper Skin",
-      "kind": "removed",
-      "before": "NOT COMPARABLE",
-      "after": null,
-      "detail": "not in this run"
+      "kind": "new",
+      "before": null,
+      "after": "NOT COMPARABLE",
+      "detail": "not in previous run"
     },
     {
       "product": "Pinky Lip Glaze",
-      "kind": "removed",
-      "before": "GREEN",
-      "after": null,
-      "detail": "not in this run"
+      "kind": "new",
+      "before": null,
+      "after": "GREEN",
+      "detail": "not in previous run"
     },
     {
       "product": "Properly Clean Refill",
-      "kind": "removed",
-      "before": "GREEN",
-      "after": null,
-      "detail": "not in this run"
+      "kind": "new",
+      "before": null,
+      "after": "GREEN",
+      "detail": "not in previous run"
     },
     {
       "product": "Soft and Creamy",
-      "kind": "removed",
-      "before": "YELLOW",
-      "after": null,
-      "detail": "not in this run"
+      "kind": "new",
+      "before": null,
+      "after": "YELLOW",
+      "detail": "not in previous run"
     },
     {
       "product": "The Skintroduction",
-      "kind": "removed",
-      "before": "NOT COMPARABLE",
-      "after": null,
-      "detail": "not in this run"
+      "kind": "new",
+      "before": null,
+      "after": "NOT COMPARABLE",
+      "detail": "not in previous run"
     },
     {
       "product": "The Skintroduction Oily",
-      "kind": "removed",
-      "before": "NOT COMPARABLE",
-      "after": null,
-      "detail": "not in this run"
+      "kind": "new",
+      "before": null,
+      "after": "NOT COMPARABLE",
+      "detail": "not in previous run"
+    },
+    {
+      "product": "Things Will Calm Down Now",
+      "kind": "changed",
+      "before": "YELLOW",
+      "after": "GREEN",
+      "detail": "colour YELLOW -> GREEN; source1 categories -Synthetic fragrance/parfum"
     },
     {
       "product": "Twelve Days Of Go-To",
-      "kind": "removed",
-      "before": "NOT COMPARABLE",
-      "after": null,
-      "detail": "not in this run"
+      "kind": "new",
+      "before": null,
+      "after": "NOT COMPARABLE",
+      "detail": "not in previous run"
     },
     {
       "product": "Very Lightweight Moisturiser Refill",
-      "kind": "removed",
-      "before": "YELLOW",
-      "after": null,
-      "detail": "not in this run"
+      "kind": "new",
+      "before": null,
+      "after": "YELLOW",
+      "detail": "not in previous run"
     }
   ]
 };
