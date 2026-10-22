@@ -65,14 +65,16 @@ NAUGHTY_LIST = {
         # Synthetic aroma chemicals (EU mandatory-disclosure allergens) that do
         # not occur in essential oils, so their presence means a synthetic
         # fragrance was added. Linalool, limonene, citronellol, geraniol,
-        # eugenol, citral, farnesol, coumarin, benzyl benzoate and the other
-        # allergens that essential oils contain naturally are deliberately NOT here.
+        # eugenol, citral, farnesol, coumarin, benzyl benzoate, benzyl salicylate
+        # and the other allergens that essential oils contain naturally are
+        # deliberately NOT here. (Benzyl salicylate removed Oct 2026: it occurs
+        # naturally in ylang-ylang and jasmine oils - it flagged Things Will Calm
+        # Down Now, whose Mecca list declares it next to Cananga Odorata oil.)
         r"\bhexyl cinnamal\b",
         r"\bamyl cinnamal\b",
         r"\bamylcinnamyl alcohol\b",
         r"\balpha-isomethyl ionone\b",
         r"\bhydroxycitronellal\b",
-        r"\bbenzyl salicylate\b",
         r"\bmethyl 2-octynoate\b",
     ],
     "SLS/SLES": [
@@ -319,7 +321,7 @@ SHOULD_NOT_HIT = [
     "Sodium Lauryl Sulfoacetate", "Sodium Lauroyl Sarcosinate", "Sodium Cocoyl Isethionate",
     "Sodium C14-16 Olefin Sulfonate", "Disodium Laureth Sulfosuccinate",
     "Natural Fragrance", "Fragrance (Natural)", "Parfum (natural essential oils)",
-    "Linalool", "Limonene", "Citronellol", "Geraniol", "Benzyl Benzoate", "Coumarin",
+    "Linalool", "Limonene", "Citronellol", "Geraniol", "Benzyl Benzoate", "Benzyl Salicylate", "Coumarin",
     "Cellulose Acetate Phthalate", "Hypromellose Phthalate", "Dimethyl Isophthalate",
     "Tocopherol", "Tocopheryl Acetate", "Butylated Hydroxytoluene", "Toluene-2,5-Diamine",
     "Toluenesulfonamide", "Isoparaffin", "C13-14 Isoparaffin", "Isododecane", "Squalane",
