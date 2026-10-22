@@ -357,12 +357,17 @@ class LLMMaterialExtractor:
         if self.disabled_reason:
             return None
         try:
-            resp = common.GEMINI_CLIENT.models.generate_content(
-                model=self.model, contents=text,
-                config=common.types.GenerateContentConfig(
-                    system_instruction=MATERIALS_PROMPT,
-                    response_mime_type="application/json", temperature=0))
-            raw = (resp.text or "").strip()
+            def ask():
+                resp = common.GEMINI_CLIENT.models.generate_content(
+                    model=self.model, contents=text,
+                    config=common.types.GenerateContentConfig(
+                        system_instruction=MATERIALS_PROMPT,
+                        response_mime_type="application/json", temperature=0))
+                return (resp.text or "").strip() or None
+
+            raw = common.llm_cached(self.model, "materials|" + MATERIALS_PROMPT + "|" + text, ask)
+            if raw is None:
+                raise ValueError("no answer (offline mode, or empty reply)")
             data, _ = json.JSONDecoder().raw_decode(raw)
             if not isinstance(data, list) or not all(isinstance(x, str) for x in data):
                 raise ValueError(f"unexpected materials reply: {raw!r}")

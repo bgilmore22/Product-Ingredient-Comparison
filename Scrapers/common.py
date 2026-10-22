@@ -3,6 +3,10 @@ Scrapers/common.py - shared helpers used by every scraper and by the pipeline.
 
   - fetch(): one HTTP GET for the whole project, with retries on network
     errors and on 429/5xx so a DNS blip or a rate-limit doesn't fail a pair.
+    Every response is cached on disk (cache/http/) so a re-run within
+    CACHE_MAX_AGE_HOURS re-reads the saved page instead of hitting the site.
+  - llm_cached(): disk cache (cache/llm/) around every Gemini text call, so a
+    re-run never pays for the same prompt twice. Vision calls use it too.
   - split_ingredients(): label text -> list of ingredient strings. Aware of
     brackets and of commas inside names ("1,2-Hexanediol"), strips
     "Ingredients:" and "May contain (+/-)" prefixes.
@@ -10,18 +14,21 @@ Scrapers/common.py - shared helpers used by every scraper and by the pipeline.
   - get_packaging_from_images(): Gemini vision fallback, in-memory only.
   - build_product_record(): the dict every scraper hands to the pipeline.
 
-Nothing here writes files. The old save_product_json / data/ helpers were
-left over from the standalone build and have been removed.
+The only files written here are the cache/ entries described above. Delete
+the cache/ folder (or run with --refresh) to force everything to be fetched
+again; run with --offline to refuse all network and use the cache only.
 """
 from __future__ import annotations
 
 import concurrent.futures
+import hashlib
 import json
 import os
 import re
 import time
 from datetime import datetime, timezone
-from typing import Optional
+from pathlib import Path
+from typing import Callable, Optional
 
 import httpx
 from dotenv import load_dotenv
@@ -55,12 +62,137 @@ HEADERS = {
 RETRY_STATUS = {429, 500, 502, 503, 504}
 
 
+# ---------------------------------------------------------------------------
+# DISK CACHE
+# ---------------------------------------------------------------------------
+# cache/http/<host>/<sha1(url)>.bin + .json   - every fetched page/sitemap/image
+# cache/llm/<sha1(model+prompt)>.json         - every Gemini answer
+#
+# Modes (set once by run_pipeline.py from its command line):
+#   "use"     default - read a cached copy if it is younger than CACHE_MAX_AGE_HOURS,
+#             otherwise fetch and store
+#   "refresh" always fetch, always store (ignore what is cached)
+#   "offline" never touch the network; a URL that is not cached raises CacheMiss
+CACHE_DIR = Path(os.getenv("PIPELINE_CACHE_DIR", "cache"))
+CACHE_MAX_AGE_HOURS = float(os.getenv("PIPELINE_CACHE_MAX_AGE_HOURS", "24"))
+CACHE_MODE = "use"
+CACHE_STATS = {"http_hit": 0, "http_miss": 0, "llm_hit": 0, "llm_miss": 0}
+
+
+class CacheMiss(Exception):
+    """Raised in offline mode for a URL/prompt that has never been fetched."""
+
+
+def set_cache_mode(mode: str) -> None:
+    if mode not in ("use", "refresh", "offline"):
+        raise ValueError(f"unknown cache mode {mode!r}")
+    global CACHE_MODE
+    CACHE_MODE = mode
+
+
+def _cache_key(*parts: str) -> str:
+    return hashlib.sha1("\x1f".join(parts).encode("utf-8")).hexdigest()
+
+
+def _is_fresh(meta_path: Path) -> bool:
+    if CACHE_MODE == "offline":
+        return meta_path.exists()
+    if CACHE_MODE == "refresh" or not meta_path.exists():
+        return False
+    age_hours = (time.time() - meta_path.stat().st_mtime) / 3600
+    return age_hours <= CACHE_MAX_AGE_HOURS
+
+
+class CachedResponse:
+    """The subset of httpx.Response the project uses (.text, .content,
+    .status_code, .headers, .url), rebuilt from the cache files."""
+
+    def __init__(self, url: str, content: bytes, status_code: int, headers: dict, encoding: Optional[str]):
+        self.url = url
+        self.content = content
+        self.status_code = status_code
+        self.headers = headers
+        self.encoding = encoding or "utf-8"
+
+    @property
+    def text(self) -> str:
+        return self.content.decode(self.encoding, errors="replace")
+
+
+def _http_paths(url: str) -> tuple[Path, Path]:
+    host = re.sub(r"[^a-z0-9.-]", "_", (httpx.URL(url).host or "unknown").lower())
+    base = CACHE_DIR / "http" / host / _cache_key(url)
+    return base.with_suffix(".bin"), base.with_suffix(".json")
+
+
 def fetch(url: str, *, timeout: float = 20.0, retries: int = 3, backoff: float = 2.0,
+          headers: Optional[dict] = None):
+    """GET `url` through the disk cache. Returns an httpx.Response on a live
+    fetch or a CachedResponse from the cache; both have .text/.content/
+    .status_code/.headers. See the DISK CACHE notes above for the modes."""
+    body_path, meta_path = _http_paths(url)
+    if _is_fresh(meta_path) and body_path.exists():
+        try:
+            meta = json.loads(meta_path.read_text("utf-8"))
+            CACHE_STATS["http_hit"] += 1
+            return CachedResponse(url, body_path.read_bytes(), meta.get("status_code", 200),
+                                  meta.get("headers", {}), meta.get("encoding"))
+        except (OSError, ValueError):
+            pass  # unreadable entry: fall through to a real fetch
+    if CACHE_MODE == "offline":
+        raise CacheMiss(f"offline mode and no cached copy of {url}")
+    CACHE_STATS["http_miss"] += 1
+    resp = _fetch_network(url, timeout=timeout, retries=retries, backoff=backoff, headers=headers)
+    try:
+        body_path.parent.mkdir(parents=True, exist_ok=True)
+        body_path.write_bytes(resp.content)
+        meta_path.write_text(json.dumps({
+            "url": url, "final_url": str(resp.url), "status_code": resp.status_code,
+            "encoding": resp.encoding, "fetched_at": datetime.now(timezone.utc).isoformat(),
+            "headers": {k: v for k, v in resp.headers.items() if k.lower() in ("content-type", "last-modified", "etag")},
+        }, indent=1), "utf-8")
+    except OSError as exc:
+        print(f"cache write failed for {url}: {exc}")
+    return resp
+
+
+def llm_cached(model: str, prompt_key: str, call: Callable[[], Optional[str]]) -> Optional[str]:
+    """Run `call` (which returns the model's raw text, or None on failure) unless
+    the same model+prompt was answered before, in which case return the saved
+    answer. Failures are never cached. In offline mode an unanswered prompt
+    returns None (the caller's normal failure path) rather than raising."""
+    path = CACHE_DIR / "llm" / f"{_cache_key(model, prompt_key)}.json"
+    if CACHE_MODE != "refresh" and path.exists():
+        try:
+            CACHE_STATS["llm_hit"] += 1
+            return json.loads(path.read_text("utf-8"))["text"]
+        except (OSError, ValueError, KeyError):
+            pass
+    if CACHE_MODE == "offline":
+        return None
+    CACHE_STATS["llm_miss"] += 1
+    text = call()
+    if text is not None:
+        try:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(json.dumps({"model": model, "key": prompt_key[:200], "text": text,
+                                        "answered_at": datetime.now(timezone.utc).isoformat()}, indent=1), "utf-8")
+        except OSError as exc:
+            print(f"llm cache write failed: {exc}")
+    return text
+
+
+def cache_summary() -> str:
+    s = CACHE_STATS
+    return (f"cache: pages {s['http_hit']} from cache, {s['http_miss']} fetched; "
+            f"Gemini {s['llm_hit']} from cache, {s['llm_miss']} called (mode {CACHE_MODE})")
+
+
+def _fetch_network(url: str, *, timeout: float = 20.0, retries: int = 3, backoff: float = 2.0,
           headers: Optional[dict] = None) -> httpx.Response:
-    """GET `url`, retrying on transport errors (DNS, reset, timeout) and on
+    """The real GET. Retries on transport errors (DNS, reset, timeout) and on
     transient status codes (429, 5xx). A 4xx other than 429 is raised at once -
-    a 404 will never succeed on retry. Returns the Response; callers use
-    .text or .content."""
+    a 404 will never succeed on retry."""
     last_exc: Optional[Exception] = None
     for attempt in range(1, retries + 1):
         try:
@@ -286,9 +418,13 @@ def get_packaging_from_images(image_urls: list[str], max_concurrent: int = 15,
                 mime = {"jpg": "image/jpeg", "jpeg": "image/jpeg", "png": "image/png",
                         "webp": "image/webp"}.get(ext, "image/jpeg")
             image_part = types.Part.from_bytes(data=resp.content, mime_type=mime)
-            result = GEMINI_CLIENT.models.generate_content(
-                model=GEMINI_MODEL, contents=[image_part, _VISION_PROMPT], config=config)
-            raw = (result.text or "").strip()
+
+            def ask():
+                result = GEMINI_CLIENT.models.generate_content(
+                    model=GEMINI_MODEL, contents=[image_part, _VISION_PROMPT], config=config)
+                return (result.text or "").strip() or None
+
+            raw = llm_cached(GEMINI_MODEL, "vision|" + url + "|" + _VISION_PROMPT, ask)
             if not raw:
                 return []
             data, _ = json.JSONDecoder().raw_decode(raw)

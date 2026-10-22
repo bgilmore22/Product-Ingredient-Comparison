@@ -150,9 +150,10 @@ def find_pairs():
 # STAGE 5: scrape both pages live and analyse
 # ---------------------------------------------------------------------------
 def fetch(url):
-    text = common.fetch(url, timeout=20).text
-    time.sleep(DELAY_SECONDS)
-    return text
+    resp = common.fetch(url, timeout=20)
+    if not isinstance(resp, common.CachedResponse):
+        time.sleep(DELAY_SECONDS)          # be polite to the live site; no need to wait for a cached page
+    return resp.text
 
 
 def scrape_record(scraper, url):
@@ -245,9 +246,13 @@ def llm_kit_verdict(titles, heads):
             config = common.types.GenerateContentConfig(response_mime_type="application/json", temperature=0)
             prompt = _KIT_PROMPT.format(titles="\n".join(f"- {a}: {b}" for a, b in titles),
                                         heads="\n".join(f"- {a}: {b}" for a, b in heads))
-            result = common.GEMINI_CLIENT.models.generate_content(
-                model=common.GEMINI_MODEL, contents=[prompt], config=config)
-            data, _ = json.JSONDecoder().raw_decode((result.text or "").strip())
+            def ask():
+                result = common.GEMINI_CLIENT.models.generate_content(
+                    model=common.GEMINI_MODEL, contents=[prompt], config=config)
+                return (result.text or "").strip() or None
+
+            raw = common.llm_cached(common.GEMINI_MODEL, "kit|" + prompt, ask)
+            data, _ = json.JSONDecoder().raw_decode(raw) if raw else ({}, 0)
             if isinstance(data, dict) and str(data.get("verdict", "")).strip().lower() == "kit":
                 verdict = "kit"
         except Exception as exc:
@@ -418,7 +423,21 @@ def write_dashboard_data(rows):
     print(f"{DASHBOARD_DATA_FILE.name}: {len(rows)} products")
 
 
-def main():
+def parse_args(argv=None):
+    import argparse
+    ap = argparse.ArgumentParser(description="Scrape, match, compare and score Go-To products on Mecca vs gotoskincare.com")
+    mode = ap.add_mutually_exclusive_group()
+    mode.add_argument("--refresh", action="store_true",
+                      help="ignore the cache: fetch every page and ask Gemini again (default: reuse anything "
+                           f"cached in the last {common.CACHE_MAX_AGE_HOURS:g}h)")
+    mode.add_argument("--offline", action="store_true",
+                      help="never touch the network or Gemini: run entirely from the cache/ folder")
+    return ap.parse_args(argv)
+
+
+def main(argv=None):
+    args = parse_args(argv)
+    common.set_cache_mode("refresh" if args.refresh else "offline" if args.offline else "use")
     extractor = LLMMaterialExtractor()
     pairs = find_pairs()
 
@@ -451,6 +470,7 @@ def main():
 
     write_summary(rows)
     write_dashboard_data(rows)
+    print(common.cache_summary())
     print(f"done {len(rows) - skipped} scored, not comparable {skipped}, with a failed page {failures}")
     return 1 if failures else 0
 

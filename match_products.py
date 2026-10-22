@@ -106,13 +106,18 @@ def llm_verify(t1, t2):
     if common.GEMINI_CLIENT is None or common.types is None:
         return "uncertain"
     config = common.types.GenerateContentConfig(response_mime_type="application/json", temperature=0)
-    try:
+    prompt = _VERIFY_PROMPT.format(t1=t1, t2=t2)
+
+    def ask():
         result = common.GEMINI_CLIENT.models.generate_content(
-            model=common.GEMINI_MODEL,
-            contents=[_VERIFY_PROMPT.format(t1=t1, t2=t2)],
-            config=config,
-        )
-        data, _ = json.JSONDecoder().raw_decode((result.text or "").strip())
+            model=common.GEMINI_MODEL, contents=[prompt], config=config)
+        return (result.text or "").strip() or None
+
+    try:
+        raw = common.llm_cached(common.GEMINI_MODEL, "verify|" + prompt, ask)
+        if raw is None:
+            return "uncertain"
+        data, _ = json.JSONDecoder().raw_decode(raw)
         verdict = str(data.get("verdict", "uncertain")).strip().lower() if isinstance(data, dict) else "uncertain"
         return verdict if verdict in ("same", "different", "uncertain") else "uncertain"
     except Exception as exc:
