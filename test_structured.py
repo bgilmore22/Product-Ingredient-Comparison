@@ -21,9 +21,11 @@ def test_product_json_url():
         "https://gotoskincare.com/products/face-hero.json"
 
 
-def test_kit_signals_from_type_and_tags():
-    assert "product_type" in goto.kit_signals({"product_type": "Gift Sets", "tags": []})
-    assert "tag" in goto.kit_signals({"product_type": "Skincare", "tags": "bestseller, bundle"})
+def test_kit_signals_from_product_type_only():
+    assert "product_type" in goto.kit_signals({"product_type": "Gifts & Sets", "tags": []})
+    # live-store merchandising tags on SINGLE products - must not skip
+    assert goto.kit_signals({"product_type": "Face Oil", "tags": ["secret skincare set", "special-bundle"]}) is None
+    assert goto.kit_signals({"product_type": "Skincare", "tags": "bestseller, bundle"}) is None
     assert goto.kit_signals({"product_type": "Moisturiser", "tags": ["face", "mini"]}) is None
     assert goto.kit_signals(None) is None
 

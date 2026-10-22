@@ -156,18 +156,20 @@ def _tags(product: dict) -> list[str]:
 
 
 def kit_signals(product: Optional[dict]) -> Optional[str]:
-    """A reason string if Shopify's own product_type or tags say this listing
-    is a kit/set/bundle, else None. The store's classification beats any
-    guess from the page text."""
+    """A reason string if Shopify's own product_type says this listing is a
+    kit/set/bundle ('Gifts & Sets'), else None. The store's classification
+    beats any guess from the page text.
+
+    Tags are deliberately NOT used: on the live store single products carry
+    merchandising tags like 'secret skincare set' and 'special-bundle'
+    (meaning "appears in a set"), and treating those as kit signals skipped
+    34 of 50 products on 22 Oct 2026. Tags are still kept on the record."""
     if not product:
         return None
     ptype = str(product.get("product_type") or "").strip()
     m = _KIT_TYPE.search(ptype)
     if m:
         return f"Shopify product_type '{ptype}'"
-    for tag in _tags(product):
-        if _KIT_TYPE.search(tag):
-            return f"Shopify tag '{tag}'"
     return None
 
 
