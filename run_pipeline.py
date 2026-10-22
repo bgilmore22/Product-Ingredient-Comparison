@@ -29,6 +29,8 @@ from sources import DEFAULT_BRAND, DEFAULT_RETAILER, SOURCES, Source
 ROOT = Path(__file__).resolve().parent
 SUMMARY_FILE = ROOT / "summary.csv"
 DASHBOARD_DATA_FILE = ROOT / "dashboard_data.js"
+RUNS_DIR = ROOT / "runs"                 # one <timestamp>.json + .log per run; in_progress.json while running
+PROGRESS_FILE = RUNS_DIR / "in_progress.json"
 FUZZY_THRESHOLD = 0.4                    # SequenceMatcher ratio on normalised slugs
 MAX_LLM_CANDIDATES = 3                   # per Go-To product, best-scored first
 
@@ -453,7 +455,7 @@ def write_audit(audit):
     print(f"{AUDIT_FILE.name}: {len(audit)} distinct ingredient/site lines, {flagged} flagged")
 
 
-def write_dashboard_data(rows, audit=None):
+def write_dashboard_data(rows, audit=None, previous=None, changes=None, stats=None):
     """A JS file (not JSON) so dashboard.html can load it with a plain
     <script src="dashboard_data.js"> tag - opening dashboard.html directly as
     a file:// URL cannot fetch() a local JSON file, but a <script> include
@@ -463,12 +465,130 @@ def write_dashboard_data(rows, audit=None):
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "products": rows,
         "audit": audit or [],
+        "stats": stats or {},
+        "llm_usage": common.LLM_USAGE,
+        "cache_stats": common.CACHE_STATS,
+        "previous_run": ({"generated_at": previous.get("generated_at"), "stamp": previous.get("stamp"),
+                          "stats": previous.get("stats", {})} if previous else None),
+        "changes": changes or [],
     }
     DASHBOARD_DATA_FILE.write_text(
         "window.PIPELINE_DATA = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n",
         encoding="utf-8",
     )
     print(f"{DASHBOARD_DATA_FILE.name}: {len(rows)} products")
+
+
+# ---------------------------------------------------------------------------
+# RUN HISTORY: runs/<timestamp>.json keeps every run's rows, so the dashboard
+# can show what changed since the last one, and runs/<timestamp>.log keeps
+# everything printed. runs/in_progress.json is the checkpoint --resume reads.
+# ---------------------------------------------------------------------------
+def _run_stamp():
+    return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+
+
+def previous_run(exclude=None):
+    """The most recent saved run (dict) other than `exclude`, or None."""
+    if not RUNS_DIR.exists():
+        return None
+    for path in sorted(RUNS_DIR.glob("*.json"), reverse=True):
+        if path.name == PROGRESS_FILE.name or path == exclude:
+            continue
+        try:
+            return json.loads(path.read_text("utf-8"))
+        except (OSError, ValueError):
+            continue
+    return None
+
+
+def _cats_of(row, side):
+    c = row.get(f"{side}_categories")
+    return sorted(c) if isinstance(c, dict) else [x.strip() for x in str(c or "").split(";") if x.strip() and x.strip() != NOT_FOUND]
+
+
+def diff_runs(current_rows, previous):
+    """What changed since `previous` (a saved run dict), product by product:
+    colour changes, category changes, products new or gone."""
+    if not previous:
+        return []
+    before = {r["product"]: r for r in previous.get("products", [])}
+    after = {r["product"]: r for r in current_rows}
+    changes = []
+    for name in sorted(set(before) | set(after)):
+        b, a = before.get(name), after.get(name)
+        if b is None:
+            changes.append({"product": name, "kind": "new", "before": None, "after": a["colour"], "detail": "not in previous run"})
+        elif a is None:
+            changes.append({"product": name, "kind": "removed", "before": b["colour"], "after": None, "detail": "not in this run"})
+        else:
+            details = []
+            if a["colour"] != b["colour"]:
+                details.append(f"colour {b['colour']} -> {a['colour']}")
+            for side in ("source1", "source2"):
+                cb, ca = set(_cats_of(b, side)), set(_cats_of(a, side))
+                if cb != ca:
+                    gained, lost = sorted(ca - cb), sorted(cb - ca)
+                    details.append(f"{side} categories " + ", ".join(
+                        ([f"+{g}" for g in gained] + [f"-{l}" for l in lost])))
+            if details:
+                changes.append({"product": name, "kind": "changed", "before": b["colour"], "after": a["colour"],
+                                "detail": "; ".join(details)})
+    return changes
+
+
+def save_run(rows, audit, args, stats, stamp):
+    RUNS_DIR.mkdir(exist_ok=True)
+    path = RUNS_DIR / f"{stamp}.json"
+    payload = {"generated_at": datetime.now(timezone.utc).isoformat(), "stamp": stamp,
+               "brand": args.brand, "retailer": args.retailer,
+               "cache_mode": common.CACHE_MODE, "stats": stats,
+               "llm_usage": common.LLM_USAGE, "cache_stats": common.CACHE_STATS,
+               "products": rows, "audit_flagged": sum(1 for a in audit if a["category"])}
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=1), "utf-8")
+    print(f"{path.relative_to(ROOT)}: run saved ({len(rows)} products)")
+    return path
+
+
+class _Tee:
+    """Everything printed also goes to runs/<stamp>.log."""
+
+    def __init__(self, stream, log):
+        self.stream, self.log = stream, log
+
+    def write(self, text):
+        self.stream.write(text)
+        self.log.write(text)
+        self.log.flush()
+
+    def flush(self):
+        self.stream.flush()
+        self.log.flush()
+
+    def __getattr__(self, name):
+        return getattr(self.stream, name)
+
+
+def _checkpoint(rows, pairs_done):
+    """Written after every product so --resume can pick up here."""
+    RUNS_DIR.mkdir(exist_ok=True)
+    PROGRESS_FILE.write_text(json.dumps({"saved_at": datetime.now(timezone.utc).isoformat(),
+                                         "brand": BRAND.key, "retailer": RETAILER.key,
+                                         "pairs_done": sorted(pairs_done), "rows": rows},
+                                        ensure_ascii=False), "utf-8")
+
+
+def _load_checkpoint():
+    if not PROGRESS_FILE.exists():
+        return None
+    try:
+        cp = json.loads(PROGRESS_FILE.read_text("utf-8"))
+    except (OSError, ValueError):
+        return None
+    if cp.get("brand") != BRAND.key or cp.get("retailer") != RETAILER.key:
+        print(f"ignoring checkpoint for a different pair ({cp.get('brand')} vs {cp.get('retailer')})")
+        return None
+    return cp
 
 
 def parse_args(argv=None):
@@ -484,6 +604,8 @@ def parse_args(argv=None):
                            f"cached in the last {common.CACHE_MAX_AGE_HOURS:g}h)")
     mode.add_argument("--offline", action="store_true",
                       help="never touch the network or Gemini: run entirely from the cache/ folder")
+    ap.add_argument("--resume", action="store_true",
+                    help="continue the last interrupted run from runs/in_progress.json instead of starting over")
     return ap.parse_args(argv)
 
 
@@ -491,17 +613,42 @@ def main(argv=None):
     args = parse_args(argv)
     set_sources(args.brand, args.retailer)
     common.set_cache_mode("refresh" if args.refresh else "offline" if args.offline else "use")
+    stamp = _run_stamp()
+    RUNS_DIR.mkdir(exist_ok=True)
+    log = (RUNS_DIR / f"{stamp}.log").open("w", encoding="utf-8")
+    sys.stdout, sys.stderr = _Tee(sys.__stdout__, log), _Tee(sys.__stderr__, log)
+    try:
+        return _run(args, stamp)
+    finally:
+        sys.stdout, sys.stderr = sys.__stdout__, sys.__stderr__
+        log.close()
+
+
+def _run(args, stamp):
+    print(f"run {stamp}: {BRAND.name} vs {RETAILER.name} (cache {common.CACHE_MODE})")
     extractor = LLMMaterialExtractor()
     pairs = find_pairs()
 
-    rows, results, failures, skipped = [], [], 0, 0
+    rows, results, failures, skipped, done = [], [], 0, 0, set()
+    cp = _load_checkpoint() if args.resume else None
+    if cp:
+        rows, done = cp["rows"], set(cp["pairs_done"])
+        skipped = sum(1 for r in rows if r["colour"] == "NOT COMPARABLE")
+        print(f"resuming: {len(done)} of {len(pairs)} products already done (checkpoint {cp['saved_at']})")
+    elif PROGRESS_FILE.exists():
+        print("note: runs/in_progress.json exists from an interrupted run; starting over (use --resume to continue it)")
+
     for i, (gu, mu, method) in enumerate(pairs, 1):
         slug = slug_for(gu)
+        if gu in done:
+            continue
         if has_review_flag(BRAND.slug(gu)) or has_review_flag(RETAILER.slug(mu)):
             rows.append(to_row(not_comparable_result(
                 gu, mu, method, "not comparable - bundle/kit/set listing, not a single product")))
             skipped += 1
             print(f"[{i}/{len(pairs)}] skip {slug} (bundle/kit/set - not comparable)")
+            done.add(gu)
+            _checkpoint(rows, done)
             continue
         try:
             result = run_one(gu, mu, method, extractor)
@@ -521,12 +668,29 @@ def main(argv=None):
             print(f"[{i}/{len(pairs)}] skip {slug} ({row['note']})")
         else:
             print(f"[{i}/{len(pairs)}] ok   {slug} ({row['colour']})")
+        done.add(gu)
+        _checkpoint(rows, done)
 
+    # the audit needs the full analysis dicts, which a checkpoint doesn't keep:
+    # after a --resume it covers only the products scored in this session
     audit = build_audit(results)
+    if cp:
+        print(f"note: ingredient_audit.csv covers the {len(results)} products scored after resuming")
+    stats = {"total": len(rows), "scored": len(rows) - skipped, "not_comparable": skipped, "failed_pages": failures}
+    prev = previous_run()
+    changes = diff_runs(rows, prev)
     write_summary(rows)
     write_audit(audit)
-    write_dashboard_data(rows, audit)
+    write_dashboard_data(rows, audit, prev, changes, stats)
+    save_run(rows, audit, args, stats, stamp)
+    if PROGRESS_FILE.exists():
+        PROGRESS_FILE.unlink()
+    if prev:
+        print(f"since last run ({prev.get('stamp', '?')}): {len(changes)} product(s) changed"
+              + (" - " + "; ".join(f"{c['product']}: {c['detail']}" for c in changes[:8]) if changes else "")
+              + (" ..." if len(changes) > 8 else ""))
     print(common.cache_summary())
+    print(common.llm_usage_summary())
     print(f"done {len(rows) - skipped} scored, not comparable {skipped}, with a failed page {failures}")
     return 1 if failures else 0
 

@@ -5,3 +5,4 @@ venv/
 .venv/
 .DS_Store
 cache/
+runs/

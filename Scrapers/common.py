@@ -77,6 +77,11 @@ CACHE_DIR = Path(os.getenv("PIPELINE_CACHE_DIR", "cache"))
 CACHE_MAX_AGE_HOURS = float(os.getenv("PIPELINE_CACHE_MAX_AGE_HOURS", "24"))
 CACHE_MODE = "use"
 CACHE_STATS = {"http_hit": 0, "http_miss": 0, "llm_hit": 0, "llm_miss": 0}
+# Gemini calls this run, by kind (the part of the prompt key before "|":
+# verify / kit / materials / vision): how many were really made vs served from
+# cache. Call counts are the cost driver; token counts are not exposed by the
+# cached answers so they are deliberately not estimated.
+LLM_USAGE: dict = {}
 
 
 class CacheMiss(Exception):
@@ -162,16 +167,22 @@ def llm_cached(model: str, prompt_key: str, call: Callable[[], Optional[str]]) -
     answer. Failures are never cached. In offline mode an unanswered prompt
     returns None (the caller's normal failure path) rather than raising."""
     path = CACHE_DIR / "llm" / f"{_cache_key(model, prompt_key)}.json"
+    kind = prompt_key.split("|", 1)[0] if "|" in prompt_key else "other"
+    usage = LLM_USAGE.setdefault(kind, {"called": 0, "cached": 0, "failed": 0})
     if CACHE_MODE != "refresh" and path.exists():
         try:
             CACHE_STATS["llm_hit"] += 1
+            usage["cached"] += 1
             return json.loads(path.read_text("utf-8"))["text"]
         except (OSError, ValueError, KeyError):
             pass
     if CACHE_MODE == "offline":
         return None
     CACHE_STATS["llm_miss"] += 1
+    usage["called"] += 1
     text = call()
+    if text is None:
+        usage["failed"] += 1
     if text is not None:
         try:
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -186,6 +197,15 @@ def cache_summary() -> str:
     s = CACHE_STATS
     return (f"cache: pages {s['http_hit']} from cache, {s['http_miss']} fetched; "
             f"Gemini {s['llm_hit']} from cache, {s['llm_miss']} called (mode {CACHE_MODE})")
+
+
+def llm_usage_summary() -> str:
+    if not LLM_USAGE:
+        return "Gemini: no calls this run"
+    parts = [f"{k} {v['called']} called" + (f" ({v['failed']} failed)" if v["failed"] else "") + f", {v['cached']} cached"
+             for k, v in sorted(LLM_USAGE.items())]
+    total = sum(v["called"] for v in LLM_USAGE.values())
+    return f"Gemini: {total} billable calls this run - " + "; ".join(parts)
 
 
 def _fetch_network(url: str, *, timeout: float = 20.0, retries: int = 3, backoff: float = 2.0,

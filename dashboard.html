@@ -16,6 +16,7 @@
   }
   @media (prefers-color-scheme: dark) {
     :root {
+      --red: #f0776a; --yellow: #d9b84a; --green: #5fc07a; --grey: #a3a9b5;
       --red-bg: #3a1f1d; --yellow-bg: #3a3319; --green-bg: #16321f; --grey-bg: #2a2d33;
       --bg: #16181d; --panel: #1d2026; --border: #2c2f37;
       --text: #eef0f3; --text-dim: #9aa1ad;
@@ -24,7 +25,7 @@
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0; padding: 24px;
+    margin: 0; padding: 24px 16px;
     background: var(--bg); color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -36,22 +37,26 @@
   .stats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
   .stat {
     background: var(--panel); border: 1px solid var(--border); border-radius: 8px;
-    padding: 10px 14px; min-width: 90px;
+    padding: 10px 14px; min-width: 90px; cursor: pointer; user-select: none;
   }
+  .stat:hover { border-color: var(--accent); }
+  .stat.active { outline: 2px solid var(--accent); }
+  .stat.TOTAL { cursor: default; }
+  .stat.TOTAL:hover { border-color: var(--border); }
   .stat .n { font-size: 20px; font-weight: 700; }
   .stat .l { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .04em; }
   .stat.RED .n { color: var(--red); }
   .stat.YELLOW .n { color: var(--yellow); }
   .stat.GREEN .n { color: var(--green); }
-  .stat.OTHER .n { color: var(--grey); }
+  .stat.NOT_FOUND .n, .stat.NOT_COMPARABLE .n { color: var(--grey); }
 
   .controls {
     display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
-    margin-bottom: 14px; padding: 12px; background: var(--panel);
+    margin-bottom: 8px; padding: 12px; background: var(--panel);
     border: 1px solid var(--border); border-radius: 8px;
   }
   input[type="search"] {
-    flex: 1; min-width: 180px; padding: 7px 10px; border-radius: 6px;
+    flex: 1; min-width: 200px; padding: 7px 10px; border-radius: 6px;
     border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 13.5px;
   }
   .chip-group { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -65,56 +70,82 @@
   .chip.active.YELLOW { background: var(--yellow); }
   .chip.active.GREEN { background: var(--green); }
   .chip.active.ALL, .chip.active.NOT_FOUND, .chip.active.NOT_COMPARABLE { background: var(--accent); }
-  select {
+  select, button {
     padding: 7px 10px; border-radius: 6px; border: 1px solid var(--border);
-    background: var(--bg); color: var(--text); font-size: 13px;
+    background: var(--bg); color: var(--text); font-size: 13px; cursor: pointer;
   }
-  label.toggle { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-dim); cursor: pointer; }
+  button:hover { border-color: var(--accent); }
+  label.toggle { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-dim); cursor: pointer; white-space: nowrap; }
+  .showing { color: var(--text-dim); font-size: 12.5px; margin: 0 0 10px 2px; }
 
   table { width: 100%; border-collapse: collapse; }
   thead th {
     text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em;
     color: var(--text-dim); padding: 8px 10px; border-bottom: 2px solid var(--border);
-    cursor: pointer; user-select: none; white-space: nowrap;
+    user-select: none; white-space: nowrap;
   }
-  thead th:hover { color: var(--text); }
-  thead th .arrow { font-size: 10px; margin-left: 3px; opacity: .6; }
+  thead th[data-sort] { cursor: pointer; }
+  thead th[data-sort]:hover { color: var(--text); }
+  thead th .arrow { font-size: 10px; margin-left: 3px; opacity: .7; }
   tbody tr.row { cursor: pointer; border-bottom: 1px solid var(--border); }
-  tbody tr.row:hover { background: var(--panel); }
+  tbody tr.row:hover, tbody tr.row:focus { background: var(--panel); outline: none; }
+  tbody tr.row.open { background: var(--panel); }
   tbody td { padding: 9px 10px; vertical-align: top; }
   .prod-name { font-weight: 600; }
-  .method-tag { font-size: 10.5px; color: var(--text-dim); margin-left: 6px; font-weight: 400; }
+  .caret { display: inline-block; width: 14px; color: var(--text-dim); font-size: 11px; }
   .note { color: var(--text-dim); font-size: 12px; }
+  .col-cats { max-width: 320px; }
 
   .badge {
     display: inline-block; padding: 3px 10px; border-radius: 999px;
-    font-size: 11.5px; font-weight: 700; letter-spacing: .02em;
+    font-size: 11.5px; font-weight: 700; letter-spacing: .02em; white-space: nowrap;
   }
   .badge.RED { background: var(--red-bg); color: var(--red); }
   .badge.YELLOW { background: var(--yellow-bg); color: var(--yellow); }
   .badge.GREEN { background: var(--green-bg); color: var(--green); }
   .badge.NOTFOUND, .badge.NOTCOMPARABLE { background: var(--grey-bg); color: var(--grey); }
+  .badge.sm { padding: 1px 7px; font-size: 10.5px; }
 
   tr.detail-row td { padding: 0; }
   .detail {
     padding: 16px 18px; background: var(--panel); border-bottom: 1px solid var(--border);
     display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
   }
+  @media (max-width: 760px) {
+    .detail { grid-template-columns: 1fr; }
+    .col-cats, .col-sources { display: none; }
+  }
   .detail h4 { margin: 0 0 8px; font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-dim); }
   .detail .block { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
-  .detail .block + .block { margin-top: 12px; }
   .detail .full { grid-column: 1 / -1; }
   .kv { display: flex; gap: 6px; font-size: 12.5px; margin: 3px 0; }
-  .kv .k { color: var(--text-dim); min-width: 90px; }
+  .kv .k { color: var(--text-dim); min-width: 120px; flex-shrink: 0; }
+  .kv .v { word-break: break-word; }
   .diff-list { margin: 6px 0 0; padding-left: 18px; font-size: 12.5px; }
   .diff-list li { margin: 2px 0; }
   .cat-chip {
     display: inline-block; background: var(--grey-bg); color: var(--text);
-    border-radius: 6px; padding: 2px 8px; font-size: 11.5px; margin: 2px 4px 2px 0;
+    border-radius: 6px; padding: 2px 8px; font-size: 11.5px; margin: 2px 4px 2px 0; cursor: help;
   }
-  a.src-link { color: var(--accent); text-decoration: none; font-size: 12.5px; }
+  .cat-chip.hit { background: var(--red-bg); color: var(--red); }
+  a.src-link { color: var(--accent); text-decoration: none; font-size: 12.5px; word-break: break-all; }
   a.src-link:hover { text-decoration: underline; }
   .empty-msg { color: var(--text-dim); text-align: center; padding: 30px; }
+  .status-warn { color: var(--red); font-weight: 600; }
+  .tabs { display: flex; gap: 4px; margin: 0 0 14px; border-bottom: 1px solid var(--border); }
+  .tab { padding: 8px 14px; cursor: pointer; color: var(--text-dim); border-bottom: 2px solid transparent; font-size: 13.5px; user-select: none; }
+  .tab.active { color: var(--text); border-bottom-color: var(--accent); font-weight: 600; }
+  .view { display: none; }
+  .view.active { display: block; }
+  .was { display: block; font-size: 10.5px; color: var(--text-dim); margin-top: 2px; }
+  .stat.CHANGED .n { color: var(--accent); }
+  .stat.CHANGED.active { border-color: var(--accent); }
+  .changes { margin: 0 0 14px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; font-size: 12.5px; }
+  .changes ul { margin: 6px 0 0; padding-left: 18px; }
+  .changes li { margin: 2px 0; }
+  .audit-controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+  table.audit td.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .usage { font-size: 12px; color: var(--text-dim); margin: -10px 0 16px; }
 </style>
 </head>
 <body>
@@ -123,24 +154,39 @@
   <div class="meta" id="meta">Loading…</div>
 
   <div class="stats" id="stats"></div>
+  <div class="usage" id="usage"></div>
+  <div class="changes" id="changes" style="display:none;"></div>
 
+  <div class="tabs">
+    <div class="tab active" data-view="products">Products</div>
+    <div class="tab" data-view="audit">Ingredient audit</div>
+  </div>
+
+<div class="view active" id="view-products">
   <div class="controls">
-    <input type="search" id="search" placeholder="Search product name…">
+    <input type="search" id="search" placeholder="Search product, note, category or ingredient…">
     <div class="chip-group" id="colourChips"></div>
+    <select id="catFilter"><option value="">Any category</option></select>
     <label class="toggle"><input type="checkbox" id="hideNotComparable" checked> Hide not comparable</label>
+    <label class="toggle"><input type="checkbox" id="hideIncomplete"> Hide one-source rows</label>
     <select id="sortBy">
       <option value="colour">Sort: worst colour first</option>
-      <option value="product">Sort: product name (A–Z)</option>
+      <option value="product">Sort: product name</option>
+      <option value="ingredients">Sort: ingredient result</option>
     </select>
+    <button id="exportBtn" title="Download the rows currently shown as a CSV">Export view</button>
   </div>
+  <div class="showing" id="showing"></div>
 
   <table>
     <thead>
       <tr>
         <th data-sort="product">Product <span class="arrow"></span></th>
         <th data-sort="colour">Colour <span class="arrow"></span></th>
+        <th data-sort="ingredients">Ingredients <span class="arrow"></span></th>
+        <th class="col-cats">Categories hit</th>
         <th>Note</th>
-        <th>Sources</th>
+        <th class="col-sources">Sources</th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
@@ -148,46 +194,138 @@
   <div class="empty-msg" id="emptyMsg" style="display:none;">No products match the current filters.</div>
 </div>
 
+<div class="view" id="view-audit">
+  <div class="note" style="margin-bottom:10px;">Every distinct ingredient seen this run, per site, with the naughty-list category it hit. Flagged ingredients first. A harmless name with a category next to it is a pattern in naughty_list.py to fix.</div>
+  <div class="audit-controls">
+    <input type="search" id="auditSearch" placeholder="Search ingredient or product…">
+    <select id="auditCat"><option value="">Any category</option><option value="__flagged">Flagged only</option><option value="__clean">Not flagged only</option></select>
+    <select id="auditSite"><option value="">Both sites</option></select>
+    <span class="showing" id="auditShowing"></span>
+  </div>
+  <table class="audit">
+    <thead><tr>
+      <th data-asort="ingredient">Ingredient <span class="arrow"></span></th>
+      <th data-asort="category">Category <span class="arrow"></span></th>
+      <th data-asort="site">Site <span class="arrow"></span></th>
+      <th data-asort="product_count">Products <span class="arrow"></span></th>
+      <th>Seen in</th>
+    </tr></thead>
+    <tbody id="auditBody"></tbody>
+  </table>
+  <div class="empty-msg" id="auditEmpty" style="display:none;">No ingredient audit in this run (re-run the pipeline to generate it).</div>
+</div>
+</div>
+
 <script src="dashboard_data.js"></script>
 <script>
 (function () {
   "use strict";
 
-  const data = (window.PIPELINE_DATA && window.PIPELINE_DATA.products) || [];
-  const generatedAt = window.PIPELINE_DATA ? window.PIPELINE_DATA.generated_at : null;
+  const P = window.PIPELINE_DATA || {};
+  const data = P.products || [];
+  const generatedAt = P.generated_at || null;
+  const audit = Array.isArray(P.audit) ? P.audit : [];
+  const changes = Array.isArray(P.changes) ? P.changes : [];
+  const changedBy = {};
+  changes.forEach(c => { changedBy[c.product] = c; });
 
   const COLOUR_ORDER = { RED: 0, YELLOW: 1, GREEN: 2, "NOT FOUND": 3, "NOT COMPARABLE": 4 };
-const state = { search: "", colours: new Set(), hideNC: true, sortBy: "colour", expanded: new Set() };
-  function badgeClass(colour) {
-    return colour.replace(/\s+/g, "");
+  const ING_ORDER = { different: 0, same: 1, cannot_compare: 2, not_comparable: 3 };
+  const CHIP_KEYS = { ALL: null, RED: "RED", YELLOW: "YELLOW", GREEN: "GREEN", NOT_FOUND: "NOT FOUND", NOT_COMPARABLE: "NOT COMPARABLE" };
+  const state = {
+    search: "", colours: new Set(), category: "", hideNC: true, hideIncomplete: false, changedOnly: false,
+    sortBy: "colour", sortDir: 1, expanded: new Set(),
+    audit: { search: "", cat: "", site: "", sortBy: "category", sortDir: 1 },
+  };
+
+  // ---- helpers ------------------------------------------------------------
+  function escapeHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+  function badgeClass(colour) { return String(colour || "").replace(/\s+/g, ""); }
+  function rowKey(r) { return r.product + "::" + (r.source1_url || "") + "::" + (r.source2_url || ""); }
+  function cats(r) {
+    const out = {};
+    [r.source1_categories, r.source2_categories].forEach(c => {
+      if (c && typeof c === "object") Object.keys(c).forEach(k => { out[k] = true; });
+    });
+    return Object.keys(out);
+  }
+  function isIncomplete(r) {
+    return /no ingredients list found|could not be fetched/i.test(r.note || "") && r.colour !== "NOT COMPARABLE";
+  }
+  function listOrNotFound(v) {
+    if (!v || v === "not found") return '<span class="note">not found</span>';
+    return escapeHtml(v);
+  }
+  function catList(catsObj, otherObj) {
+    if (!catsObj || typeof catsObj !== "object" || !Object.keys(catsObj).length) return '<span class="note">none</span>';
+    return Object.entries(catsObj).map(([cat, hits]) => {
+      const onlyHere = !(otherObj && typeof otherObj === "object" && cat in otherObj);
+      return `<span class="cat-chip${onlyHere ? " hit" : ""}" title="${escapeHtml((hits || []).join(", "))}${onlyHere ? " — only on this source" : ""}">${escapeHtml(cat)}</span>`;
+    }).join("");
+  }
+  function hitIngredients(catsObj) {
+    if (!catsObj || typeof catsObj !== "object" || !Object.keys(catsObj).length) return '<span class="note">nothing flagged</span>';
+    return Object.entries(catsObj).map(([cat, hits]) => `<b>${escapeHtml(cat)}</b>: ${escapeHtml((hits || []).join(", "))}`).join(" · ");
+  }
+  function statusText(s) {
+    if (!s) return "";
+    if (s === "scrape_failed") return '<span class="status-warn">page could not be fetched</span>';
+    if (s === "no_ingredients") return "no ingredients list";
+    return escapeHtml(s);
   }
 
+  // ---- header ---------------------------------------------------------------
   function fmtMeta() {
     const el = document.getElementById("meta");
     if (!data.length) {
-      el.textContent = "No data found — run run_pipeline.py to generate dashboard_data.js.";
+      el.textContent = "No data found — run run_pipeline.py to generate dashboard_data.js, then refresh.";
       return;
     }
     const when = generatedAt ? new Date(generatedAt).toLocaleString() : "unknown";
-    el.textContent = `${data.length} products · last run: ${when} · refresh this page after re-running the pipeline to see new results`;
+    const prev = P.previous_run && P.previous_run.generated_at ? ` · previous run: ${new Date(P.previous_run.generated_at).toLocaleString()}` : "";
+    el.textContent = `${data.length} products · this run: ${when}${prev} · refresh this page after re-running the pipeline`;
+    const u = P.llm_usage || {}, cs = P.cache_stats || {};
+    const calls = Object.values(u).reduce((n, v) => n + (v.called || 0), 0);
+    const cached = Object.values(u).reduce((n, v) => n + (v.cached || 0), 0);
+    const usage = document.getElementById("usage");
+    if (Object.keys(cs).length) {
+      usage.textContent = `Gemini: ${calls} billable call${calls === 1 ? "" : "s"} this run, ${cached} answered from cache` +
+        ` · pages: ${cs.http_miss || 0} fetched live, ${cs.http_hit || 0} from cache`;
+    }
+    const box = document.getElementById("changes");
+    if (P.previous_run) {
+      box.style.display = "block";
+      if (!changes.length) {
+        box.innerHTML = `<strong>No changes since the previous run.</strong>`;
+      } else {
+        box.innerHTML = `<strong>${changes.length} product${changes.length === 1 ? "" : "s"} changed since the previous run</strong>` +
+          `<ul>${changes.map(c => `<li><b>${escapeHtml(c.product)}</b>: ${escapeHtml(c.detail)}</li>`).join("")}</ul>`;
+      }
+    }
   }
 
   function buildStats() {
-    const counts = { RED: 0, YELLOW: 0, GREEN: 0, OTHER: 0 };
-    data.forEach(r => {
-      if (counts.hasOwnProperty(r.colour)) counts[r.colour]++;
-      else counts.OTHER++;
-    });
+    const counts = { RED: 0, YELLOW: 0, GREEN: 0, "NOT FOUND": 0, "NOT COMPARABLE": 0 };
+    data.forEach(r => { if (r.colour in counts) counts[r.colour]++; });
     const el = document.getElementById("stats");
     el.innerHTML = "";
     const defs = [
-      ["RED", "Red", counts.RED], ["YELLOW", "Yellow", counts.YELLOW],
-      ["GREEN", "Green", counts.GREEN], ["OTHER", "Not found / comparable", counts.OTHER],
+      ["TOTAL", "Products", data.length, null],
+      ["RED", "Red", counts.RED, "RED"], ["YELLOW", "Yellow", counts.YELLOW, "YELLOW"],
+      ["GREEN", "Green", counts.GREEN, "GREEN"],
+      ["NOT_FOUND", "Not found", counts["NOT FOUND"], "NOT_FOUND"],
+      ["NOT_COMPARABLE", "Not comparable", counts["NOT COMPARABLE"], "NOT_COMPARABLE"],
     ];
-    defs.forEach(([cls, label, n]) => {
+    if (P.previous_run) defs.push(["CHANGED", "Changed since last run", changes.filter(c => c.kind !== "removed").length, "CHANGED"]);
+    defs.forEach(([cls, label, n, chipKey]) => {
       const d = document.createElement("div");
       d.className = "stat " + cls;
+      d.dataset.chip = chipKey || "";
       d.innerHTML = `<div class="n">${n}</div><div class="l">${label}</div>`;
+      if (chipKey === "CHANGED") d.addEventListener("click", () => { state.changedOnly = !state.changedOnly; syncChips(); render(); });
+      else if (chipKey) d.addEventListener("click", () => toggleChip(chipKey));
       el.appendChild(d);
     });
   }
@@ -195,141 +333,190 @@ const state = { search: "", colours: new Set(), hideNC: true, sortBy: "colour", 
   function buildChips() {
     const el = document.getElementById("colourChips");
     const options = [["ALL", "All"], ["RED", "Red"], ["YELLOW", "Yellow"], ["GREEN", "Green"],
-                      ["NOT_FOUND", "Not found"], ["NOT_COMPARABLE", "Not comparable"]];
+                     ["NOT_FOUND", "Not found"], ["NOT_COMPARABLE", "Not comparable"]];
     el.innerHTML = "";
     options.forEach(([key, label]) => {
       const c = document.createElement("div");
-      c.className = "chip " + key + (key === "ALL" ? " active" : "");
+      c.className = "chip " + key;
       c.textContent = label;
       c.dataset.key = key;
-      c.addEventListener("click", () => toggleChip(key, c));
+      c.addEventListener("click", () => toggleChip(key));
       el.appendChild(c);
+    });
+    syncChips();
+  }
+
+  function syncChips() {
+    document.querySelectorAll("#colourChips .chip").forEach(c => {
+      const real = CHIP_KEYS[c.dataset.key];
+      c.classList.toggle("active", real === null ? state.colours.size === 0 : state.colours.has(real));
+    });
+    document.querySelectorAll("#stats .stat").forEach(s => {
+      if (s.dataset.chip === "CHANGED") { s.classList.toggle("active", state.changedOnly); return; }
+      const real = CHIP_KEYS[s.dataset.chip];
+      s.classList.toggle("active", !!real && state.colours.has(real));
     });
   }
 
-  function toggleChip(key, el) {
-    const all = document.getElementById("colourChips");
+  function toggleChip(key) {
     if (key === "ALL") {
       state.colours.clear();
-      [...all.children].forEach(c => c.classList.toggle("active", c.dataset.key === "ALL"));
     } else {
-      const realKey = key === "NOT_FOUND" ? "NOT FOUND" : key === "NOT_COMPARABLE" ? "NOT COMPARABLE" : key;
-      if (state.colours.has(realKey)) state.colours.delete(realKey);
-      else state.colours.add(realKey);
-      el.classList.toggle("active");
-      [...all.children].find(c => c.dataset.key === "ALL").classList.toggle("active", state.colours.size === 0);
+      const real = CHIP_KEYS[key];
+      if (state.colours.has(real)) state.colours.delete(real); else state.colours.add(real);
     }
+    syncChips();
     render();
   }
 
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  function buildCategoryFilter() {
+    const all = new Set();
+    data.forEach(r => cats(r).forEach(c => all.add(c)));
+    const sel = document.getElementById("catFilter");
+    [...all].sort().forEach(c => {
+      const o = document.createElement("option");
+      o.value = c; o.textContent = c;
+      sel.appendChild(o);
+    });
   }
 
-  function catList(cats) {
-    if (!cats || typeof cats !== "object" || !Object.keys(cats).length) return '<span class="note">none</span>';
-    return Object.entries(cats).map(([cat, hits]) =>
-      `<span class="cat-chip" title="${escapeHtml(hits.join(", "))}">${escapeHtml(cat)}</span>`
-    ).join("");
-  }
-
-  function listOrNotFound(v) {
-    if (!v || v === "not found") return '<span class="note">not found</span>';
-    return escapeHtml(v);
-  }
-
+  // ---- detail -------------------------------------------------------------
   function detailHtml(r) {
+    const rawDiffs = Array.isArray(r.raw_text_differences) ? r.raw_text_differences : [];
+    const close = Array.isArray(r.close_matches) ? r.close_matches : [];
     return `
       <div class="detail">
         <div class="block">
           <h4>Ingredients</h4>
-          <div class="kv"><span class="k">Result</span><span>${escapeHtml(r.ingredients_comparison)}</span></div>
-          <div class="kv"><span class="k">Reason</span><span>${escapeHtml(r.ingredients_reason)}</span></div>
-          <div class="kv"><span class="k">Only in Source 1</span><span>${listOrNotFound(r.only_in_source1)}</span></div>
-          <div class="kv"><span class="k">Only in Source 2</span><span>${listOrNotFound(r.only_in_source2)}</span></div>
-          ${(r.close_matches && r.close_matches.length) ? `
-            <div class="kv"><span class="k">Close matches</span></div>
-            <ul class="diff-list">${r.close_matches.map(c => `<li>${escapeHtml(c.source1)} ↔ ${escapeHtml(c.source2)} (${c.score}%)</li>`).join("")}</ul>
+          <div class="kv"><span class="k">Result</span><span class="v">${escapeHtml(r.ingredients_comparison)}</span></div>
+          <div class="kv"><span class="k">Reason</span><span class="v">${escapeHtml(r.ingredients_reason)}</span></div>
+          <div class="kv"><span class="k">Only in Source 1</span><span class="v">${listOrNotFound(r.only_in_source1)}</span></div>
+          <div class="kv"><span class="k">Only in Source 2</span><span class="v">${listOrNotFound(r.only_in_source2)}</span></div>
+          ${close.length ? `
+            <div class="kv"><span class="k">Close matches</span><span class="v note">possibly the same ingredient, not merged</span></div>
+            <ul class="diff-list">${close.map(c => `<li>${escapeHtml(c.source1)} ↔ ${escapeHtml(c.source2)} (${escapeHtml(c.score)}%)</li>`).join("")}</ul>
+          ` : ""}
+          ${rawDiffs.length ? `
+            <div class="kv"><span class="k">Same, spelt differently</span><span class="v note">${rawDiffs.length} ingredient${rawDiffs.length > 1 ? "s" : ""}</span></div>
+            <ul class="diff-list">${rawDiffs.map(d => `<li>${escapeHtml(d.source1)} ↔ ${escapeHtml(d.source2)}</li>`).join("")}</ul>
           ` : ""}
         </div>
         <div class="block">
           <h4>Packaging</h4>
-          <div class="kv"><span class="k">Result</span><span>${escapeHtml(r.packaging_comparison)}</span></div>
-          <div class="kv"><span class="k">Reason</span><span>${escapeHtml(r.packaging_reason)}</span></div>
-          <div class="kv"><span class="k">Source 1 materials</span><span>${listOrNotFound(r.source1_materials)}</span></div>
-          <div class="kv"><span class="k">Source 2 materials</span><span>${listOrNotFound(r.source2_materials)}</span></div>
-          <div class="kv"><span class="k">Found via</span><span>${escapeHtml(r.source1_packaging_source)} / ${escapeHtml(r.source2_packaging_source)}</span></div>
+          <div class="kv"><span class="k">Result</span><span class="v">${escapeHtml(r.packaging_comparison)}</span></div>
+          <div class="kv"><span class="k">Reason</span><span class="v">${escapeHtml(r.packaging_reason)}</span></div>
+          <div class="kv"><span class="k">Source 1 materials</span><span class="v">${listOrNotFound(r.source1_materials)}</span></div>
+          <div class="kv"><span class="k">Source 2 materials</span><span class="v">${listOrNotFound(r.source2_materials)}</span></div>
+          <div class="kv"><span class="k">Found via</span><span class="v">${escapeHtml(r.source1_packaging_source)} / ${escapeHtml(r.source2_packaging_source)}</span></div>
         </div>
         <div class="block full">
           <h4>Naughty list — categories hit</h4>
-          <div class="kv"><span class="k">Source 1 (${escapeHtml(r.source1_colour)})</span></div>
-          <div>${catList(r.source1_categories)}</div>
-          <div class="kv" style="margin-top:8px;"><span class="k">Source 2 (${escapeHtml(r.source2_colour)})</span></div>
-          <div>${catList(r.source2_categories)}</div>
-          <div class="kv" style="margin-top:8px;"><span class="k">Unmatched (S1)</span><span>${listOrNotFound(r.source1_unmatched_ingredients)}</span></div>
-          <div class="kv"><span class="k">Unmatched (S2)</span><span>${listOrNotFound(r.source2_unmatched_ingredients)}</span></div>
+          <div class="kv"><span class="k">Source 1</span><span class="v"><span class="badge sm ${badgeClass(r.source1_colour)}">${escapeHtml(r.source1_colour)}</span></span></div>
+          <div>${catList(r.source1_categories, r.source2_categories)}</div>
+          <div class="kv" style="margin-top:8px;"><span class="k">Source 2</span><span class="v"><span class="badge sm ${badgeClass(r.source2_colour)}">${escapeHtml(r.source2_colour)}</span></span></div>
+          <div>${catList(r.source2_categories, r.source1_categories)}</div>
+          <div class="note" style="margin-top:6px;">Hover a category for the ingredients that hit it. Highlighted = hit on this source only.</div>
+          <div class="kv" style="margin-top:8px;"><span class="k">Flagged by (S1)</span><span class="v">${hitIngredients(r.source1_categories)}</span></div>
+          <div class="kv"><span class="k">Flagged by (S2)</span><span class="v">${hitIngredients(r.source2_categories)}</span></div>
+          <div class="kv" style="margin-top:8px;"><span class="k">Unmatched (S1)</span><span class="v">${listOrNotFound(r.source1_unmatched_ingredients)}</span></div>
+          <div class="kv"><span class="k">Unmatched (S2)</span><span class="v">${listOrNotFound(r.source2_unmatched_ingredients)}</span></div>
         </div>
         <div class="block full">
           <h4>Sources</h4>
-          <div class="kv"><span class="k">Source 1</span><span>${escapeHtml(r.source1_site)} — ${r.source1_url ? `<a class="src-link" href="${escapeHtml(r.source1_url)}" target="_blank" rel="noopener">${escapeHtml(r.source1_url)}</a>` : '<span class="note">not found</span>'}</span></div>
-          <div class="kv"><span class="k">Source 2</span><span>${escapeHtml(r.source2_site)} — ${r.source2_url ? `<a class="src-link" href="${escapeHtml(r.source2_url)}" target="_blank" rel="noopener">${escapeHtml(r.source2_url)}</a>` : '<span class="note">not found</span>'}</span></div>
-          <div class="kv"><span class="k">Matched via</span><span>${escapeHtml(r.match_method)}</span></div>
+          <div class="kv"><span class="k">Source 1</span><span class="v">${escapeHtml(r.source1_site)} — ${r.source1_url ? `<a class="src-link" href="${escapeHtml(r.source1_url)}" target="_blank" rel="noopener">${escapeHtml(r.source1_url)}</a>` : '<span class="note">not found</span>'} ${r.source1_status && r.source1_status !== "ok" ? `· ${statusText(r.source1_status)}` : ""}</span></div>
+          <div class="kv"><span class="k">Source 2</span><span class="v">${escapeHtml(r.source2_site)} — ${r.source2_url ? `<a class="src-link" href="${escapeHtml(r.source2_url)}" target="_blank" rel="noopener">${escapeHtml(r.source2_url)}</a>` : '<span class="note">not found</span>'} ${r.source2_status && r.source2_status !== "ok" ? `· ${statusText(r.source2_status)}` : ""}</span></div>
+          ${r.product_type && r.product_type !== "not found" ? `<div class="kv"><span class="k">Store type</span><span class="v">${escapeHtml(r.product_type)}</span></div>` : ""}
+          ${r.variants && r.variants !== "not found" ? `<div class="kv"><span class="k">Variants</span><span class="v">${escapeHtml(r.variants)}</span></div>` : ""}
+          ${changedBy[r.product] ? `<div class="kv"><span class="k">Since last run</span><span class="v">${escapeHtml(changedBy[r.product].detail)}</span></div>` : ""}
+          <div class="kv"><span class="k">Matched via</span><span class="v">${escapeHtml(r.match_method)}${r.match_method === "llm" ? ' <span class="note">(fuzzy slug + LLM title check — worth a glance)</span>' : ""}</span></div>
         </div>
       </div>`;
   }
 
+  // ---- filtering / sorting --------------------------------------------------
+  function searchable(r) {
+    const hitIngredients = [r.source1_categories, r.source2_categories]
+      .filter(c => c && typeof c === "object")
+      .flatMap(c => Object.values(c).flat());
+    return [r.product, r.note, r.only_in_source1, r.only_in_source2,
+            r.source1_unmatched_ingredients, r.source2_unmatched_ingredients,
+            cats(r).join(" "), hitIngredients.join(" ")].map(x => String(x || "")).join(" ").toLowerCase();
+  }
+
   function applyFilters() {
     const q = state.search.trim().toLowerCase();
-    let rows = data.filter(r => {
-      if (r.note && r.note.includes("no ingredients list found")) return false;
-      if (q && !r.product.toLowerCase().includes(q)) return false;
+    const wantsNC = state.colours.has("NOT COMPARABLE");
+    const rows = data.filter(r => {
+      if (q && !searchable(r).includes(q)) return false;
       if (state.colours.size && !state.colours.has(r.colour)) return false;
-      if (state.hideNC && r.colour === "NOT COMPARABLE") return false;
+      if (state.hideNC && !wantsNC && r.colour === "NOT COMPARABLE") return false;
+      if (state.hideIncomplete && isIncomplete(r)) return false;
+      if (state.category && !cats(r).includes(state.category)) return false;
+      if (state.changedOnly && !changedBy[r.product]) return false;
       return true;
     });
+    const dir = state.sortDir;
     rows.sort((a, b) => {
-      if (state.sortBy === "product") return a.product.localeCompare(b.product);
-      const oa = COLOUR_ORDER.hasOwnProperty(a.colour) ? COLOUR_ORDER[a.colour] : 5;
-      const ob = COLOUR_ORDER.hasOwnProperty(b.colour) ? COLOUR_ORDER[b.colour] : 5;
-      return oa - ob || a.product.localeCompare(b.product);
+      let d = 0;
+      if (state.sortBy === "product") d = a.product.localeCompare(b.product);
+      else if (state.sortBy === "ingredients") {
+        const ia = a.ingredients_comparison in ING_ORDER ? ING_ORDER[a.ingredients_comparison] : 9;
+        const ib = b.ingredients_comparison in ING_ORDER ? ING_ORDER[b.ingredients_comparison] : 9;
+        d = ia - ib;
+      } else {
+        const oa = a.colour in COLOUR_ORDER ? COLOUR_ORDER[a.colour] : 5;
+        const ob = b.colour in COLOUR_ORDER ? COLOUR_ORDER[b.colour] : 5;
+        d = oa - ob;
+      }
+      return (d * dir) || a.product.localeCompare(b.product);
     });
     return rows;
   }
 
+  let lastRows = [];
+
   function render() {
     const rows = applyFilters();
+    lastRows = rows;
     const tbody = document.getElementById("tbody");
     const emptyMsg = document.getElementById("emptyMsg");
     tbody.innerHTML = "";
+    document.getElementById("showing").textContent = `Showing ${rows.length} of ${data.length}`;
+    document.querySelectorAll("th[data-sort]").forEach(th => {
+      th.querySelector(".arrow").textContent = th.dataset.sort === state.sortBy ? (state.sortDir === 1 ? "▲" : "▼") : "";
+    });
 
-    if (!rows.length) {
-      emptyMsg.style.display = "block";
-      return;
-    }
+    if (!rows.length) { emptyMsg.style.display = "block"; return; }
     emptyMsg.style.display = "none";
 
-    rows.forEach((r, i) => {
-      const id = r.product + "::" + i;
+    rows.forEach(r => {
+      const id = rowKey(r);
+      const open = state.expanded.has(id);
       const tr = document.createElement("tr");
-      tr.className = "row";
+      tr.className = "row" + (open ? " open" : "");
+      tr.tabIndex = 0;
+      const catChips = cats(r).map(c => `<span class="cat-chip">${escapeHtml(c)}</span>`).join("") || '<span class="note">none</span>';
       tr.innerHTML = `
-        <td><span class="prod-name">${escapeHtml(r.product)}</span></td>
-        <td><span class="badge ${badgeClass(r.colour)}">${escapeHtml(r.colour)}</span></td>
+        <td><span class="caret">${open ? "▾" : "▸"}</span><span class="prod-name">${escapeHtml(r.product)}</span></td>
+        <td><span class="badge ${badgeClass(r.colour)}">${escapeHtml(r.colour)}</span>${changedBy[r.product] && changedBy[r.product].before && changedBy[r.product].before !== r.colour ? `<span class="was">was ${escapeHtml(changedBy[r.product].before)}</span>` : (changedBy[r.product] && changedBy[r.product].kind === "new" ? '<span class="was">new</span>' : "")}</td>
+        <td class="note">${escapeHtml(r.ingredients_comparison || "")}</td>
+        <td class="col-cats">${r.colour === "NOT COMPARABLE" ? "" : catChips}</td>
         <td class="note">${r.note ? escapeHtml(r.note) : ""}</td>
-        <td class="note">${escapeHtml(r.source1_site || "not found")} / ${escapeHtml(r.source2_site || "not found")}</td>
+        <td class="note col-sources">${escapeHtml(r.source1_site || "not found")} / ${escapeHtml(r.source2_site || "not found")}</td>
       `;
-      tr.addEventListener("click", () => {
-        if (state.expanded.has(id)) state.expanded.delete(id);
-        else state.expanded.add(id);
+      const toggle = () => {
+        if (state.expanded.has(id)) state.expanded.delete(id); else state.expanded.add(id);
         render();
-      });
+      };
+      tr.addEventListener("click", toggle);
+      tr.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
       tbody.appendChild(tr);
 
-      if (state.expanded.has(id)) {
+      if (open) {
         const dtr = document.createElement("tr");
         dtr.className = "detail-row";
         const td = document.createElement("td");
-        td.colSpan = 4;
+        td.colSpan = 6;
         td.innerHTML = detailHtml(r);
         dtr.appendChild(td);
         tbody.appendChild(dtr);
@@ -337,13 +524,118 @@ const state = { search: "", colours: new Set(), hideNC: true, sortBy: "colour", 
     });
   }
 
+  // ---- export -----------------------------------------------------------------
+  function exportCsv() {
+    const cols = ["product", "colour", "note", "match_method",
+      "source1_site", "source1_url", "source1_status", "source2_site", "source2_url", "source2_status",
+      "ingredients_comparison", "ingredients_reason", "only_in_source1", "only_in_source2",
+      "packaging_comparison", "packaging_reason", "source1_materials", "source2_materials",
+      "source1_colour", "source2_colour", "source1_categories", "source2_categories", "naughty_reason",
+      "product_type", "variants"];
+    const cell = v => {
+      if (v && typeof v === "object" && !Array.isArray(v)) v = Object.keys(v).join("; ");
+      if (Array.isArray(v)) v = v.join("; ");
+      v = String(v == null ? "" : v);
+      return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
+    };
+    const lines = [cols.join(",")].concat(lastRows.map(r => cols.map(c => cell(r[c])).join(",")));
+    const blob = new Blob(["﻿" + lines.join("\n")], { type: "text/csv;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "dashboard_view.csv";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  }
+
+  // ---- ingredient audit view -----------------------------------------------------
+  function buildAuditFilters() {
+    const catSel = document.getElementById("auditCat"), siteSel = document.getElementById("auditSite");
+    [...new Set(audit.map(a => a.category).filter(Boolean))].sort().forEach(c => {
+      const o = document.createElement("option"); o.value = c; o.textContent = c; catSel.appendChild(o);
+    });
+    [...new Set(audit.map(a => a.site).filter(Boolean))].sort().forEach(sname => {
+      const o = document.createElement("option"); o.value = sname; o.textContent = sname; siteSel.appendChild(o);
+    });
+  }
+
+  function renderAudit() {
+    const a = state.audit, q = a.search.trim().toLowerCase();
+    const body = document.getElementById("auditBody"), empty = document.getElementById("auditEmpty");
+    body.innerHTML = "";
+    if (!audit.length) { empty.style.display = "block"; document.getElementById("auditShowing").textContent = ""; return; }
+    empty.style.display = "none";
+    let rows = audit.filter(x => {
+      if (a.cat === "__flagged" && !x.category) return false;
+      if (a.cat === "__clean" && x.category) return false;
+      if (a.cat && !a.cat.startsWith("__") && x.category !== a.cat) return false;
+      if (a.site && x.site !== a.site) return false;
+      if (q && !(String(x.ingredient).toLowerCase().includes(q) || String(x.products || "").toLowerCase().includes(q))) return false;
+      return true;
+    });
+    rows.sort((x, y) => {
+      let d = 0;
+      if (a.sortBy === "product_count") d = (y.product_count || 0) - (x.product_count || 0);
+      else if (a.sortBy === "category") d = ((x.category ? 0 : 1) - (y.category ? 0 : 1)) || String(x.category).localeCompare(String(y.category)) || ((y.product_count || 0) - (x.product_count || 0));
+      else d = String(x[a.sortBy] || "").localeCompare(String(y[a.sortBy] || ""));
+      return (d * a.sortDir) || String(x.ingredient).localeCompare(String(y.ingredient));
+    });
+    document.getElementById("auditShowing").textContent = `Showing ${rows.length} of ${audit.length} (${audit.filter(x => x.category).length} flagged)`;
+    document.querySelectorAll("th[data-asort]").forEach(th => {
+      th.querySelector(".arrow").textContent = th.dataset.asort === a.sortBy ? (a.sortDir === 1 ? "▲" : "▼") : "";
+    });
+    const frag = document.createDocumentFragment();
+    rows.forEach(x => {
+      const tr = document.createElement("tr");
+      tr.className = "row";
+      tr.innerHTML = `
+        <td>${escapeHtml(x.ingredient)}</td>
+        <td>${x.category ? `<span class="cat-chip hit">${escapeHtml(x.category)}</span>` : '<span class="note">—</span>'}</td>
+        <td class="note">${escapeHtml(x.site)}</td>
+        <td class="n">${escapeHtml(x.product_count)}</td>
+        <td class="note">${escapeHtml(x.products)}</td>`;
+      tr.addEventListener("click", () => {
+        // jump to the products view filtered to this ingredient
+        state.search = String(x.ingredient);
+        document.getElementById("search").value = state.search;
+        showView("products");
+        render();
+      });
+      frag.appendChild(tr);
+    });
+    body.appendChild(frag);
+  }
+
+  function showView(name) {
+    document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.view === name));
+    document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === "view-" + name));
+    try { localStorage.setItem("dashboard.view", name); } catch (e) { /* private mode etc. */ }
+  }
+
+  document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => { showView(t.dataset.view); if (t.dataset.view === "audit") renderAudit(); }));
+  document.getElementById("auditSearch").addEventListener("input", e => { state.audit.search = e.target.value; renderAudit(); });
+  document.getElementById("auditCat").addEventListener("change", e => { state.audit.cat = e.target.value; renderAudit(); });
+  document.getElementById("auditSite").addEventListener("change", e => { state.audit.site = e.target.value; renderAudit(); });
+  document.querySelectorAll("th[data-asort]").forEach(th => {
+    th.addEventListener("click", () => {
+      if (state.audit.sortBy === th.dataset.asort) state.audit.sortDir = -state.audit.sortDir;
+      else { state.audit.sortBy = th.dataset.asort; state.audit.sortDir = 1; }
+      renderAudit();
+    });
+  });
+
+  // ---- wiring -----------------------------------------------------------------
   document.getElementById("search").addEventListener("input", e => { state.search = e.target.value; render(); });
   document.getElementById("hideNotComparable").addEventListener("change", e => { state.hideNC = e.target.checked; render(); });
-  document.getElementById("sortBy").addEventListener("change", e => { state.sortBy = e.target.value; render(); });
+  document.getElementById("hideIncomplete").addEventListener("change", e => { state.hideIncomplete = e.target.checked; render(); });
+  document.getElementById("catFilter").addEventListener("change", e => { state.category = e.target.value; render(); });
+  document.getElementById("sortBy").addEventListener("change", e => { state.sortBy = e.target.value; state.sortDir = 1; render(); });
+  document.getElementById("exportBtn").addEventListener("click", exportCsv);
   document.querySelectorAll("th[data-sort]").forEach(th => {
     th.addEventListener("click", () => {
-      document.getElementById("sortBy").value = th.dataset.sort;
-      state.sortBy = th.dataset.sort;
+      if (state.sortBy === th.dataset.sort) state.sortDir = -state.sortDir;
+      else { state.sortBy = th.dataset.sort; state.sortDir = 1; }
+      document.getElementById("sortBy").value = state.sortBy;
       render();
     });
   });
@@ -351,7 +643,13 @@ const state = { search: "", colours: new Set(), hideNC: true, sortBy: "colour", 
   fmtMeta();
   buildStats();
   buildChips();
+  buildCategoryFilter();
+  buildAuditFilters();
   render();
+  renderAudit();
+  let savedView = "products";
+  try { savedView = localStorage.getItem("dashboard.view") || "products"; } catch (e) { /* ignore */ }
+  if (savedView === "audit") showView("audit");
 })();
 </script>
 </body>
