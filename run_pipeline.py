@@ -264,14 +264,19 @@ def llm_kit_verdict(titles, heads):
 def run_one(gu, mu, method, extractor):
     mecca_rec = scrape_record(MECCA, mu)
     goto_rec = scrape_record(GOTO, gu)
+    shopify = GOTO.fetch_product_json(gu)          # structured facts; None if unavailable
+    goto_rec.update(GOTO.structured_facts(shopify))
+    if shopify and shopify.get("title") and goto_rec.get("product_name") in (None, "unknown-product"):
+        goto_rec["product_name"] = str(shopify["title"]).strip()
     name = goto_rec.get("product_name") or mecca_rec.get("product_name") or slug_for(gu).replace("-", " ").title()
 
     # Kit check, layered (the slug words were already checked in main()):
-    #  1. a title that names a kit  2. an AI yes/no on titles + start of the list.
-    # Both skip with a stated reason; anything unsure is SCORED, never skipped.
+    #  1. Shopify's own product_type/tags  2. a title that names a kit
+    #  3. an AI yes/no on titles + start of the list.
+    # Each skips with a stated reason; anything unsure is SCORED, never skipped.
     titles = [(r["website"], r.get("product_name")) for r in (mecca_rec, goto_rec)
               if r.get("product_name") and r.get("product_name") != "unknown-product"]
-    why = kit_title_reason(titles)
+    why = GOTO.kit_signals(shopify) or kit_title_reason(titles)
     if not why:
         heads = [(r["website"], (r.get("ingredients_raw") or "")[:250]) for r in (mecca_rec, goto_rec)]
         if llm_kit_verdict(titles, heads) == "kit":
@@ -295,6 +300,8 @@ def run_one(gu, mu, method, extractor):
     result = analyse_pair(name, rec1, rec2, extractor)
     result["warning"] = "; ".join(warnings)
     result["match_method"] = method
+    result["product_type"] = goto_rec.get("product_type")
+    result["variants"] = goto_rec.get("variants") or []
     return result
 
 
@@ -354,6 +361,8 @@ def to_row(result):
         "colour": colour,
         "note": note,
         "match_method": result.get("match_method", ""),
+        "product_type": nf(result.get("product_type")),
+        "variants": nf(result.get("variants")),
         "source1_site": nf(s1["site"]), "source1_url": s1["url"] or "", "source1_status": s1["status"],
         "source2_site": nf(s2["site"]), "source2_url": s2["url"] or "", "source2_status": s2["status"],
         "ingredients_comparison": ing["comparison"], "ingredients_reason": ing["reason"],
@@ -379,7 +388,7 @@ def _hits(cats):
 
 
 SUMMARY_FIELDS = [
-    "product", "colour", "note", "match_method",
+    "product", "colour", "note", "match_method", "product_type", "variants",
     "source1_site", "source1_url", "source1_status",
     "source2_site", "source2_url", "source2_status",
     "ingredients_comparison", "ingredients_reason",
@@ -406,7 +415,49 @@ def write_summary(rows):
     print(f"{SUMMARY_FILE.name}: {len(rows)} products")
 
 
-def write_dashboard_data(rows):
+# ---------------------------------------------------------------------------
+# INGREDIENT AUDIT: one line per distinct ingredient across the whole run, with
+# the category it hit (if any) and the products it appears in. Sorted so every
+# flagged ingredient is at the top - a wrong regex shows up as an obviously
+# harmless name with a category next to it.
+# ---------------------------------------------------------------------------
+AUDIT_FILE = ROOT / "ingredient_audit.csv"
+AUDIT_FIELDS = ["ingredient", "category", "site", "product_count", "products"]
+
+
+def build_audit(results):
+    """results: the per-product analysis dicts (not the flattened rows)."""
+    seen = {}
+    for r in results:
+        if r["ingredients"]["comparison"] == "not_comparable":
+            continue
+        for side in ("source1", "source2"):
+            site = r["sources"][side]["site"]
+            nl = r["naughty_list"][side]
+            hits = {ing: cat for cat, ings in (nl.get("categories") or {}).items() for ing in ings}
+            for ing in list(hits) + list(nl.get("unmatched_ingredients") or []):
+                key = (ing.strip().lower(), hits.get(ing, ""), site)
+                entry = seen.setdefault(key, {"ingredient": ing.strip(), "category": hits.get(ing, ""),
+                                              "site": site, "products": []})
+                if r["product"] not in entry["products"]:
+                    entry["products"].append(r["product"])
+    out = []
+    for e in seen.values():
+        out.append({**e, "product_count": len(e["products"]), "products": "; ".join(e["products"])})
+    out.sort(key=lambda e: (e["category"] == "", e["category"], -e["product_count"], e["ingredient"].lower()))
+    return out
+
+
+def write_audit(audit):
+    with AUDIT_FILE.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=AUDIT_FIELDS)
+        w.writeheader()
+        w.writerows(audit)
+    flagged = sum(1 for a in audit if a["category"])
+    print(f"{AUDIT_FILE.name}: {len(audit)} distinct ingredient/site lines, {flagged} flagged")
+
+
+def write_dashboard_data(rows, audit=None):
     """A JS file (not JSON) so dashboard.html can load it with a plain
     <script src="dashboard_data.js"> tag - opening dashboard.html directly as
     a file:// URL cannot fetch() a local JSON file, but a <script> include
@@ -415,6 +466,7 @@ def write_dashboard_data(rows):
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "products": rows,
+        "audit": audit or [],
     }
     DASHBOARD_DATA_FILE.write_text(
         "window.PIPELINE_DATA = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n",
@@ -441,7 +493,7 @@ def main(argv=None):
     extractor = LLMMaterialExtractor()
     pairs = find_pairs()
 
-    rows, failures, skipped = [], 0, 0
+    rows, results, failures, skipped = [], [], 0, 0
     for i, (gu, mu, method) in enumerate(pairs, 1):
         slug = slug_for(gu)
         if has_review_flag(goto_slug(gu)) or has_review_flag(mecca_slug(mu)):
@@ -458,6 +510,7 @@ def main(argv=None):
             continue
         row = to_row(result)
         rows.append(row)
+        results.append(result)
         statuses = (result["sources"]["source1"]["status"], result["sources"]["source2"]["status"])
         if "scrape_failed" in statuses:
             failures += 1
@@ -468,8 +521,10 @@ def main(argv=None):
         else:
             print(f"[{i}/{len(pairs)}] ok   {slug} ({row['colour']})")
 
+    audit = build_audit(results)
     write_summary(rows)
-    write_dashboard_data(rows)
+    write_audit(audit)
+    write_dashboard_data(rows, audit)
     print(common.cache_summary())
     print(f"done {len(rows) - skipped} scored, not comparable {skipped}, with a failed page {failures}")
     return 1 if failures else 0

@@ -5,12 +5,19 @@ the brand's own store).
 Shopify store. Brand and images come from the schema.org Product JSON-LD block
 (stable), text fields come from the tabbed product-content sections.
 
+Shopify also serves every product as JSON at /products/<handle>.json
+(product_type, tags, variants, images - but NOT the ingredients tab, which is
+a theme metafield). fetch_product_json() reads that; kit_signals() and
+variant_titles() turn it into the structured facts the pipeline wants
+instead of guessing from page text. All of it fails open (None/[]).
+
 The hyphen in the filename means run_pipeline.py loads this with importlib
 rather than a normal import. Nothing here writes files.
 """
 from __future__ import annotations
 
 import json
+import re
 from typing import Optional
 
 from bs4 import BeautifulSoup
@@ -113,3 +120,77 @@ def extract_image_urls(html: str) -> list[str]:
         return urls
     except Exception:
         return []
+
+
+# ---------------------------------------------------------------------------
+# Shopify product JSON (structured data, preferred over HTML where it exists)
+# ---------------------------------------------------------------------------
+_KIT_TYPE = re.compile(r"\b(kit|set|bundle|duo|trio|gift|collection|calendar|advent|discovery|starter|pack)s?\b",
+                       re.IGNORECASE)
+
+
+def product_json_url(product_url: str) -> str:
+    """https://gotoskincare.com/products/face-hero?variant=1 -> .../products/face-hero.json"""
+    base = product_url.split("?", 1)[0].split("#", 1)[0].rstrip("/")
+    return base if base.endswith(".json") else base + ".json"
+
+
+def fetch_product_json(product_url: str) -> Optional[dict]:
+    """The Shopify product object for a product page, or None on any failure
+    (non-Shopify URL, 404, blocked, malformed). Never raises."""
+    try:
+        resp = common.fetch(product_json_url(product_url), timeout=15, retries=2)
+        data = json.loads(resp.text)
+        product = data.get("product") if isinstance(data, dict) else None
+        return product if isinstance(product, dict) else None
+    except Exception as exc:
+        print(f"    product json unavailable for {product_url}: {type(exc).__name__}: {exc}")
+        return None
+
+
+def _tags(product: dict) -> list[str]:
+    tags = product.get("tags")
+    if isinstance(tags, str):                       # "a, b, c" on some stores
+        tags = [t.strip() for t in tags.split(",")]
+    return [t for t in (tags or []) if isinstance(t, str) and t.strip()]
+
+
+def kit_signals(product: Optional[dict]) -> Optional[str]:
+    """A reason string if Shopify's own product_type or tags say this listing
+    is a kit/set/bundle, else None. The store's classification beats any
+    guess from the page text."""
+    if not product:
+        return None
+    ptype = str(product.get("product_type") or "").strip()
+    m = _KIT_TYPE.search(ptype)
+    if m:
+        return f"Shopify product_type '{ptype}'"
+    for tag in _tags(product):
+        if _KIT_TYPE.search(tag):
+            return f"Shopify tag '{tag}'"
+    return None
+
+
+def variant_titles(product: Optional[dict]) -> list[str]:
+    """Shade/size names of the product's variants (Shopify uses 'Default Title'
+    for a product with only one). ["Rose", "Peach"] for a two-shade blush."""
+    if not product:
+        return []
+    out = []
+    for v in product.get("variants") or []:
+        t = str(v.get("title") or "").strip() if isinstance(v, dict) else ""
+        if t and t.lower() != "default title":
+            out.append(t)
+    return out
+
+
+def structured_facts(product: Optional[dict]) -> dict:
+    """The small, stable subset kept on the product record for the dashboard."""
+    if not product:
+        return {}
+    return {
+        "product_type": product.get("product_type") or None,
+        "tags": _tags(product),
+        "variants": variant_titles(product),
+        "vendor": product.get("vendor") or None,
+    }
