@@ -209,7 +209,7 @@ def compare_ingredients(items1, items2):
 
 
 # ---------------------------------------------------------------------------
-# 1b. KIT / MULTI-PRODUCT DETECTION
+# 1b. KIT DETECTION (title words here; AI check in run_pipeline.py; slug words in match_products.py)
 # ---------------------------------------------------------------------------
 # A retailer page for a kit sometimes pools every product's INCI list into one
 # block (Mecca's Skintroduction does this). Scoring that as one product is
@@ -218,18 +218,55 @@ def compare_ingredients(items1, items2):
 _HEADER_ITEM = re.compile(r"^\s*[^:]{3,80}:\s*\S")
 
 
-def multi_product_reason(items):
-    """A short reason if `items` looks like several products' lists pooled
-    together, else None. Checked by run_pipeline.py before scoring."""
-    if not items:
-        return None
-    water = sum(1 for i in items if normalise(i) == "water")
-    if water >= 2:
-        return f"ingredient list contains water {water} times - several products' lists pooled into one"
-    headers = [i for i in items if _HEADER_ITEM.match(i)]
-    if len(headers) >= 2:
-        return f"ingredient list has {len(headers)} 'product: ingredients' headers - a kit, not one product"
+# Words a retailer/brand puts in a title ON PURPOSE when the listing is several
+# products sold together. ("mini" alone is NOT here: "Properly Clean Mini" is a
+# single product.) Slug words are checked separately in match_products.py.
+_KIT_TITLE = re.compile(
+    r"\b(kit|set|bundle|duo|trio|collection|calendar|advent|discovery|starter|minis|gifts?|"
+    r"(?:twelve|12)\s+days(?:\s+of)?)\b", re.IGNORECASE)
+
+
+def kit_title_reason(titles):
+    """titles: [(site, title), ...]. A reason string if a title names a kit, else None."""
+    for site, title in titles:
+        m = _KIT_TITLE.search(title or "")
+        if m:
+            return f"{site} title '{title}' contains '{m.group(0)}'"
     return None
+
+
+def pooled_list_warning(items):
+    """NOT a skip reason: ingredient-text structure (repeated 'Go-To X:' headers) cannot tell
+    a kit from a shade list, so it only produces a note on the row."""
+    branded = [i for i in (items or []) if _BRAND_HEADER.match(i)]
+    if len(branded) >= 2:
+        return f"ingredient list has {len(branded)} product headers (e.g. '{branded[0][:40]}') - may be several products"
+    return None
+
+
+_BRAND_HEADER = re.compile(r"^\s*go-to\b[^:]{0,70}:\s*\S", re.IGNORECASE)   # "Go-To Face Hero: Aqua"
+
+
+def flatten_variants(items):
+    """For a page listing a few shades/variants in one block: strip the 'Shade:'
+    prefixes and de-duplicate, so every ingredient from any variant is scored once.
+    Returns (items, note); note is '' for an ordinary single list."""
+    if not items:
+        return items, ""
+    headers = [i for i in items if _HEADER_ITEM.match(i)]
+    water = sum(1 for i in items if normalise(i) == "water")
+    if not headers and water < 2:
+        return items, ""
+    out, seen = [], set()
+    for i in items:
+        if _HEADER_ITEM.match(i):
+            i = i.split(":", 1)[1].strip()
+        key = normalise(i)
+        if i and key not in seen:
+            seen.add(key)
+            out.append(i)
+    n = max(len(headers), water)
+    return out, f"lists {n} variants/shades in one block - scored on all of them combined"
 
 
 # ---------------------------------------------------------------------------

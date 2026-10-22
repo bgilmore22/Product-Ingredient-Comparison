@@ -1,6 +1,6 @@
 httpx
 beautifulsoup4
-seleniumbase
-google-generativeai
+rapidfuzz
+google-genai
 python-dotenv
-Pillow
+pytest

@@ -23,7 +23,7 @@ from pathlib import Path
 
 from Scrapers import common
 from Scrapers import mecca as MECCA
-from analyse import SOURCE1, LLMMaterialExtractor, analyse_pair, multi_product_reason
+from analyse import SOURCE1, LLMMaterialExtractor, analyse_pair, flatten_variants, kit_title_reason, pooled_list_warning
 from crawl_sitemaps import crawl_mecca_products, crawl_shopify_products
 from match_products import fetch_title, goto_slug, has_review_flag, llm_verify, mecca_slug, normalise
 
@@ -218,19 +218,77 @@ def not_comparable_result(gu, mu, method, reason, product_name=None):
     }
 
 
+_KIT_PROMPT = """Is this ONE product, or a kit/set/bundle/routine/gift pack of several different products sold together?
+
+Product title(s):
+{titles}
+
+Start of the ingredient text on each page:
+{heads}
+
+Answer "kit" ONLY if it clearly shows several DIFFERENT products sold together (a set, kit, bundle,
+calendar, multi-step routine, gift pack). Different shades, sizes, refills or variants of ONE product
+are "single". If you are not sure, answer "single".
+Respond with JSON only: {{"verdict": "kit" | "single"}}"""
+_kit_cache = {}
+
+
+def llm_kit_verdict(titles, heads):
+    """'kit' or 'single'. Anything unclear, any failure, or no API key -> 'single', so a
+    problem here can only cause a product to be scored, never wrongly skipped."""
+    key = (tuple(titles), tuple(heads))
+    if key in _kit_cache:
+        return _kit_cache[key]
+    verdict = "single"
+    if common.GEMINI_CLIENT is not None and common.types is not None and titles:
+        try:
+            config = common.types.GenerateContentConfig(response_mime_type="application/json", temperature=0)
+            prompt = _KIT_PROMPT.format(titles="\n".join(f"- {a}: {b}" for a, b in titles),
+                                        heads="\n".join(f"- {a}: {b}" for a, b in heads))
+            result = common.GEMINI_CLIENT.models.generate_content(
+                model=common.GEMINI_MODEL, contents=[prompt], config=config)
+            data, _ = json.JSONDecoder().raw_decode((result.text or "").strip())
+            if isinstance(data, dict) and str(data.get("verdict", "")).strip().lower() == "kit":
+                verdict = "kit"
+        except Exception as exc:
+            print(f"    kit check failed ({type(exc).__name__}: {exc}) - scoring the product")
+    _kit_cache[key] = verdict
+    return verdict
+
+
 def run_one(gu, mu, method, extractor):
     mecca_rec = scrape_record(MECCA, mu)
     goto_rec = scrape_record(GOTO, gu)
     name = goto_rec.get("product_name") or mecca_rec.get("product_name") or slug_for(gu).replace("-", " ").title()
 
-    # a kit page whose "ingredients" are several products' lists pooled together
+    # Kit check, layered (the slug words were already checked in main()):
+    #  1. a title that names a kit  2. an AI yes/no on titles + start of the list.
+    # Both skip with a stated reason; anything unsure is SCORED, never skipped.
+    titles = [(r["website"], r.get("product_name")) for r in (mecca_rec, goto_rec)
+              if r.get("product_name") and r.get("product_name") != "unknown-product"]
+    why = kit_title_reason(titles)
+    if not why:
+        heads = [(r["website"], (r.get("ingredients_raw") or "")[:250]) for r in (mecca_rec, goto_rec)]
+        if llm_kit_verdict(titles, heads) == "kit":
+            why = "AI judged this a kit/set of several products from its title and ingredient list (" + "; ".join(f"{a}: {b}" for a, b in titles) + ")"
+    if why:
+        print(f"    kit detected: {why}")
+        return not_comparable_result(gu, mu, method, f"not comparable - {why}", name)
+
+    warnings = []
     for rec in (mecca_rec, goto_rec):
-        why = multi_product_reason(rec.get("ingredients"))
-        if why:
-            return not_comparable_result(gu, mu, method, f"not comparable - {rec['website']}: {why}", name)
+        pw = pooled_list_warning(rec.get("ingredients"))
+        if pw:
+            warnings.append(f"{rec['website']} {pw}")
+        items, w = flatten_variants(rec.get("ingredients"))
+        if w:
+            print(f"    note: {rec['website']} {w}; list starts: {(rec.get('ingredients_raw') or '')[:150]!r}")
+            rec["ingredients"] = items
+            warnings.append(f"{rec['website']} {w}")
 
     rec1, rec2 = _ordered(mecca_rec, goto_rec)
     result = analyse_pair(name, rec1, rec2, extractor)
+    result["warning"] = "; ".join(warnings)
     result["match_method"] = method
     return result
 
@@ -284,6 +342,8 @@ def to_row(result):
     ing, pkg, nl = result["ingredients"], result["packaging"], result["naughty_list"]
     s1, s2 = result["sources"]["source1"], result["sources"]["source2"]
     colour, note = combine_colour(result)
+    if result.get("warning"):
+        note = "; ".join(x for x in (note, result["warning"]) if x)
     return {
         "product": result["product"],
         "colour": colour,
