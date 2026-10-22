@@ -81,5 +81,5 @@ def test_audit_written_and_in_dashboard_payload(tmp_path, monkeypatch):
     audit = rp.build_audit([_result("A", {"PEGs": ["PEG-8"]}, ["Aqua"], {}, ["Aqua"])])
     rp.write_audit(audit)
     text = (tmp_path / "audit.csv").read_text()
-    assert text.splitlines()[0] == "ingredient,category,site,product_count,products"
-    assert "PEG-8,PEGs,MECCA,1,A" in text
+    assert text.splitlines()[0] == "ingredient,category,site,product_count,products,review_hint"
+    assert "PEG-8,PEGs,MECCA,1,A," in text

@@ -23,6 +23,8 @@ from pathlib import Path
 
 from Scrapers import common
 from analyse import SOURCE1, LLMMaterialExtractor, analyse_pair, flatten_variants, kit_title_reason, pooled_list_warning
+from audit_hints import review_hint
+from sanity import compare_warnings, list_warnings
 from match_products import fetch_title, has_review_flag, llm_verify, normalise
 from sources import DEFAULT_BRAND, DEFAULT_RETAILER, SOURCES, Source
 
@@ -237,7 +239,7 @@ def llm_kit_verdict(titles, heads):
     verdict = "single"
     if common.GEMINI_CLIENT is not None and common.types is not None and titles:
         try:
-            config = common.types.GenerateContentConfig(response_mime_type="application/json", temperature=0)
+            config = common.llm_config()
             prompt = _KIT_PROMPT.format(titles="\n".join(f"- {a}: {b}" for a, b in titles),
                                         heads="\n".join(f"- {a}: {b}" for a, b in heads))
             def ask():
@@ -293,6 +295,11 @@ def run_one(gu, mu, method, extractor):
             print(f"    note: {rec['website']} {w}; list starts: {(rec.get('ingredients_raw') or '')[:150]!r}")
             rec["ingredients"] = items
             warnings.append(f"{rec['website']} {w}")
+    # shape checks on what was scraped (warn only - never skips or recolours)
+    for rec in (mecca_rec, goto_rec):
+        warnings += [f"{rec['website']}: {w}" for w in list_warnings(rec.get("ingredients"))]
+    warnings += compare_warnings(mecca_rec.get("ingredients"), goto_rec.get("ingredients"),
+                                 mecca_rec["website"], goto_rec["website"])
 
     rec1, rec2 = _ordered(mecca_rec, goto_rec)
     result = analyse_pair(name, rec1, rec2, extractor)
@@ -420,7 +427,7 @@ def write_summary(rows):
 # harmless name with a category next to it.
 # ---------------------------------------------------------------------------
 AUDIT_FILE = ROOT / "ingredient_audit.csv"
-AUDIT_FIELDS = ["ingredient", "category", "site", "product_count", "products"]
+AUDIT_FIELDS = ["ingredient", "category", "site", "product_count", "products", "review_hint"]
 
 
 def build_audit(results):
@@ -435,14 +442,18 @@ def build_audit(results):
             hits = {ing: cat for cat, ings in (nl.get("categories") or {}).items() for ing in ings}
             for ing in list(hits) + list(nl.get("unmatched_ingredients") or []):
                 key = (ing.strip().lower(), hits.get(ing, ""), site)
-                entry = seen.setdefault(key, {"ingredient": ing.strip(), "category": hits.get(ing, ""),
+                cat = hits.get(ing, "")
+                entry = seen.setdefault(key, {"ingredient": ing.strip(), "category": cat,
+                                              "review_hint": "" if cat else review_hint(ing),
                                               "site": site, "products": []})
                 if r["product"] not in entry["products"]:
                     entry["products"].append(r["product"])
     out = []
     for e in seen.values():
         out.append({**e, "product_count": len(e["products"]), "products": "; ".join(e["products"])})
-    out.sort(key=lambda e: (e["category"] == "", e["category"], -e["product_count"], e["ingredient"].lower()))
+    # flagged first, then unmatched ingredients that resemble a category (possible misses), then the rest
+    out.sort(key=lambda e: (e["category"] == "", e["category"], e["review_hint"] == "", e["review_hint"],
+                            -e["product_count"], e["ingredient"].lower()))
     return out
 
 
@@ -452,7 +463,9 @@ def write_audit(audit):
         w.writeheader()
         w.writerows(audit)
     flagged = sum(1 for a in audit if a["category"])
-    print(f"{AUDIT_FILE.name}: {len(audit)} distinct ingredient/site lines, {flagged} flagged")
+    hinted = sum(1 for a in audit if a.get("review_hint"))
+    print(f"{AUDIT_FILE.name}: {len(audit)} distinct ingredient/site lines, {flagged} flagged, "
+          f"{hinted} unflagged but resembling a category (check these for missed spellings)")
 
 
 def write_dashboard_data(rows, audit=None, previous=None, changes=None, stats=None):

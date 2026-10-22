@@ -360,9 +360,7 @@ class LLMMaterialExtractor:
             def ask():
                 resp = common.GEMINI_CLIENT.models.generate_content(
                     model=self.model, contents=text,
-                    config=common.types.GenerateContentConfig(
-                        system_instruction=MATERIALS_PROMPT,
-                        response_mime_type="application/json", temperature=0))
+                    config=common.llm_config(system_instruction=MATERIALS_PROMPT))
                 return (resp.text or "").strip() or None
 
             raw = common.llm_cached(self.model, "materials|" + MATERIALS_PROMPT + "|" + text, ask)

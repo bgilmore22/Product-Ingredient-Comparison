@@ -48,6 +48,18 @@ except ImportError:  # package not installed - every Gemini step degrades to "no
     types = None
     GEMINI_CLIENT = None
 
+LLM_SEED = 0
+
+
+def llm_config(**extra):
+    """The settings every Gemini call in the project uses: JSON out, temperature 0 and a fixed
+    seed, so the same prompt gives the same answer as far as the API allows. (Temperature 0
+    alone is not fully repeatable; a fixed seed closes most of the gap. The disk cache then
+    pins the answer for good until it expires or --refresh is used.) Extra keyword arguments
+    go straight to GenerateContentConfig, e.g. system_instruction=..."""
+    return types.GenerateContentConfig(response_mime_type="application/json", temperature=0,
+                                       seed=LLM_SEED, **extra)
+
 
 # ---------------------------------------------------------------------------
 # HTTP
@@ -424,7 +436,7 @@ def get_packaging_from_images(image_urls: list[str], max_concurrent: int = 15,
         print("GEMINI_API_KEY not set - skipping image fallback")
         return None
 
-    config = types.GenerateContentConfig(response_mime_type="application/json", temperature=0)
+    config = llm_config()
 
     def _norm(s: str) -> str:
         return " ".join(s.lower().split())

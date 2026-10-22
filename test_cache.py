@@ -91,3 +91,9 @@ def test_llm_answers_cached_and_failures_not(monkeypatch):
 def test_bad_mode_rejected():
     with pytest.raises(ValueError):
         common.set_cache_mode("sometimes")
+
+
+def test_llm_config_is_deterministic_and_takes_extras():
+    cfg = common.llm_config(system_instruction="be brief")
+    assert cfg.temperature == 0 and cfg.seed == common.LLM_SEED
+    assert cfg.response_mime_type == "application/json" and cfg.system_instruction == "be brief"

@@ -198,7 +198,7 @@
   <div class="note" style="margin-bottom:10px;">Every distinct ingredient seen this run, per site, with the naughty-list category it hit. Flagged ingredients first. A harmless name with a category next to it is a pattern in naughty_list.py to fix.</div>
   <div class="audit-controls">
     <input type="search" id="auditSearch" placeholder="Search ingredient or product…">
-    <select id="auditCat"><option value="">Any category</option><option value="__flagged">Flagged only</option><option value="__clean">Not flagged only</option></select>
+    <select id="auditCat"><option value="">Any category</option><option value="__flagged">Flagged only</option><option value="__review">Possible misses (resemble a category)</option><option value="__clean">Not flagged only</option></select>
     <select id="auditSite"><option value="">Both sites</option></select>
     <span class="showing" id="auditShowing"></span>
   </div>
@@ -568,6 +568,7 @@
     let rows = audit.filter(x => {
       if (a.cat === "__flagged" && !x.category) return false;
       if (a.cat === "__clean" && x.category) return false;
+      if (a.cat === "__review" && !x.review_hint) return false;
       if (a.cat && !a.cat.startsWith("__") && x.category !== a.cat) return false;
       if (a.site && x.site !== a.site) return false;
       if (q && !(String(x.ingredient).toLowerCase().includes(q) || String(x.products || "").toLowerCase().includes(q))) return false;
@@ -576,11 +577,11 @@
     rows.sort((x, y) => {
       let d = 0;
       if (a.sortBy === "product_count") d = (y.product_count || 0) - (x.product_count || 0);
-      else if (a.sortBy === "category") d = ((x.category ? 0 : 1) - (y.category ? 0 : 1)) || String(x.category).localeCompare(String(y.category)) || ((y.product_count || 0) - (x.product_count || 0));
+      else if (a.sortBy === "category") d = ((x.category ? 0 : x.review_hint ? 1 : 2) - (y.category ? 0 : y.review_hint ? 1 : 2)) || String(x.category).localeCompare(String(y.category)) || ((y.product_count || 0) - (x.product_count || 0));
       else d = String(x[a.sortBy] || "").localeCompare(String(y[a.sortBy] || ""));
       return (d * a.sortDir) || String(x.ingredient).localeCompare(String(y.ingredient));
     });
-    document.getElementById("auditShowing").textContent = `Showing ${rows.length} of ${audit.length} (${audit.filter(x => x.category).length} flagged)`;
+    document.getElementById("auditShowing").textContent = `Showing ${rows.length} of ${audit.length} (${audit.filter(x => x.category).length} flagged, ${audit.filter(x => x.review_hint).length} possible misses)`;
     document.querySelectorAll("th[data-asort]").forEach(th => {
       th.querySelector(".arrow").textContent = th.dataset.asort === a.sortBy ? (a.sortDir === 1 ? "▲" : "▼") : "";
     });
@@ -590,7 +591,7 @@
       tr.className = "row";
       tr.innerHTML = `
         <td>${escapeHtml(x.ingredient)}</td>
-        <td>${x.category ? `<span class="cat-chip hit">${escapeHtml(x.category)}</span>` : '<span class="note">—</span>'}</td>
+        <td>${x.category ? `<span class="cat-chip hit">${escapeHtml(x.category)}</span>` : x.review_hint ? `<span class="cat-chip">${escapeHtml(x.review_hint)}</span>` : '<span class="note">—</span>'}</td>
         <td class="note">${escapeHtml(x.site)}</td>
         <td class="n">${escapeHtml(x.product_count)}</td>
         <td class="note">${escapeHtml(x.products)}</td>`;

@@ -108,7 +108,7 @@ def llm_verify(t1, t2, site1="Go-To Skincare", describe1="the brand's own store"
     never silently turn into a false "same"."""
     if common.GEMINI_CLIENT is None or common.types is None:
         return "uncertain"
-    config = common.types.GenerateContentConfig(response_mime_type="application/json", temperature=0)
+    config = common.llm_config()
     prompt = _VERIFY_PROMPT.format(t1=t1, t2=t2, site1=site1, describe1=describe1,
                                    site2=site2, describe2=describe2)
 
